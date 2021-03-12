@@ -135,6 +135,7 @@
 			children = (
 				A57AFE4825F8F0310006CFE0 /* AppDelegate.swift */,
 				A57AFE4A25F8F0310006CFE0 /* SceneDelegate.swift */,
+				A57AFEC525FBC2B10006CFE0 /* Common */,
 				A57AFEA725FB9C8F0006CFE0 /* View */,
 				A57AFE5125F8F0320006CFE0 /* Assets.xcassets */,
 				A57AFE5325F8F0320006CFE0 /* LaunchScreen.storyboard */,
@@ -191,11 +192,26 @@
 		A57AFEA825FB9C990006CFE0 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				A57AFEBF25FBA6890006CFE0 /* Migrator.swift */,
 				A57AFEA925FB9CA90006CFE0 /* DebugViewController.swift */,
 				A57AFEAF25FB9CC80006CFE0 /* DebugViewController.storyboard */,
 			);
 			path = Debug;
+			sourceTree = "<group>";
+		};
+		A57AFEC525FBC2B10006CFE0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A57AFEC625FBC2C10006CFE0 /* Migration */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A57AFEC625FBC2C10006CFE0 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				A57AFEBF25FBA6890006CFE0 /* Migrator.swift */,
+			);
+			path = Migration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
