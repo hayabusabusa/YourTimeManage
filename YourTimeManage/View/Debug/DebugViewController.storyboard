@@ -16,8 +16,27 @@
                     <view key="view" contentMode="scaleToFill" id="BeN-WW-cZS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3sY-IX-VXH">
+                                <rect key="frame" x="145.5" y="433" width="123" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddC-at-UPI">
+                                        <rect key="frame" x="0.0" y="0.0" width="123" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <state key="normal" title="クラッシュさせる"/>
+                                        <connections>
+                                            <action selector="clashButtonTapped:" destination="CAm-k5-Tly" eventType="touchUpInside" id="hhn-g0-FRg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="PhM-sB-mO7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3sY-IX-VXH" firstAttribute="centerY" secondItem="BeN-WW-cZS" secondAttribute="centerY" id="U6K-Gx-ilX"/>
+                            <constraint firstItem="3sY-IX-VXH" firstAttribute="centerX" secondItem="BeN-WW-cZS" secondAttribute="centerX" id="en9-Aj-XiR"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nB-x5-laU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

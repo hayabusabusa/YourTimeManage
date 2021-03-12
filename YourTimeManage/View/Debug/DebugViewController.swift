@@ -20,6 +20,10 @@ final class DebugViewController: UIViewController {
         super.viewDidLoad()
         migrate()
     }
+    
+    @IBAction func clashButtonTapped(_ sender: UIButton) {
+        fatalError("[DEBUG] Send clash report to Firebase Clashlytics.")
+    }
 }
 
 extension DebugViewController {
