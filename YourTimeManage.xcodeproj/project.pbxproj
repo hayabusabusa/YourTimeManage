@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,8 @@
 		A57AFEAA25FB9CA90006CFE0 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFEA925FB9CA90006CFE0 /* DebugViewController.swift */; };
 		A57AFEB025FB9CC80006CFE0 /* DebugViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57AFEAF25FB9CC80006CFE0 /* DebugViewController.storyboard */; };
 		A57AFEC025FBA6890006CFE0 /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFEBF25FBA6890006CFE0 /* Migrator.swift */; };
+		A57AFECB25FBC7870006CFE0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A57AFECA25FBC7870006CFE0 /* FirebaseAnalytics */; };
+		A57AFECD25FBC7870006CFE0 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A57AFECC25FBC7870006CFE0 /* FirebaseCrashlytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A57AFECD25FBC7870006CFE0 /* FirebaseCrashlytics in Frameworks */,
+				A57AFECB25FBC7870006CFE0 /* FirebaseAnalytics in Frameworks */,
 				A57AFE8025FA31650006CFE0 /* Model.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +247,10 @@
 				A57AFE7F25FA31650006CFE0 /* PBXTargetDependency */,
 			);
 			name = YourTimeManage;
+			packageProductDependencies = (
+				A57AFECA25FBC7870006CFE0 /* FirebaseAnalytics */,
+				A57AFECC25FBC7870006CFE0 /* FirebaseCrashlytics */,
+			);
 			productName = YourTimeManage;
 			productReference = A57AFE4525F8F0310006CFE0 /* YourTimeManage.app */;
 			productType = "com.apple.product-type.application";
@@ -315,6 +323,9 @@
 				Base,
 			);
 			mainGroup = A57AFE3C25F8F0310006CFE0;
+			packageReferences = (
+				A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A57AFE4625F8F0310006CFE0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -548,6 +559,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.shunyayamada.YourTimeManage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "YourTimeManage Development";
@@ -572,6 +584,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.shunyayamada.YourTimeManage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -727,6 +740,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A57AFECA25FBC7870006CFE0 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		A57AFECC25FBC7870006CFE0 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A57AFE3D25F8F0310006CFE0 /* Project object */;
 }
