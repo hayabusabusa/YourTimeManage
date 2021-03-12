@@ -19,6 +19,8 @@
 		A57AFE8025FA31650006CFE0 /* Model.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57AFE6B25FA31650006CFE0 /* Model.framework */; };
 		A57AFE8125FA31650006CFE0 /* Model.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A57AFE6B25FA31650006CFE0 /* Model.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A57AFE8D25FA31840006CFE0 /* UserDefaultsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFE8C25FA31840006CFE0 /* UserDefaultsProvider.swift */; };
+		A57AFE9225FA36ED0006CFE0 /* OldStudyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFE9125FA36ED0006CFE0 /* OldStudyEntity.swift */; };
+		A57AFE9825FB708C0006CFE0 /* StudyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFE9725FB708C0006CFE0 /* StudyEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		A57AFE7A25FA31650006CFE0 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
 		A57AFE7C25FA31650006CFE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A57AFE8C25FA31840006CFE0 /* UserDefaultsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProvider.swift; sourceTree = "<group>"; };
+		A57AFE9125FA36ED0006CFE0 /* OldStudyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldStudyEntity.swift; sourceTree = "<group>"; };
+		A57AFE9725FB708C0006CFE0 /* StudyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 		A57AFE6C25FA31650006CFE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A57AFE9025FA36500006CFE0 /* Entity */,
 				A57AFE8B25FA31740006CFE0 /* Provider */,
 				A57AFE6D25FA31650006CFE0 /* Model.h */,
 				A57AFE6E25FA31650006CFE0 /* Info.plist */,
@@ -163,6 +168,15 @@
 				A57AFE8C25FA31840006CFE0 /* UserDefaultsProvider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		A57AFE9025FA36500006CFE0 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A57AFE9125FA36ED0006CFE0 /* OldStudyEntity.swift */,
+				A57AFE9725FB708C0006CFE0 /* StudyEntity.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,7 +333,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A57AFE9225FA36ED0006CFE0 /* OldStudyEntity.swift in Sources */,
 				A57AFE8D25FA31840006CFE0 /* UserDefaultsProvider.swift in Sources */,
+				A57AFE9825FB708C0006CFE0 /* StudyEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
