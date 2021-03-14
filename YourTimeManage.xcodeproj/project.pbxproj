@@ -25,6 +25,9 @@
 		A57AFECB25FBC7870006CFE0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A57AFECA25FBC7870006CFE0 /* FirebaseAnalytics */; };
 		A57AFECD25FBC7870006CFE0 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A57AFECC25FBC7870006CFE0 /* FirebaseCrashlytics */; };
 		A57AFED325FBCAFF0006CFE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A57AFED225FBCAFE0006CFE0 /* GoogleService-Info.plist */; };
+		A5AA4E1D25FE73F50078423D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = A5AA4E1C25FE73F50078423D /* Charts */; };
+		A5AA4E2225FE76D00078423D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A5AA4E2125FE76D00078423D /* Realm */; };
+		A5AA4E2425FE76D00078423D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A5AA4E2325FE76D00078423D /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,7 @@
 				A57AFECD25FBC7870006CFE0 /* FirebaseCrashlytics in Frameworks */,
 				A57AFECB25FBC7870006CFE0 /* FirebaseAnalytics in Frameworks */,
 				A57AFE8025FA31650006CFE0 /* Model.framework in Frameworks */,
+				A5AA4E1D25FE73F50078423D /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5AA4E2425FE76D00078423D /* RealmSwift in Frameworks */,
+				A5AA4E2225FE76D00078423D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +260,7 @@
 			packageProductDependencies = (
 				A57AFECA25FBC7870006CFE0 /* FirebaseAnalytics */,
 				A57AFECC25FBC7870006CFE0 /* FirebaseCrashlytics */,
+				A5AA4E1C25FE73F50078423D /* Charts */,
 			);
 			productName = YourTimeManage;
 			productReference = A57AFE4525F8F0310006CFE0 /* YourTimeManage.app */;
@@ -273,6 +280,10 @@
 			dependencies = (
 			);
 			name = Model;
+			packageProductDependencies = (
+				A5AA4E2125FE76D00078423D /* Realm */,
+				A5AA4E2325FE76D00078423D /* RealmSwift */,
+			);
 			productName = Model;
 			productReference = A57AFE6B25FA31650006CFE0 /* Model.framework */;
 			productType = "com.apple.product-type.framework";
@@ -329,6 +340,8 @@
 			mainGroup = A57AFE3C25F8F0310006CFE0;
 			packageReferences = (
 				A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A5AA4E1B25FE73F50078423D /* XCRemoteSwiftPackageReference "Charts" */,
+				A5AA4E2025FE76D00078423D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = A57AFE4625F8F0310006CFE0 /* Products */;
 			projectDirPath = "";
@@ -778,6 +791,22 @@
 				minimumVersion = 7.8.0;
 			};
 		};
+		A5AA4E1B25FE73F50078423D /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		A5AA4E2025FE76D00078423D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -790,6 +819,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		A5AA4E1C25FE73F50078423D /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5AA4E1B25FE73F50078423D /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+		A5AA4E2125FE76D00078423D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5AA4E2025FE76D00078423D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		A5AA4E2325FE76D00078423D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5AA4E2025FE76D00078423D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
