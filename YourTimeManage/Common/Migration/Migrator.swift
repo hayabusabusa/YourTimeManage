@@ -71,6 +71,10 @@ struct Migrator {
     }
 }
 
+/// 旧アプリで使用していた勉強のデータ
+/// - Note:
+///     `NSCoding` を利用してアーカイブを行うために、以前と同じターゲット、ソースを用意する必要がある.
+///     よって、**このクラスはマイグレーション以外で使用しない**.
 final class YourStudyData: NSObject, NSCoding {
     public let date: String?
     public let title: String?
