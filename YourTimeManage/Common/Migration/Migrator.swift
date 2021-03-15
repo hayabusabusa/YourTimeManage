@@ -49,6 +49,17 @@ struct Migrator {
         }
     }
     
+    /// マイグレーションが必要かどうかを返す
+    /// - Parameter version: 実行したいマイグレーションの番号
+    /// - Returns: マイグレーションが必要か不必要か
+    static func isNeedMigration(of version: Version) -> Bool {
+        switch version {
+        case .v200:
+            // NOTE: `nil` の場合、以前のデータは存在しないのでマイグレーションの必要なし
+            return UserDefaultsProvider.shared.object(type: Data.self, forKey: .oldList) != nil
+        }
+    }
+    
     private static func migrationToV200(completion: @escaping (Error?) -> Void) {
         // NOTE: 並列のキュー( concurrent queue ) を生成する
         let queue = DispatchQueue(label: "Migrator.V200.Queue", attributes: .concurrent)
