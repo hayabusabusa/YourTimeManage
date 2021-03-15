@@ -27,6 +27,7 @@
 		A5AA4E5125FF66B80078423D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = A5AA4E5025FF66B80078423D /* RealmSwift */; };
 		A5AA4E5D25FF67110078423D /* UserDefaultsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA4E5C25FF67110078423D /* UserDefaultsProvider.swift */; };
 		A5AA4E6425FF673E0078423D /* StudyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA4E6325FF673E0078423D /* StudyEntity.swift */; };
+		A5AA4E8C25FFAA5E0078423D /* MigratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA4E8B25FFAA5E0078423D /* MigratorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A5AA4E2B25FF66A80078423D;
 			remoteInfo = Domain;
+		};
+		A5AA4E7F25FFA97A0078423D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A57AFE3D25F8F0310006CFE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A57AFE4425F8F0310006CFE0;
+			remoteInfo = YourTimeManage;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -86,6 +94,9 @@
 		A5AA4E3D25FF66A80078423D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5AA4E5C25FF67110078423D /* UserDefaultsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProvider.swift; sourceTree = "<group>"; };
 		A5AA4E6325FF673E0078423D /* StudyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyEntity.swift; sourceTree = "<group>"; };
+		A5AA4E7A25FFA97A0078423D /* YourTimeManageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourTimeManageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5AA4E7E25FFA97A0078423D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5AA4E8B25FFAA5E0078423D /* MigratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigratorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +128,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5AA4E7725FFA97A0078423D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -124,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				A57AFE4725F8F0310006CFE0 /* YourTimeManage */,
+				A5AA4E7B25FFA97A0078423D /* YourTimeManageTests */,
 				A5AA4E2D25FF66A80078423D /* Domain */,
 				A5AA4E3A25FF66A80078423D /* DomainTests */,
 				A57AFE4625F8F0310006CFE0 /* Products */,
@@ -137,6 +156,7 @@
 				A57AFE4525F8F0310006CFE0 /* YourTimeManage.app */,
 				A5AA4E2C25FF66A80078423D /* Domain.framework */,
 				A5AA4E3425FF66A80078423D /* DomainTests.xctest */,
+				A5AA4E7A25FFA97A0078423D /* YourTimeManageTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,6 +252,23 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		A5AA4E7B25FFA97A0078423D /* YourTimeManageTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5AA4E8A25FFA9AB0078423D /* Common */,
+				A5AA4E7E25FFA97A0078423D /* Info.plist */,
+			);
+			path = YourTimeManageTests;
+			sourceTree = "<group>";
+		};
+		A5AA4E8A25FFA9AB0078423D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A5AA4E8B25FFAA5E0078423D /* MigratorTests.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -312,6 +349,24 @@
 			productReference = A5AA4E3425FF66A80078423D /* DomainTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A5AA4E7925FFA97A0078423D /* YourTimeManageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5AA4E8125FFA97A0078423D /* Build configuration list for PBXNativeTarget "YourTimeManageTests" */;
+			buildPhases = (
+				A5AA4E7625FFA97A0078423D /* Sources */,
+				A5AA4E7725FFA97A0078423D /* Frameworks */,
+				A5AA4E7825FFA97A0078423D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5AA4E8025FFA97A0078423D /* PBXTargetDependency */,
+			);
+			name = YourTimeManageTests;
+			productName = YourTimeManageTests;
+			productReference = A5AA4E7A25FFA97A0078423D /* YourTimeManageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -329,6 +384,10 @@
 						LastSwiftMigration = 1220;
 					};
 					A5AA4E3325FF66A80078423D = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = A57AFE4425F8F0310006CFE0;
+					};
+					A5AA4E7925FFA97A0078423D = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = A57AFE4425F8F0310006CFE0;
 					};
@@ -355,6 +414,7 @@
 				A57AFE4425F8F0310006CFE0 /* YourTimeManage */,
 				A5AA4E2B25FF66A80078423D /* Domain */,
 				A5AA4E3325FF66A80078423D /* DomainTests */,
+				A5AA4E7925FFA97A0078423D /* YourTimeManageTests */,
 			);
 		};
 /* End PBXProject section */
@@ -379,6 +439,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A5AA4E3225FF66A80078423D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5AA4E7825FFA97A0078423D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,6 +506,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5AA4E7625FFA97A0078423D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5AA4E8C25FFAA5E0078423D /* MigratorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -456,6 +531,11 @@
 			isa = PBXTargetDependency;
 			target = A5AA4E2B25FF66A80078423D /* Domain */;
 			targetProxy = A5AA4E3F25FF66A80078423D /* PBXContainerItemProxy */;
+		};
+		A5AA4E8025FFA97A0078423D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A57AFE4425F8F0310006CFE0 /* YourTimeManage */;
+			targetProxy = A5AA4E7F25FFA97A0078423D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -742,6 +822,47 @@
 			};
 			name = Release;
 		};
+		A5AA4E8225FFA97A0078423D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = YourTimeManageTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ShunyaYamada.YourTimeManageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourTimeManage.app/YourTimeManage";
+			};
+			name = Debug;
+		};
+		A5AA4E8325FFA97A0078423D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = YourTimeManageTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ShunyaYamada.YourTimeManageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourTimeManage.app/YourTimeManage";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -777,6 +898,15 @@
 			buildConfigurations = (
 				A5AA4E4525FF66A80078423D /* Debug */,
 				A5AA4E4625FF66A80078423D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5AA4E8125FFA97A0078423D /* Build configuration list for PBXNativeTarget "YourTimeManageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5AA4E8225FFA97A0078423D /* Debug */,
+				A5AA4E8325FFA97A0078423D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

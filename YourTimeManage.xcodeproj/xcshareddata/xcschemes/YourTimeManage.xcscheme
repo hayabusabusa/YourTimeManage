@@ -66,6 +66,16 @@
                ReferencedContainer = "container:YourTimeManage.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A5AA4E7925FFA97A0078423D"
+               BuildableName = "YourTimeManageTests.xctest"
+               BlueprintName = "YourTimeManageTests"
+               ReferencedContainer = "container:YourTimeManage.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
