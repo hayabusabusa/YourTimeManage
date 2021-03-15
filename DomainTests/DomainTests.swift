@@ -1,14 +1,14 @@
 //
-//  ModelTests.swift
-//  ModelTests
+//  DomainTests.swift
+//  DomainTests
 //
-//  Created by Shunya Yamada on 2021/03/11.
+//  Created by Shunya Yamada on 2021/03/15.
 //
 
 import XCTest
-@testable import Model
+@testable import Domain
 
-class ModelTests: XCTestCase {
+class DomainTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

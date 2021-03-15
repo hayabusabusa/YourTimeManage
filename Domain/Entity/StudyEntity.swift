@@ -1,8 +1,8 @@
 //
 //  StudyEntity.swift
-//  Model
+//  Domain
 //
-//  Created by Shunya Yamada on 2021/03/12.
+//  Created by Shunya Yamada on 2021/03/15.
 //
 
 import Foundation
@@ -18,14 +18,5 @@ public struct StudyEntity: Codable {
         self.title = title
         self.seconds = seconds
         self.memo = memo
-    }
-}
-
-extension StudyEntity {
-    public init(from old: OldStudyEntity) {
-        date = old.date
-        title = old.title
-        seconds = old.hour * 3600 + old.minute * 60
-        memo = old.memo
     }
 }

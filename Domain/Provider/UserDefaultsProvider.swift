@@ -1,8 +1,8 @@
 //
 //  UserDefaultsProvider.swift
-//  Model
+//  Domain
 //
-//  Created by Shunya Yamada on 2021/03/11.
+//  Created by Shunya Yamada on 2021/03/15.
 //
 
 import Foundation

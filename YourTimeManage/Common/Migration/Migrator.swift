@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Model
+import Domain
 
 enum MigrationError: Error, CustomStringConvertible {
     case failedV200Migration(message: String)
