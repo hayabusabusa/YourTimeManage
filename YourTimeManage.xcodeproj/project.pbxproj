@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50743382600EA4F009AA4F9 /* DebugSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50743372600EA4F009AA4F9 /* DebugSection.swift */; };
 		A57AFE4925F8F0310006CFE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFE4825F8F0310006CFE0 /* AppDelegate.swift */; };
 		A57AFE4B25F8F0310006CFE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFE4A25F8F0310006CFE0 /* SceneDelegate.swift */; };
 		A57AFE5225F8F0320006CFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57AFE5125F8F0320006CFE0 /* Assets.xcassets */; };
@@ -76,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A50743372600EA4F009AA4F9 /* DebugSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSection.swift; sourceTree = "<group>"; };
 		A57AFE4525F8F0310006CFE0 /* YourTimeManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTimeManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57AFE4825F8F0310006CFE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A57AFE4A25F8F0310006CFE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		A57AFEA825FB9C990006CFE0 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
+				A50743372600EA4F009AA4F9 /* DebugSection.swift */,
 				A57AFEA925FB9CA90006CFE0 /* DebugViewController.swift */,
 				A57AFEAF25FB9CC80006CFE0 /* DebugViewController.storyboard */,
 			);
@@ -482,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A50743382600EA4F009AA4F9 /* DebugSection.swift in Sources */,
 				A57AFE4925F8F0310006CFE0 /* AppDelegate.swift in Sources */,
 				A57AFEAA25FB9CA90006CFE0 /* DebugViewController.swift in Sources */,
 				A57AFEC025FBA6890006CFE0 /* Migrator.swift in Sources */,
