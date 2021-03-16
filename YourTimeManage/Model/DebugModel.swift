@@ -14,6 +14,7 @@ protocol DebugModelProtocol {
     var isMigrationCompletedPublisher: AnyPublisher<Void, Never> { get }
     
     func getSections()
+    func crashForDebug()
     func migration()
 }
 
@@ -39,6 +40,11 @@ final class DebugModel: DebugModelProtocol {
     
     func getSections() {
         sectionsSubject.send(DebugSection.allCases)
+    }
+    
+    func crashForDebug() {
+        Crashlytics.crashlytics().log("[DEBUG] This error is debug.")
+        fatalError("[DEBUG] This error is debug.")
     }
     
     func migration() {

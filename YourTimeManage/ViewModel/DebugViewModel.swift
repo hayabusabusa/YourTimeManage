@@ -46,7 +46,8 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
     func didSelectRow(at type: DebugSection.DebugType) {
         switch type {
         case .charts: break
-        case .crash: break
+        case .crash:
+            model.crashForDebug()
         case .migration:
             model.migration()
         }
