@@ -30,6 +30,7 @@ let package = Package(
         ]),
         .target(name: "Shared", dependencies: []),
         .target(name: "UIComponent", dependencies: [
+            "Shared",
             .product(name: "Charts", package: "Charts"),
             .product(name: "HorizonCalendar", package: "HorizonCalendar"),
         ]),
