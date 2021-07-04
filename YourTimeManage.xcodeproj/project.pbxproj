@@ -7,418 +7,136 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A50743382600EA4F009AA4F9 /* DebugSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50743372600EA4F009AA4F9 /* DebugSection.swift */; };
-		A50743422600F071009AA4F9 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50743412600F071009AA4F9 /* DebugViewModel.swift */; };
-		A507434B2600F665009AA4F9 /* DebugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A507434A2600F665009AA4F9 /* DebugModel.swift */; };
-		A57AFE4925F8F0310006CFE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFE4825F8F0310006CFE0 /* AppDelegate.swift */; };
-		A57AFE4B25F8F0310006CFE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFE4A25F8F0310006CFE0 /* SceneDelegate.swift */; };
-		A57AFE5225F8F0320006CFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57AFE5125F8F0320006CFE0 /* Assets.xcassets */; };
-		A57AFE5525F8F0320006CFE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57AFE5325F8F0320006CFE0 /* LaunchScreen.storyboard */; };
-		A57AFEAA25FB9CA90006CFE0 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFEA925FB9CA90006CFE0 /* DebugViewController.swift */; };
-		A57AFEB025FB9CC80006CFE0 /* DebugViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57AFEAF25FB9CC80006CFE0 /* DebugViewController.storyboard */; };
-		A57AFEC025FBA6890006CFE0 /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AFEBF25FBA6890006CFE0 /* Migrator.swift */; };
-		A57AFECB25FBC7870006CFE0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A57AFECA25FBC7870006CFE0 /* FirebaseAnalytics */; };
-		A57AFECD25FBC7870006CFE0 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A57AFECC25FBC7870006CFE0 /* FirebaseCrashlytics */; };
-		A57AFED325FBCAFF0006CFE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A57AFED225FBCAFE0006CFE0 /* GoogleService-Info.plist */; };
-		A5AA4E1D25FE73F50078423D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = A5AA4E1C25FE73F50078423D /* Charts */; };
-		A5AA4E3525FF66A80078423D /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AA4E2C25FF66A80078423D /* Domain.framework */; };
-		A5AA4E3C25FF66A80078423D /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA4E3B25FF66A80078423D /* DomainTests.swift */; };
-		A5AA4E3E25FF66A80078423D /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = A5AA4E2E25FF66A80078423D /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5AA4E4125FF66A80078423D /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AA4E2C25FF66A80078423D /* Domain.framework */; };
-		A5AA4E4225FF66A80078423D /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5AA4E2C25FF66A80078423D /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A5AA4E4F25FF66B80078423D /* Realm in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = A5AA4E4E25FF66B80078423D /* Realm */; };
-		A5AA4E5125FF66B80078423D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = A5AA4E5025FF66B80078423D /* RealmSwift */; };
-		A5AA4E5D25FF67110078423D /* UserDefaultsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA4E5C25FF67110078423D /* UserDefaultsProvider.swift */; };
-		A5AA4E6425FF673E0078423D /* StudyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA4E6325FF673E0078423D /* StudyEntity.swift */; };
-		A5AA4E8C25FFAA5E0078423D /* MigratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA4E8B25FFAA5E0078423D /* MigratorTests.swift */; };
+		A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B126917A2D004BBE9B /* AppDelegate.swift */; };
+		A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B326917A2D004BBE9B /* SceneDelegate.swift */; };
+		A55B34B626917A2D004BBE9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B526917A2D004BBE9B /* ViewController.swift */; };
+		A55B34B926917A2D004BBE9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A55B34B726917A2D004BBE9B /* Main.storyboard */; };
+		A55B34BB26917A2E004BBE9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55B34BA26917A2E004BBE9B /* Assets.xcassets */; };
+		A55B34BE26917A2E004BBE9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A55B34BC26917A2E004BBE9B /* LaunchScreen.storyboard */; };
+		A55B34CF26917D27004BBE9B /* Application in Frameworks */ = {isa = PBXBuildFile; productRef = A55B34CE26917D27004BBE9B /* Application */; };
+		A55B34DA2691890B004BBE9B /* V200Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34D92691890B004BBE9B /* V200Migrator.swift */; };
+		A55B34E22691A215004BBE9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A55B34E12691A215004BBE9B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A5AA4E3625FF66A80078423D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A57AFE3D25F8F0310006CFE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A5AA4E2B25FF66A80078423D;
-			remoteInfo = Domain;
-		};
-		A5AA4E3825FF66A80078423D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A57AFE3D25F8F0310006CFE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A57AFE4425F8F0310006CFE0;
-			remoteInfo = YourTimeManage;
-		};
-		A5AA4E3F25FF66A80078423D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A57AFE3D25F8F0310006CFE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A5AA4E2B25FF66A80078423D;
-			remoteInfo = Domain;
-		};
-		A5AA4E7F25FFA97A0078423D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A57AFE3D25F8F0310006CFE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A57AFE4425F8F0310006CFE0;
-			remoteInfo = YourTimeManage;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A57AFE8525FA31650006CFE0 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A5AA4E4225FF66A80078423D /* Domain.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		A50743372600EA4F009AA4F9 /* DebugSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSection.swift; sourceTree = "<group>"; };
-		A50743412600F071009AA4F9 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
-		A507434A2600F665009AA4F9 /* DebugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugModel.swift; sourceTree = "<group>"; };
-		A57AFE4525F8F0310006CFE0 /* YourTimeManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTimeManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A57AFE4825F8F0310006CFE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A57AFE4A25F8F0310006CFE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A57AFE5125F8F0320006CFE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A57AFE5425F8F0320006CFE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A57AFE5625F8F0320006CFE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A57AFEA925FB9CA90006CFE0 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
-		A57AFEAF25FB9CC80006CFE0 /* DebugViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DebugViewController.storyboard; sourceTree = "<group>"; };
-		A57AFEBF25FBA6890006CFE0 /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
-		A57AFED225FBCAFE0006CFE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A5AA4E2C25FF66A80078423D /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5AA4E2E25FF66A80078423D /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
-		A5AA4E2F25FF66A80078423D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5AA4E3425FF66A80078423D /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5AA4E3B25FF66A80078423D /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
-		A5AA4E3D25FF66A80078423D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5AA4E5C25FF67110078423D /* UserDefaultsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProvider.swift; sourceTree = "<group>"; };
-		A5AA4E6325FF673E0078423D /* StudyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyEntity.swift; sourceTree = "<group>"; };
-		A5AA4E7A25FFA97A0078423D /* YourTimeManageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourTimeManageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5AA4E7E25FFA97A0078423D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5AA4E8B25FFAA5E0078423D /* MigratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigratorTests.swift; sourceTree = "<group>"; };
+		A55B34AE26917A2D004BBE9B /* YourTimeManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTimeManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55B34B126917A2D004BBE9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A55B34B326917A2D004BBE9B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A55B34B526917A2D004BBE9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A55B34B826917A2D004BBE9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A55B34BA26917A2E004BBE9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A55B34BD26917A2E004BBE9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A55B34BF26917A2E004BBE9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A55B34D92691890B004BBE9B /* V200Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V200Migrator.swift; sourceTree = "<group>"; };
+		A55B34E12691A215004BBE9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A57AFE4225F8F0310006CFE0 /* Frameworks */ = {
+		A55B34AB26917A2D004BBE9B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5AA4E4125FF66A80078423D /* Domain.framework in Frameworks */,
-				A57AFECD25FBC7870006CFE0 /* FirebaseCrashlytics in Frameworks */,
-				A57AFECB25FBC7870006CFE0 /* FirebaseAnalytics in Frameworks */,
-				A5AA4E1D25FE73F50078423D /* Charts in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E2925FF66A80078423D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A5AA4E5125FF66B80078423D /* RealmSwift in Frameworks */,
-				A5AA4E4F25FF66B80078423D /* Realm in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E3125FF66A80078423D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A5AA4E3525FF66A80078423D /* Domain.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E7725FFA97A0078423D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A55B34CF26917D27004BBE9B /* Application in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A507433F2600F053009AA4F9 /* ViewModel */ = {
+		A55B34A526917A2D004BBE9B = {
 			isa = PBXGroup;
 			children = (
-				A50743412600F071009AA4F9 /* DebugViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A50743492600F649009AA4F9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A507434A2600F665009AA4F9 /* DebugModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A57AFE3C25F8F0310006CFE0 = {
-			isa = PBXGroup;
-			children = (
-				A57AFE4725F8F0310006CFE0 /* YourTimeManage */,
-				A5AA4E7B25FFA97A0078423D /* YourTimeManageTests */,
-				A5AA4E2D25FF66A80078423D /* Domain */,
-				A5AA4E3A25FF66A80078423D /* DomainTests */,
-				A57AFE4625F8F0310006CFE0 /* Products */,
-				A5AA4E4D25FF66B80078423D /* Frameworks */,
+				A55B34B026917A2D004BBE9B /* YourTimeManage */,
+				A55B34AF26917A2D004BBE9B /* Products */,
+				A55B34CD26917D27004BBE9B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		A57AFE4625F8F0310006CFE0 /* Products */ = {
+		A55B34AF26917A2D004BBE9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A57AFE4525F8F0310006CFE0 /* YourTimeManage.app */,
-				A5AA4E2C25FF66A80078423D /* Domain.framework */,
-				A5AA4E3425FF66A80078423D /* DomainTests.xctest */,
-				A5AA4E7A25FFA97A0078423D /* YourTimeManageTests.xctest */,
+				A55B34AE26917A2D004BBE9B /* YourTimeManage.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A57AFE4725F8F0310006CFE0 /* YourTimeManage */ = {
+		A55B34B026917A2D004BBE9B /* YourTimeManage */ = {
 			isa = PBXGroup;
 			children = (
-				A57AFE4825F8F0310006CFE0 /* AppDelegate.swift */,
-				A57AFE4A25F8F0310006CFE0 /* SceneDelegate.swift */,
-				A57AFEC525FBC2B10006CFE0 /* Common */,
-				A50743492600F649009AA4F9 /* Model */,
-				A57AFEA725FB9C8F0006CFE0 /* View */,
-				A507433F2600F053009AA4F9 /* ViewModel */,
-				A57AFE5125F8F0320006CFE0 /* Assets.xcassets */,
-				A57AFED225FBCAFE0006CFE0 /* GoogleService-Info.plist */,
-				A57AFE5625F8F0320006CFE0 /* Info.plist */,
-				A57AFE5325F8F0320006CFE0 /* LaunchScreen.storyboard */,
+				A55B34D2269180E3004BBE9B /* Common */,
+				A55B34B126917A2D004BBE9B /* AppDelegate.swift */,
+				A55B34B326917A2D004BBE9B /* SceneDelegate.swift */,
+				A55B34B526917A2D004BBE9B /* ViewController.swift */,
+				A55B34B726917A2D004BBE9B /* Main.storyboard */,
+				A55B34BA26917A2E004BBE9B /* Assets.xcassets */,
+				A55B34BC26917A2E004BBE9B /* LaunchScreen.storyboard */,
+				A55B34BF26917A2E004BBE9B /* Info.plist */,
+				A55B34E12691A215004BBE9B /* GoogleService-Info.plist */,
 			);
 			path = YourTimeManage;
 			sourceTree = "<group>";
 		};
-		A57AFEA725FB9C8F0006CFE0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A57AFEA825FB9C990006CFE0 /* Debug */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A57AFEA825FB9C990006CFE0 /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				A50743372600EA4F009AA4F9 /* DebugSection.swift */,
-				A57AFEA925FB9CA90006CFE0 /* DebugViewController.swift */,
-				A57AFEAF25FB9CC80006CFE0 /* DebugViewController.storyboard */,
-			);
-			path = Debug;
-			sourceTree = "<group>";
-		};
-		A57AFEC525FBC2B10006CFE0 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A57AFEC625FBC2C10006CFE0 /* Migration */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		A57AFEC625FBC2C10006CFE0 /* Migration */ = {
-			isa = PBXGroup;
-			children = (
-				A57AFEBF25FBA6890006CFE0 /* Migrator.swift */,
-			);
-			path = Migration;
-			sourceTree = "<group>";
-		};
-		A5AA4E2D25FF66A80078423D /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				A5AA4E6225FF67250078423D /* Entity */,
-				A5AA4E5B25FF67030078423D /* Provider */,
-				A5AA4E2E25FF66A80078423D /* Domain.h */,
-				A5AA4E2F25FF66A80078423D /* Info.plist */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		A5AA4E3A25FF66A80078423D /* DomainTests */ = {
-			isa = PBXGroup;
-			children = (
-				A5AA4E3B25FF66A80078423D /* DomainTests.swift */,
-				A5AA4E3D25FF66A80078423D /* Info.plist */,
-			);
-			path = DomainTests;
-			sourceTree = "<group>";
-		};
-		A5AA4E4D25FF66B80078423D /* Frameworks */ = {
+		A55B34CD26917D27004BBE9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A5AA4E5B25FF67030078423D /* Provider */ = {
+		A55B34D2269180E3004BBE9B /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				A5AA4E5C25FF67110078423D /* UserDefaultsProvider.swift */,
-			);
-			path = Provider;
-			sourceTree = "<group>";
-		};
-		A5AA4E6225FF67250078423D /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				A5AA4E6325FF673E0078423D /* StudyEntity.swift */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		A5AA4E7B25FFA97A0078423D /* YourTimeManageTests */ = {
-			isa = PBXGroup;
-			children = (
-				A5AA4E8A25FFA9AB0078423D /* Common */,
-				A5AA4E7E25FFA97A0078423D /* Info.plist */,
-			);
-			path = YourTimeManageTests;
-			sourceTree = "<group>";
-		};
-		A5AA4E8A25FFA9AB0078423D /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A5AA4E8B25FFAA5E0078423D /* MigratorTests.swift */,
+				A55B34D3269180F9004BBE9B /* Migration */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
+		A55B34D3269180F9004BBE9B /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				A55B34D92691890B004BBE9B /* V200Migrator.swift */,
+			);
+			path = Migration;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		A5AA4E2725FF66A80078423D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A5AA4E3E25FF66A80078423D /* Domain.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		A57AFE4425F8F0310006CFE0 /* YourTimeManage */ = {
+		A55B34AD26917A2D004BBE9B /* YourTimeManage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A57AFE5925F8F0320006CFE0 /* Build configuration list for PBXNativeTarget "YourTimeManage" */;
+			buildConfigurationList = A55B34C226917A2E004BBE9B /* Build configuration list for PBXNativeTarget "YourTimeManage" */;
 			buildPhases = (
-				A57AFE4125F8F0310006CFE0 /* Sources */,
-				A57AFE4225F8F0310006CFE0 /* Frameworks */,
-				A57AFE4325F8F0310006CFE0 /* Resources */,
-				A57AFE8525FA31650006CFE0 /* Embed Frameworks */,
-				A57AFED825FBCEB70006CFE0 /* Crashlytics */,
+				A55B34AA26917A2D004BBE9B /* Sources */,
+				A55B34AB26917A2D004BBE9B /* Frameworks */,
+				A55B34AC26917A2D004BBE9B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A5AA4E4025FF66A80078423D /* PBXTargetDependency */,
 			);
 			name = YourTimeManage;
 			packageProductDependencies = (
-				A57AFECA25FBC7870006CFE0 /* FirebaseAnalytics */,
-				A57AFECC25FBC7870006CFE0 /* FirebaseCrashlytics */,
-				A5AA4E1C25FE73F50078423D /* Charts */,
+				A55B34CE26917D27004BBE9B /* Application */,
 			);
 			productName = YourTimeManage;
-			productReference = A57AFE4525F8F0310006CFE0 /* YourTimeManage.app */;
+			productReference = A55B34AE26917A2D004BBE9B /* YourTimeManage.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A5AA4E2B25FF66A80078423D /* Domain */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A5AA4E4725FF66A80078423D /* Build configuration list for PBXNativeTarget "Domain" */;
-			buildPhases = (
-				A5AA4E2725FF66A80078423D /* Headers */,
-				A5AA4E2825FF66A80078423D /* Sources */,
-				A5AA4E2925FF66A80078423D /* Frameworks */,
-				A5AA4E2A25FF66A80078423D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Domain;
-			packageProductDependencies = (
-				A5AA4E4E25FF66B80078423D /* Realm */,
-				A5AA4E5025FF66B80078423D /* RealmSwift */,
-			);
-			productName = Domain;
-			productReference = A5AA4E2C25FF66A80078423D /* Domain.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		A5AA4E3325FF66A80078423D /* DomainTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A5AA4E4825FF66A80078423D /* Build configuration list for PBXNativeTarget "DomainTests" */;
-			buildPhases = (
-				A5AA4E3025FF66A80078423D /* Sources */,
-				A5AA4E3125FF66A80078423D /* Frameworks */,
-				A5AA4E3225FF66A80078423D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A5AA4E3725FF66A80078423D /* PBXTargetDependency */,
-				A5AA4E3925FF66A80078423D /* PBXTargetDependency */,
-			);
-			name = DomainTests;
-			productName = DomainTests;
-			productReference = A5AA4E3425FF66A80078423D /* DomainTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A5AA4E7925FFA97A0078423D /* YourTimeManageTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A5AA4E8125FFA97A0078423D /* Build configuration list for PBXNativeTarget "YourTimeManageTests" */;
-			buildPhases = (
-				A5AA4E7625FFA97A0078423D /* Sources */,
-				A5AA4E7725FFA97A0078423D /* Frameworks */,
-				A5AA4E7825FFA97A0078423D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A5AA4E8025FFA97A0078423D /* PBXTargetDependency */,
-			);
-			name = YourTimeManageTests;
-			productName = YourTimeManageTests;
-			productReference = A5AA4E7A25FFA97A0078423D /* YourTimeManageTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A57AFE3D25F8F0310006CFE0 /* Project object */ = {
+		A55B34A626917A2D004BBE9B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
-					A57AFE4425F8F0310006CFE0 = {
+					A55B34AD26917A2D004BBE9B = {
 						CreatedOnToolsVersion = 12.2;
-					};
-					A5AA4E2B25FF66A80078423D = {
-						CreatedOnToolsVersion = 12.2;
-						LastSwiftMigration = 1220;
-					};
-					A5AA4E3325FF66A80078423D = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = A57AFE4425F8F0310006CFE0;
-					};
-					A5AA4E7925FFA97A0078423D = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = A57AFE4425F8F0310006CFE0;
 					};
 				};
 			};
-			buildConfigurationList = A57AFE4025F8F0310006CFE0 /* Build configuration list for PBXProject "YourTimeManage" */;
+			buildConfigurationList = A55B34A926917A2D004BBE9B /* Build configuration list for PBXProject "YourTimeManage" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -426,152 +144,57 @@
 				en,
 				Base,
 			);
-			mainGroup = A57AFE3C25F8F0310006CFE0;
-			packageReferences = (
-				A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				A5AA4E1B25FE73F50078423D /* XCRemoteSwiftPackageReference "Charts" */,
-				A5AA4E2025FE76D00078423D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-			);
-			productRefGroup = A57AFE4625F8F0310006CFE0 /* Products */;
+			mainGroup = A55B34A526917A2D004BBE9B;
+			productRefGroup = A55B34AF26917A2D004BBE9B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A57AFE4425F8F0310006CFE0 /* YourTimeManage */,
-				A5AA4E2B25FF66A80078423D /* Domain */,
-				A5AA4E3325FF66A80078423D /* DomainTests */,
-				A5AA4E7925FFA97A0078423D /* YourTimeManageTests */,
+				A55B34AD26917A2D004BBE9B /* YourTimeManage */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A57AFE4325F8F0310006CFE0 /* Resources */ = {
+		A55B34AC26917A2D004BBE9B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A57AFE5525F8F0320006CFE0 /* LaunchScreen.storyboard in Resources */,
-				A57AFED325FBCAFF0006CFE0 /* GoogleService-Info.plist in Resources */,
-				A57AFE5225F8F0320006CFE0 /* Assets.xcassets in Resources */,
-				A57AFEB025FB9CC80006CFE0 /* DebugViewController.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E2A25FF66A80078423D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E3225FF66A80078423D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E7825FFA97A0078423D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A55B34BE26917A2E004BBE9B /* LaunchScreen.storyboard in Resources */,
+				A55B34E22691A215004BBE9B /* GoogleService-Info.plist in Resources */,
+				A55B34BB26917A2E004BBE9B /* Assets.xcassets in Resources */,
+				A55B34B926917A2D004BBE9B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		A57AFED825FBCEB70006CFE0 /* Crashlytics */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = Crashlytics;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "APP_BUILD_DIR=$(dirname $(dirname $BUILD_DIR))\n\nif [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n    SPM_PATH=\".\"\nelse\n    SPM_PATH=\"../../..\"\nfi\n\n\"${APP_BUILD_DIR}/${SPM_PATH}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		A57AFE4125F8F0310006CFE0 /* Sources */ = {
+		A55B34AA26917A2D004BBE9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A50743422600F071009AA4F9 /* DebugViewModel.swift in Sources */,
-				A50743382600EA4F009AA4F9 /* DebugSection.swift in Sources */,
-				A57AFE4925F8F0310006CFE0 /* AppDelegate.swift in Sources */,
-				A57AFEAA25FB9CA90006CFE0 /* DebugViewController.swift in Sources */,
-				A507434B2600F665009AA4F9 /* DebugModel.swift in Sources */,
-				A57AFEC025FBA6890006CFE0 /* Migrator.swift in Sources */,
-				A57AFE4B25F8F0310006CFE0 /* SceneDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E2825FF66A80078423D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A5AA4E6425FF673E0078423D /* StudyEntity.swift in Sources */,
-				A5AA4E5D25FF67110078423D /* UserDefaultsProvider.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E3025FF66A80078423D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A5AA4E3C25FF66A80078423D /* DomainTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5AA4E7625FFA97A0078423D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A5AA4E8C25FFAA5E0078423D /* MigratorTests.swift in Sources */,
+				A55B34B626917A2D004BBE9B /* ViewController.swift in Sources */,
+				A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */,
+				A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */,
+				A55B34DA2691890B004BBE9B /* V200Migrator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		A5AA4E3725FF66A80078423D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A5AA4E2B25FF66A80078423D /* Domain */;
-			targetProxy = A5AA4E3625FF66A80078423D /* PBXContainerItemProxy */;
-		};
-		A5AA4E3925FF66A80078423D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A57AFE4425F8F0310006CFE0 /* YourTimeManage */;
-			targetProxy = A5AA4E3825FF66A80078423D /* PBXContainerItemProxy */;
-		};
-		A5AA4E4025FF66A80078423D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A5AA4E2B25FF66A80078423D /* Domain */;
-			targetProxy = A5AA4E3F25FF66A80078423D /* PBXContainerItemProxy */;
-		};
-		A5AA4E8025FFA97A0078423D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A57AFE4425F8F0310006CFE0 /* YourTimeManage */;
-			targetProxy = A5AA4E7F25FFA97A0078423D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		A57AFE5325F8F0320006CFE0 /* LaunchScreen.storyboard */ = {
+		A55B34B726917A2D004BBE9B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A57AFE5425F8F0320006CFE0 /* Base */,
+				A55B34B826917A2D004BBE9B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A55B34BC26917A2E004BBE9B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A55B34BD26917A2E004BBE9B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -579,7 +202,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		A57AFE5725F8F0320006CFE0 /* Debug */ = {
+		A55B34C026917A2E004BBE9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -613,7 +236,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -640,7 +263,7 @@
 			};
 			name = Debug;
 		};
-		A57AFE5825F8F0320006CFE0 /* Release */ = {
+		A55B34C126917A2E004BBE9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -695,40 +318,12 @@
 			};
 			name = Release;
 		};
-		A57AFE5A25F8F0320006CFE0 /* Debug */ = {
+		A55B34C326917A2E004BBE9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 7NJH5NAV4T;
-				INFOPLIST_FILE = YourTimeManage/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.0;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.shunyayamada.YourTimeManage;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "YourTimeManage Development";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		A57AFE5B25F8F0320006CFE0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = YourTimeManage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -736,265 +331,66 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.shunyayamada.YourTimeManage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		A5AA4E4325FF66A80078423D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 7NJH5NAV4T;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Domain/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ShunyaYamada.Domain;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		A5AA4E4425FF66A80078423D /* Release */ = {
+		A55B34C426917A2E004BBE9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Domain/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				INFOPLIST_FILE = YourTimeManage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ShunyaYamada.Domain;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A5AA4E4525FF66A80078423D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = DomainTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ShunyaYamada.DomainTests;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.shunyayamada.YourTimeManage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourTimeManage.app/YourTimeManage";
-			};
-			name = Debug;
-		};
-		A5AA4E4625FF66A80078423D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DomainTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ShunyaYamada.DomainTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourTimeManage.app/YourTimeManage";
-			};
-			name = Release;
-		};
-		A5AA4E8225FFA97A0078423D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = YourTimeManageTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ShunyaYamada.YourTimeManageTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourTimeManage.app/YourTimeManage";
-			};
-			name = Debug;
-		};
-		A5AA4E8325FFA97A0078423D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = YourTimeManageTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ShunyaYamada.YourTimeManageTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourTimeManage.app/YourTimeManage";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A57AFE4025F8F0310006CFE0 /* Build configuration list for PBXProject "YourTimeManage" */ = {
+		A55B34A926917A2D004BBE9B /* Build configuration list for PBXProject "YourTimeManage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A57AFE5725F8F0320006CFE0 /* Debug */,
-				A57AFE5825F8F0320006CFE0 /* Release */,
+				A55B34C026917A2E004BBE9B /* Debug */,
+				A55B34C126917A2E004BBE9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A57AFE5925F8F0320006CFE0 /* Build configuration list for PBXNativeTarget "YourTimeManage" */ = {
+		A55B34C226917A2E004BBE9B /* Build configuration list for PBXNativeTarget "YourTimeManage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A57AFE5A25F8F0320006CFE0 /* Debug */,
-				A57AFE5B25F8F0320006CFE0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A5AA4E4725FF66A80078423D /* Build configuration list for PBXNativeTarget "Domain" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A5AA4E4325FF66A80078423D /* Debug */,
-				A5AA4E4425FF66A80078423D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A5AA4E4825FF66A80078423D /* Build configuration list for PBXNativeTarget "DomainTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A5AA4E4525FF66A80078423D /* Debug */,
-				A5AA4E4625FF66A80078423D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A5AA4E8125FFA97A0078423D /* Build configuration list for PBXNativeTarget "YourTimeManageTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A5AA4E8225FFA97A0078423D /* Debug */,
-				A5AA4E8325FFA97A0078423D /* Release */,
+				A55B34C326917A2E004BBE9B /* Debug */,
+				A55B34C426917A2E004BBE9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.8.0;
-			};
-		};
-		A5AA4E1B25FE73F50078423D /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.1;
-			};
-		};
-		A5AA4E2025FE76D00078423D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-cocoa.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.7.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		A57AFECA25FBC7870006CFE0 /* FirebaseAnalytics */ = {
+		A55B34CE26917D27004BBE9B /* Application */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		A57AFECC25FBC7870006CFE0 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A57AFEC925FBC7870006CFE0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		A5AA4E1C25FE73F50078423D /* Charts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A5AA4E1B25FE73F50078423D /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
-		};
-		A5AA4E4E25FF66B80078423D /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A5AA4E2025FE76D00078423D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = Realm;
-		};
-		A5AA4E5025FF66B80078423D /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A5AA4E2025FE76D00078423D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
-			productName = RealmSwift;
+			productName = Application;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = A57AFE3D25F8F0310006CFE0 /* Project object */;
+	rootObject = A55B34A626917A2D004BBE9B /* Project object */;
 }
