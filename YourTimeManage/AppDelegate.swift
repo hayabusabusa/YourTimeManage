@@ -2,19 +2,17 @@
 //  AppDelegate.swift
 //  YourTimeManage
 //
-//  Created by Shunya Yamada on 2021/03/10.
+//  Created by Shunya Yamada on 2021/07/04.
 //
 
+import Application
 import UIKit
-import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // NOTE: Configure Firebase
         FirebaseApp.configure()
-        
         return true
     }
 

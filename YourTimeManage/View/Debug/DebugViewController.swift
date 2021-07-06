@@ -2,17 +2,25 @@
 //  DebugViewController.swift
 //  YourTimeManage
 //
-//  Created by Shunya Yamada on 2021/03/12.
+//  Created by Shunya Yamada on 2021/07/07.
 //
 
-import UIKit
 import Combine
+import UIKit
+import Shared
 
 final class DebugViewController: UIViewController {
     
     // MARK: IBOutlet
     
-    @IBOutlet private weak var tableView: UITableView!
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewCompositionalLayout { [weak self] (index, _) -> NSCollectionLayoutSection? in
+            return self?.sections[index].layoutSection()
+        }
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        return collectionView
+    }()
     
     // MARK: Properties
     
@@ -25,9 +33,9 @@ final class DebugViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        configureSubViews()
+        configureCollectionView()
         bindViewModel()
-        
         viewModel.inputs.viewDidLoad()
     }
 }
@@ -36,9 +44,14 @@ final class DebugViewController: UIViewController {
 
 extension DebugViewController {
     
-    private func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+    private func configureSubViews() {
+        view.backgroundColor = .systemBackground
+        collectionView.embed(in: view)
+    }
+    
+    private func configureCollectionView() {
+        collectionView.dataSource = self
+        collectionView.register(DebugCell.self)
     }
     
     private func bindViewModel() {
@@ -54,7 +67,7 @@ extension DebugViewController {
         viewModel.outpus.sections
             .sink { [weak self] sections in
                 self?.sections = sections
-                self?.tableView.reloadData()
+                self?.collectionView.reloadData()
             }
             .store(in: &cancelables)
         viewModel.outpus.isMigrationCompleted
@@ -67,33 +80,19 @@ extension DebugViewController {
     }
 }
 
-// MARK: - TableView dataSource
+// MARK: - CollectionView DataSource
 
-extension DebugViewController: UITableViewDataSource {
+extension DebugViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].rows.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sections[section].numberOfItems
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = sections[indexPath.section].rows[indexPath.row]
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseID")
-        cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = row.title
-        return cell
-    }
-}
-
-// MARK: - TableView delegate
-
-extension DebugViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.inputs.didSelectRow(at: sections[indexPath.section].rows[indexPath.row])
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return sections[indexPath.section].configureCell(collectionView, at: indexPath)
     }
 }

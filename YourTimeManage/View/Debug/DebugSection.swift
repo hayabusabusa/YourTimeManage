@@ -2,35 +2,39 @@
 //  DebugSection.swift
 //  YourTimeManage
 //
-//  Created by Shunya Yamada on 2021/03/16.
+//  Created by Shunya Yamada on 2021/07/06.
 //
 
-import Foundation
+import Shared
+import UIKit
 
-enum DebugSection: CaseIterable {
-    case view
-    case util
+enum DebugSection: CaseIterable, CollectionViewSectionType {
+    case migration
+    case crash
     
-    var rows: [DebugType] {
-        switch self {
-        case .view: return [.charts]
-        case .util: return [.crash, .migration]
-        }
+    var numberOfItems: Int {
+        return 1
     }
-}
-
-extension DebugSection {
-    enum DebugType: CaseIterable {
-        case charts
-        case migration
-        case crash
-        
-        var title: String {
-            switch self {
-            case .charts: return "📊 チャート一覧"
-            case .migration: return "♻️ マイグレーションを試す"
-            case .crash: return "❗️ クラッシュさせる"
-            }
+    
+    func layoutSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+    
+    func configureCell(_ collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+        switch self {
+        case .migration:
+            let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
+            cell.configureCell(with: "♻️ マイグレーションを試す")
+            return cell
+        case .crash:
+            let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
+            cell.configureCell(with: "❗️ クラッシュさせる")
+            return cell
         }
     }
 }

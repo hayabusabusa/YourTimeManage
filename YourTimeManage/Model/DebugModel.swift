@@ -6,32 +6,32 @@
 //
 
 import Combine
-import FirebaseCrashlytics
+import Domain
 
 protocol DebugModelProtocol {
-    var errorPublisher: AnyPublisher<String, Never> { get }
+    var errorPublisher: AnyPublisher<Error, Never> { get }
     var sectionsPublisher: AnyPublisher<[DebugSection], Never> { get }
     var isMigrationCompletedPublisher: AnyPublisher<Void, Never> { get }
-    
     func getSections()
-    func crashForDebug()
-    func migration()
+    func v200Migration()
 }
 
 final class DebugModel: DebugModelProtocol {
     
-    private let errorSubject: PassthroughSubject<String, Never>
+    private let migrationProvider: MigrationProvider
+    private let errorSubject: PassthroughSubject<Error, Never>
     private let sectionsSubject: CurrentValueSubject<[DebugSection], Never>
     private let isMigrationCompletedSubject: PassthroughSubject<Void, Never>
     
-    let errorPublisher: AnyPublisher<String, Never>
+    let errorPublisher: AnyPublisher<Error, Never>
     let sectionsPublisher: AnyPublisher<[DebugSection], Never>
     let isMigrationCompletedPublisher: AnyPublisher<Void, Never>
     
-    init() {
-        errorSubject = .init()
-        sectionsSubject = .init([])
-        isMigrationCompletedSubject = .init()
+    init(migrationProvider: MigrationProvider = MigrationProvider.shared) {
+        self.migrationProvider = migrationProvider
+        self.errorSubject = .init()
+        self.sectionsSubject = .init([])
+        self.isMigrationCompletedSubject = .init()
         
         errorPublisher = errorSubject.eraseToAnyPublisher()
         sectionsPublisher = sectionsSubject.eraseToAnyPublisher()
@@ -42,19 +42,15 @@ final class DebugModel: DebugModelProtocol {
         sectionsSubject.send(DebugSection.allCases)
     }
     
-    func crashForDebug() {
-        Crashlytics.crashlytics().log("[DEBUG] This error is debug.")
-        fatalError("[DEBUG] This error is debug.")
-    }
-    
-    func migration() {
-        Migrator.execute(of: .v200) { [weak self] result in
+    func v200Migration() {
+        let v200Migrator = V200Migrator()
+        migrationProvider.execute(with: [v200Migrator]) { [weak self] result in
             switch result {
             case .success:
                 self?.isMigrationCompletedSubject.send(())
             case .failure(let error):
-                Crashlytics.crashlytics().record(error: error)
-                self?.errorSubject.send(error.localizedDescription)
+                self?.errorSubject.send(error)
+                self?.isMigrationCompletedSubject.send(())
             }
         }
     }

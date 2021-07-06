@@ -1,13 +1,13 @@
 //
-//  StudyEntity.swift
-//  Domain
+//  Study.swift
+//  
 //
-//  Created by Shunya Yamada on 2021/03/15.
+//  Created by Shunya Yamada on 2021/07/04.
 //
 
 import Foundation
 
-public struct StudyEntity: Codable {
+public struct Study: Codable {
     public let date: String?
     public let title: String?
     public let seconds: Int

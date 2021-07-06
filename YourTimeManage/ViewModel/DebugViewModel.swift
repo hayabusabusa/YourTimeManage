@@ -10,7 +10,7 @@ import Combine
 
 protocol DebugViewModelInputs {
     func viewDidLoad()
-    func didSelectRow(at type: DebugSection.DebugType)
+    func didSelectRow(in section: DebugSection)
 }
 
 protocol DebugViewModelOutputs {
@@ -34,7 +34,7 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
     
     init(model: DebugModelProtocol = DebugModel()) {
         self.model = model
-        self.error = model.errorPublisher
+        self.error = model.errorPublisher.map { $0.localizedDescription }.eraseToAnyPublisher()
         self.sections = model.sectionsPublisher
         self.isMigrationCompleted = model.isMigrationCompletedPublisher
     }
@@ -43,13 +43,12 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
         model.getSections()
     }
     
-    func didSelectRow(at type: DebugSection.DebugType) {
-        switch type {
-        case .charts: break
-        case .crash:
-            model.crashForDebug()
+    func didSelectRow(in section: DebugSection) {
+        switch section {
         case .migration:
-            model.migration()
+            model.v200Migration()
+        case .crash:
+            break
         }
     }
 }
