@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
     /// 対象の View をサブビューとして追加して Auto Layout で固定する.
     /// - Parameters:

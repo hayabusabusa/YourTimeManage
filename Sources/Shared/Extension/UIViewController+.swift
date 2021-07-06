@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
     /// 対象の ViewController を ChildViewController として追加する.
     /// - Parameters:
