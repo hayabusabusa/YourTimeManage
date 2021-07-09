@@ -27,6 +27,8 @@ let package = Package(
         ]),
         .target(name: "Domain", dependencies: [
             "Shared",
+            .product(name: "FirebaseFirestore", package: "Firebase"),
+            .product(name: "FirebaseFirestoreSwift-Beta", package: "Firebase"),
         ]),
         .target(name: "Shared", dependencies: []),
         .target(name: "UIComponent", dependencies: [
