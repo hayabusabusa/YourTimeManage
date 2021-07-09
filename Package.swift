@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Charts", url: "https://github.com/danielgindi/Charts.git", from: "4.0.0"),
+        .package(name: "Entwine", url: "https://github.com/tcldr/Entwine.git", from: "0.9.0"),
         .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", from: "8.2.0"),
         .package(name: "HorizonCalendar", url: "https://github.com/airbnb/HorizonCalendar.git", from: "1.0.0"),
     ],
@@ -38,6 +39,9 @@ let package = Package(
         ]),
         
         // MARK: Tests
-        .testTarget(name: "DomainTests", dependencies: ["Domain"]),
+        .testTarget(name: "DomainTests", dependencies: [
+            "Domain",
+            .product(name: "EntwineTest", package: "Entwine")
+        ]),
     ]
 )
