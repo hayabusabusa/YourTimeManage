@@ -12,20 +12,36 @@ final class TimerViewController: UIViewController {
     
     // MARK: SubViews
     
+    private lazy var countdownLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "ラベル"
+        return label
+    }()
+    
     private lazy var startButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("スタート", for: .normal)
         return button
     }()
     
     private lazy var stopButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("ストップ", for: .normal)
         return button
     }()
     
     private lazy var buttonsStackView: UIStackView = {
-        let stackView = UIStackView()
+        let stackView = UIStackView(axis: .horizontal,
+                                    alignment: .fill,
+                                    spacing: 8,
+                                    distribution: .equalSpacing,
+                                    subviews: [
+                                        startButton,
+                                        stopButton
+                                    ])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -52,6 +68,15 @@ extension TimerViewController {
     
     private func configureSubViews() {
         view.backgroundColor = .systemBackground
+        view.addSubview(countdownLabel)
+        view.addSubview(buttonsStackView)
+        NSLayoutConstraint.activate([
+            countdownLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 56),
+            countdownLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
+        ])
     }
     
     private func configureNavigation() {
