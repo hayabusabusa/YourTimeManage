@@ -14,6 +14,7 @@
 		A55B34CF26917D27004BBE9B /* Application in Frameworks */ = {isa = PBXBuildFile; productRef = A55B34CE26917D27004BBE9B /* Application */; };
 		A55B34DA2691890B004BBE9B /* V200Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34D92691890B004BBE9B /* V200Migrator.swift */; };
 		A55B34E22691A215004BBE9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A55B34E12691A215004BBE9B /* GoogleService-Info.plist */; };
+		A575BD8226989F0700860CDA /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575BD8126989F0700860CDA /* TimerModel.swift */; };
 		A5AEC559269494EF004DF246 /* DebugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC558269494EF004DF246 /* DebugModel.swift */; };
 		A5AEC561269497F9004DF246 /* CollectionViewSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC560269497F9004DF246 /* CollectionViewSectionType.swift */; };
 		A5AEC56926949C4B004DF246 /* DebugSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC56826949C4B004DF246 /* DebugSection.swift */; };
@@ -32,6 +33,7 @@
 		A55B34BF26917A2E004BBE9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A55B34D92691890B004BBE9B /* V200Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V200Migrator.swift; sourceTree = "<group>"; };
 		A55B34E12691A215004BBE9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A575BD8126989F0700860CDA /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		A5AEC558269494EF004DF246 /* DebugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugModel.swift; sourceTree = "<group>"; };
 		A5AEC560269497F9004DF246 /* CollectionViewSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSectionType.swift; sourceTree = "<group>"; };
 		A5AEC56826949C4B004DF246 /* DebugSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSection.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				A5AEC558269494EF004DF246 /* DebugModel.swift */,
+				A575BD8126989F0700860CDA /* TimerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */,
 				A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */,
 				A5AEC559269494EF004DF246 /* DebugModel.swift in Sources */,
+				A575BD8226989F0700860CDA /* TimerModel.swift in Sources */,
 				A55B34DA2691890B004BBE9B /* V200Migrator.swift in Sources */,
 				A5AEC5752694B3AB004DF246 /* DebugCell.swift in Sources */,
 			);
