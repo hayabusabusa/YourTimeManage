@@ -29,8 +29,10 @@ public class DebugCell: UICollectionViewCell {
     
     // MARK: Initializer
     
-    init() {
+    public override init(frame: CGRect) {
         super.init(frame: .zero)
+        selectedBackgroundView = UIView()
+        selectedBackgroundView?.backgroundColor = .systemFill
         let stackView = UIStackView(axis: .horizontal,
                                     alignment: .fill,
                                     spacing: 8,
@@ -76,7 +78,7 @@ private extension DebugCell {
         let title: String
         
         func makeUIView(context: Context) -> DebugCell {
-            let view = DebugCell()
+            let view = DebugCell(frame: .zero)
             view.configure(title: title)
             return view
         }

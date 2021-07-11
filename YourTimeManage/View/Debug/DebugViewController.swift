@@ -7,6 +7,7 @@
 
 import Combine
 import UIKit
+import UIComponent
 import Shared
 
 final class DebugViewController: UIViewController {

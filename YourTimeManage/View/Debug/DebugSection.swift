@@ -6,6 +6,7 @@
 //
 
 import Shared
+import UIComponent
 import UIKit
 
 enum DebugSection: CaseIterable, CollectionViewSectionType {
@@ -30,15 +31,15 @@ enum DebugSection: CaseIterable, CollectionViewSectionType {
         switch self {
         case .migration:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
-            cell.configureCell(with: "♻️ マイグレーションを試す")
+            cell.configure(title: "♻️ マイグレーションを試す")
             return cell
         case .crash:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
-            cell.configureCell(with: "❗️ クラッシュさせる")
+            cell.configure(title: "❗️ クラッシュさせる")
             return cell
         case .timer:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
-            cell.configureCell(with: "⏱ タイマーを表示する")
+            cell.configure(title: "⏱ タイマーを表示する")
             return cell
         }
     }
