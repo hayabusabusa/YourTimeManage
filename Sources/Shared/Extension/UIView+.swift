@@ -9,19 +9,28 @@ import UIKit
 
 public extension UIView {
     
-    /// 対象の View をサブビューとして追加して Auto Layout で固定する.
+    /// 対象の View に自身をサブビューとして追加してもらって Auto Layout で固定する.
     /// - Parameters:
-    ///   - view: サブビューとして追加したい View
-    ///   - insets: 固定する際の
+    ///   - view: サブビューに追加してもらう View
+    ///   - insets: 固定する際の余白
     func embed(in view: UIView, insets: UIEdgeInsets = .zero) {
-        translatesAutoresizingMaskIntoConstraints = false
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(self)
         NSLayoutConstraint.activate([
             topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
-            rightAnchor.constraint(equalTo: view.rightAnchor, constant: insets.right),
-            leftAnchor.constraint(equalTo: view.leftAnchor, constant: insets.left),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: insets.right),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: insets.left),
             bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: insets.bottom)
+        ])
+    }
+    
+    /// 任意のサイズに AutoLayout で固定する.
+    /// - Parameters:
+    ///   - size: 固定したいサイズの値.
+    func sized(_ size: CGSize) {
+        translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: size.width),
+            heightAnchor.constraint(equalToConstant: size.height),
         ])
     }
 }

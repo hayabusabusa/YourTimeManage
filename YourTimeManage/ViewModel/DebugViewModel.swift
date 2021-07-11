@@ -47,7 +47,7 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
         switch section {
         case .migration:
             model.v200Migration()
-        case .crash:
+        default:
             break
         }
     }

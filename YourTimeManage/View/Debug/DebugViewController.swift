@@ -18,6 +18,7 @@ final class DebugViewController: UIViewController {
             return self?.sections[index].layoutSection()
         }
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
@@ -34,9 +35,20 @@ final class DebugViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubViews()
+        configureNavigation()
         configureCollectionView()
         bindViewModel()
         viewModel.inputs.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 選択されたセルの解除を徐々に行う.
+        guard let selectedIndexPath = collectionView.indexPathsForSelectedItems else {
+            return
+        }
+        selectedIndexPath.forEach { [weak self] indexPath in self?.collectionView.deselectItem(at: indexPath, animated: true) }
     }
 }
 
@@ -49,7 +61,12 @@ extension DebugViewController {
         collectionView.embed(in: view)
     }
     
+    private func configureNavigation() {
+        navigationItem.title = "🛠 デバッグメニュー"
+    }
+    
     private func configureCollectionView() {
+        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(DebugCell.self)
     }
@@ -94,5 +111,21 @@ extension DebugViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return sections[indexPath.section].configureCell(collectionView, at: indexPath)
+    }
+}
+
+// MARK: - CollectionView Delegate
+
+extension DebugViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.inputs.didSelectRow(in: sections[indexPath.section])
+        
+        if case .timer = sections[indexPath.section] {
+            let vc = TimerViewController()
+            let nvc = UINavigationController(rootViewController: vc)
+            nvc.modalPresentationStyle = .fullScreen
+            present(nvc, animated: true, completion: nil)
+        }
     }
 }

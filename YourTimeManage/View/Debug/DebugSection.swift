@@ -11,6 +11,7 @@ import UIKit
 enum DebugSection: CaseIterable, CollectionViewSectionType {
     case migration
     case crash
+    case timer
     
     var numberOfItems: Int {
         return 1
@@ -34,6 +35,10 @@ enum DebugSection: CaseIterable, CollectionViewSectionType {
         case .crash:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
             cell.configureCell(with: "❗️ クラッシュさせる")
+            return cell
+        case .timer:
+            let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
+            cell.configureCell(with: "⏱ タイマーを表示する")
             return cell
         }
     }
