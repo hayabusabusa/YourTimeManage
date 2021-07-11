@@ -13,4 +13,9 @@ public extension UIEdgeInsets {
     static func all(_ value: CGFloat) -> Self {
         return .init(top: value, left: value, bottom: value, right: value)
     }
+    
+    /// 縦、横それぞれ別の値で `UIEdgeInsets` を初期化する.
+    static func symetric(horizontal: CGFloat, vertical: CGFloat) -> Self {
+        return .init(top: vertical, left: horizontal, bottom: vertical, right: horizontal)
+    }
 }
