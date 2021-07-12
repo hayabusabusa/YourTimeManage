@@ -5,6 +5,7 @@
 //  Created by Shunya Yamada on 2021/07/11.
 //
 
+import Combine
 import UIKit
 import SwiftUI
 
@@ -23,6 +24,7 @@ final class TimerViewController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("スタート", for: .normal)
+        button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -30,6 +32,7 @@ final class TimerViewController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("ストップ", for: .normal)
+        button.addTarget(self, action: #selector(stopButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -48,17 +51,40 @@ final class TimerViewController: UIViewController {
     
     // MARK: Properties
     
+    private let viewModel: TimerViewModelType
+    private var cancelables = Set<AnyCancellable>()
+    
     // MARK: Lifecycle
+    
+    init(viewModel: TimerViewModelType = TimerViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubViews()
         configureNavigation()
+        bindViewModel()
     }
     
     @objc
-    private func didTapCloseButton() {
+    private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    private func startButtonTapped() {
+        viewModel.inputs.startButtonTapped()
+    }
+    
+    @objc
+    private func stopButtonTapped() {
+        viewModel.inputs.stopButtonTapped()
     }
 }
 
@@ -80,6 +106,12 @@ extension TimerViewController {
     }
     
     private func configureNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "閉じる", style: .done, target: self, action: #selector(didTapCloseButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "閉じる", style: .done, target: self, action: #selector(closeButtonTapped))
+    }
+    
+    private func bindViewModel() {
+        viewModel.outputs.seconds
+            .assign(to: \.text, on: countdownLabel)
+            .store(in: &cancelables)
     }
 }

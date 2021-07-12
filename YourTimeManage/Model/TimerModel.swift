@@ -23,7 +23,7 @@ protocol TimerModelProtocol {
 final class TimerModel: TimerModelProtocol {
     
     private let secondsSubject: CurrentValueSubject<Int, Never>
-    private let isValidSubject: PassthroughSubject<Bool, Never>
+    private let isValidSubject: CurrentValueSubject<Bool, Never>
     private var cancelables = Set<AnyCancellable>()
     
     let secondsPublisher: AnyPublisher<Int, Never>
@@ -32,7 +32,7 @@ final class TimerModel: TimerModelProtocol {
         let secondsSubject = CurrentValueSubject<Int, Never>(0)
         
         self.secondsSubject = secondsSubject
-        self.isValidSubject = .init()
+        self.isValidSubject = .init(false)
         
         self.secondsPublisher = secondsSubject.eraseToAnyPublisher()
         

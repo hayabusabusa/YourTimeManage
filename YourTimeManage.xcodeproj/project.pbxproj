@@ -15,6 +15,7 @@
 		A55B34DA2691890B004BBE9B /* V200Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34D92691890B004BBE9B /* V200Migrator.swift */; };
 		A55B34E22691A215004BBE9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A55B34E12691A215004BBE9B /* GoogleService-Info.plist */; };
 		A5677357269AADD300A54875 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5677356269AADD300A54875 /* TimerViewController.swift */; };
+		A5677364269AED3000A54875 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5677363269AED3000A54875 /* TimerViewModel.swift */; };
 		A575BD8226989F0700860CDA /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575BD8126989F0700860CDA /* TimerModel.swift */; };
 		A5AEC559269494EF004DF246 /* DebugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC558269494EF004DF246 /* DebugModel.swift */; };
 		A5AEC561269497F9004DF246 /* CollectionViewSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC560269497F9004DF246 /* CollectionViewSectionType.swift */; };
@@ -33,6 +34,7 @@
 		A55B34D92691890B004BBE9B /* V200Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V200Migrator.swift; sourceTree = "<group>"; };
 		A55B34E12691A215004BBE9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5677356269AADD300A54875 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		A5677363269AED3000A54875 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		A575BD8126989F0700860CDA /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		A5AEC558269494EF004DF246 /* DebugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugModel.swift; sourceTree = "<group>"; };
 		A5AEC560269497F9004DF246 /* CollectionViewSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSectionType.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				A5AEC56D2694AFF1004DF246 /* DebugViewModel.swift */,
+				A5677363269AED3000A54875 /* TimerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */,
 				A5AEC559269494EF004DF246 /* DebugModel.swift in Sources */,
 				A575BD8226989F0700860CDA /* TimerModel.swift in Sources */,
+				A5677364269AED3000A54875 /* TimerViewModel.swift in Sources */,
 				A55B34DA2691890B004BBE9B /* V200Migrator.swift in Sources */,
 				A5677357269AADD300A54875 /* TimerViewController.swift in Sources */,
 			);
