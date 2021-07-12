@@ -53,7 +53,7 @@ final class TimerViewController: UIViewController {
     private lazy var adView: GADBannerView = {
         let adView = GADBannerView(adSize: kGADAdSizeBanner)
         adView.translatesAutoresizingMaskIntoConstraints = false
-        adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adView.adUnitID = Bundle.main.object(forInfoDictionaryKey: "GADUnitID") as? String
         adView.rootViewController = self
         adView.load(GADRequest())
         return adView
