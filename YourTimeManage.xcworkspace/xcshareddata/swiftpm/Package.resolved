@@ -65,6 +65,24 @@
         }
       },
       {
+        "package": "GoogleMobileAds-SPM",
+        "repositoryURL": "https://github.com/Koze/GoogleMobileAds-SPM.git",
+        "state": {
+          "branch": null,
+          "revision": "a732389d6515f1c954f0b43604f13293718eefcc",
+          "version": "8.7.0"
+        }
+      },
+      {
+        "package": "GoogleUserMessagingPlatform-SPM",
+        "repositoryURL": "https://github.com/Koze/GoogleUserMessagingPlatform-SPM.git",
+        "state": {
+          "branch": null,
+          "revision": "701ca80bb2cacdcb24e74826788284095635a53f",
+          "version": "1.4.0"
+        }
+      },
+      {
         "package": "GoogleUtilities",
         "repositoryURL": "https://github.com/google/GoogleUtilities.git",
         "state": {

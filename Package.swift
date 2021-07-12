@@ -16,6 +16,7 @@ let package = Package(
         .package(name: "Charts", url: "https://github.com/danielgindi/Charts.git", from: "4.0.0"),
         .package(name: "Entwine", url: "https://github.com/tcldr/Entwine.git", from: "0.9.0"),
         .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", from: "8.2.0"),
+        .package(name: "GoogleMobileAds-SPM", url: "https://github.com/Koze/GoogleMobileAds-SPM.git", from: "8.7.0"),
         .package(name: "HorizonCalendar", url: "https://github.com/airbnb/HorizonCalendar.git", from: "1.0.0"),
     ],
     targets: [
@@ -25,6 +26,7 @@ let package = Package(
             "Shared",
             "UIComponent",
             .product(name: "FirebaseAuth", package: "Firebase"),
+            .product(name: "GoogleMobileAds", package: "GoogleMobileAds-SPM"),
         ]),
         .target(name: "Domain", dependencies: [
             "Shared",

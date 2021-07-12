@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1220"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Frameworks/GoogleMobileAds.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/PlugIns/GoogleMobileAds.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Watch/GoogleMobileAds.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/AppClips/AppClip.app/GoogleMobileAds.framework&quot;&#10;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Frameworks/UserMessagingPlatform.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/PlugIns/UserMessagingPlatform.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Watch/UserMessagingPlatform.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/AppClips/AppClip.app/UserMessagingPlatform.framework&quot;&#10;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Frameworks/GoogleAppMeasurement.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/PlugIns/GoogleAppMeasurement.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Watch/GoogleAppMeasurement.framework&quot;&#10;rm -rf &quot;${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/AppClips/AppClip.app/GoogleAppMeasurement.framework&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "A55B34AD26917A2D004BBE9B"
+                     BuildableName = "YourTimeManage.app"
+                     BlueprintName = "YourTimeManage"
+                     ReferencedContainer = "container:YourTimeManage.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A55B34AD26917A2D004BBE9B"
+               BuildableName = "YourTimeManage.app"
+               BlueprintName = "YourTimeManage"
+               ReferencedContainer = "container:YourTimeManage.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A55B34AD26917A2D004BBE9B"
+            BuildableName = "YourTimeManage.app"
+            BlueprintName = "YourTimeManage"
+            ReferencedContainer = "container:YourTimeManage.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A55B34AD26917A2D004BBE9B"
+            BuildableName = "YourTimeManage.app"
+            BlueprintName = "YourTimeManage"
+            ReferencedContainer = "container:YourTimeManage.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

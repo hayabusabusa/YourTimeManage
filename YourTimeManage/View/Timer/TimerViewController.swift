@@ -6,6 +6,7 @@
 //
 
 import Combine
+import GoogleMobileAds
 import UIKit
 import SwiftUI
 
@@ -47,6 +48,15 @@ final class TimerViewController: UIViewController {
                                     ])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+    
+    private lazy var adView: GADBannerView = {
+        let adView = GADBannerView(adSize: kGADAdSizeBanner)
+        adView.translatesAutoresizingMaskIntoConstraints = false
+        adView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adView.rootViewController = self
+        adView.load(GADRequest())
+        return adView
     }()
     
     // MARK: Properties
@@ -96,12 +106,15 @@ extension TimerViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(countdownLabel)
         view.addSubview(buttonsStackView)
+        view.addSubview(adView)
         NSLayoutConstraint.activate([
             countdownLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 56),
             countdownLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
+            buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -56),
+            adView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            adView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
