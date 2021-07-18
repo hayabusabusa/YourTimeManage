@@ -37,7 +37,8 @@ final class TimerModel: TimerModelProtocol {
         self.secondsPublisher = secondsSubject.eraseToAnyPublisher()
         
         isValidSubject
-            .flatMap { isValid -> AnyPublisher<Date, Never> in
+            .removeDuplicates()
+            .flatMapLatest{ isValid -> AnyPublisher<Date, Never> in
                 return isValid
                     ? Timer.publish(every: interval, on: .main, in: .default).autoconnect().eraseToAnyPublisher()
                     : Empty<Date, Never>(completeImmediately: true).eraseToAnyPublisher()

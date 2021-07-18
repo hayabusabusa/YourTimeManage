@@ -14,4 +14,8 @@ public extension Publisher where Self.Failure == Never {
             subject.send(output)
         }
     }
+    
+    func flatMapLatest<T: Publisher>(_ transform: @escaping (Output) -> T) -> Publishers.SwitchToLatest<T, Publishers.Map<Self, T>> where T.Failure == Failure {
+        return map(transform).switchToLatest()
+    }
 }
