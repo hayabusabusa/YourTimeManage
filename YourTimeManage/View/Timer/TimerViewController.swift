@@ -8,7 +8,6 @@
 import Combine
 import GoogleMobileAds
 import UIKit
-import SwiftUI
 
 final class TimerViewController: UIViewController {
     
