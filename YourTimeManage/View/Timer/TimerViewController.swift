@@ -7,6 +7,7 @@
 
 import Combine
 import GoogleMobileAds
+import UIComponent
 import UIKit
 
 final class TimerViewController: UIViewController {
@@ -20,16 +21,16 @@ final class TimerViewController: UIViewController {
         return label
     }()
     
-    private lazy var startButton: UIButton = {
-        let button = UIButton(type: .system)
+    private lazy var startButton: Button = {
+        let button = Button(style: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("スタート", for: .normal)
         button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    private lazy var stopButton: UIButton = {
-        let button = UIButton(type: .system)
+    private lazy var stopButton: Button = {
+        let button = Button(style: .small)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("ストップ", for: .normal)
         button.addTarget(self, action: #selector(stopButtonTapped), for: .touchUpInside)
@@ -111,7 +112,7 @@ extension TimerViewController {
             countdownLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -56),
+            buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64),
             adView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             adView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
