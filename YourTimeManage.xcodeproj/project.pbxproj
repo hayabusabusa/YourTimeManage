@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A521725326A48A2900EF95F0 /* AdBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521725226A48A2900EF95F0 /* AdBanner.swift */; };
 		A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B126917A2D004BBE9B /* AppDelegate.swift */; };
 		A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B326917A2D004BBE9B /* SceneDelegate.swift */; };
 		A55B34BB26917A2E004BBE9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55B34BA26917A2E004BBE9B /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A521725226A48A2900EF95F0 /* AdBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBanner.swift; sourceTree = "<group>"; };
 		A55B34AE26917A2D004BBE9B /* YourTimeManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTimeManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55B34B126917A2D004BBE9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55B34B326917A2D004BBE9B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		A5677355269AADBA00A54875 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				A521725226A48A2900EF95F0 /* AdBanner.swift */,
 				A5677356269AADD300A54875 /* TimerViewController.swift */,
 			);
 			path = Timer;
@@ -242,6 +245,7 @@
 				A5AEC56926949C4B004DF246 /* DebugSection.swift in Sources */,
 				A5AEC561269497F9004DF246 /* CollectionViewSectionType.swift in Sources */,
 				A5AEC56E2694AFF1004DF246 /* DebugViewModel.swift in Sources */,
+				A521725326A48A2900EF95F0 /* AdBanner.swift in Sources */,
 				A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */,
 				A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */,
 				A5AEC559269494EF004DF246 /* DebugModel.swift in Sources */,

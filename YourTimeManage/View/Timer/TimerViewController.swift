@@ -6,7 +6,6 @@
 //
 
 import Combine
-import GoogleMobileAds
 import UIComponent
 import UIKit
 
@@ -48,13 +47,12 @@ final class TimerViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var adView: GADBannerView = {
-        let adView = GADBannerView(adSize: kGADAdSizeBanner)
-        adView.translatesAutoresizingMaskIntoConstraints = false
-        adView.adUnitID = Bundle.main.object(forInfoDictionaryKey: "GADUnitID") as? String
-        adView.rootViewController = self
-        adView.load(GADRequest())
-        return adView
+    private lazy var adView: AdBanner = {
+        // Info.plist の項目から AdMob の ID を読み込む.
+        let adUnitID = Bundle.main.object(forInfoDictionaryKey: "GADUnitID") as? String
+        let adBanner = AdBanner(viewController: self, adUnitID: adUnitID)
+        adBanner.translatesAutoresizingMaskIntoConstraints = false
+        return adBanner
     }()
     
     // MARK: Properties
@@ -108,10 +106,11 @@ extension TimerViewController {
         NSLayoutConstraint.activate([
             countdownLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 56),
             countdownLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
+            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
             buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64),
-            adView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            adView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            adView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             adView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
