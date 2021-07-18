@@ -27,10 +27,22 @@ public extension UIView {
     /// - Parameters:
     ///   - size: 固定したいサイズの値.
     func sized(_ size: CGSize) {
-        translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: size.width),
             heightAnchor.constraint(equalToConstant: size.height),
         ])
+    }
+    
+    /// 任意の幅、高さに AutoLayout で固定する.
+    /// - Parameters:
+    ///   - width: 固定したい幅の値.
+    ///   - height: 固定したい高さの値.
+    func sized(width: CGFloat? = nil, height: CGFloat? = nil) {
+        if let width = width {
+            widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+        if let height = height {
+            heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
     }
 }

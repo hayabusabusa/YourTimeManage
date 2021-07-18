@@ -23,7 +23,6 @@ final class TimerViewController: UIViewController {
     
     private lazy var startButton: Button = {
         let button = Button(style: .small)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("スタート", for: .normal)
         button.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         return button
@@ -31,7 +30,6 @@ final class TimerViewController: UIViewController {
     
     private lazy var stopButton: Button = {
         let button = Button(style: .small)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("ストップ", for: .normal)
         button.addTarget(self, action: #selector(stopButtonTapped), for: .touchUpInside)
         return button

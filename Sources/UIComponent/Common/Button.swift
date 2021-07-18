@@ -59,7 +59,7 @@ public class Button: UIButton {
     
     public convenience init(style: Style) {
         self.init(frame: .zero)
-        apply(style: style)
+        style.apply(for: self)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -89,26 +89,6 @@ public class Button: UIButton {
         setBackgroundImage(selectedBackgroundColor.image(), for: .selected)
         setBackgroundImage(disabledBackgroundColor.image(), for: .disabled)
     }
-    
-    public func apply(style: Style) {
-        style.styling(for: self)
-    }
-}
-
-public extension Button {
-    
-    enum Style {
-        case small
-        
-        func styling(for button: Button) {
-            switch self {
-            case .small:
-                button.cornerRadius = 15
-                button.backgroundColor = .systemGray6
-                button.sized(CGSize(width: 104, height: 30))
-            }
-        }
-    }
 }
 
 private extension UIColor {
@@ -127,8 +107,8 @@ struct ButtonPreview: PreviewProvider {
     
     static var previews: some View {
         Group {
-            Button.Wrapped()
-            Button.Wrapped()
+            Button.Wrapped(style: .small)
+            Button.Wrapped(style: .small)
                 .preferredColorScheme(.dark)
         }
         .previewLayout(.fixed(width: 160, height: 44))
@@ -140,8 +120,10 @@ private extension Button {
     struct Wrapped: UIViewRepresentable {
         typealias UIViewType = Button
         
+        let style: Button.Style
+        
         func makeUIView(context: Context) -> Button {
-            let view = Button(frame: .zero)
+            let view = Button(style: style)
             view.setTitle("ボタン", for: .normal)
             return view
         }
