@@ -17,6 +17,7 @@ final class TimerViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "ラベル"
+        label.font = .systemFont(ofSize: 32, weight: .semibold)
         return label
     }()
     
