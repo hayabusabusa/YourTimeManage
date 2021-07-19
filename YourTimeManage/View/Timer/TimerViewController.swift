@@ -76,6 +76,7 @@ final class TimerViewController: UIViewController {
         super.viewDidLoad()
         configureSubViews()
         configureNavigation()
+        configureNotificationObserver()
         bindViewModel()
     }
     
@@ -92,6 +93,16 @@ final class TimerViewController: UIViewController {
     @objc
     private func stopButtonTapped() {
         viewModel.inputs.stopButtonTapped()
+    }
+    
+    @objc
+    private func didEnterBackground() {
+        
+    }
+    
+    @objc
+    private func willEnterForeground() {
+        
     }
 }
 
@@ -118,6 +129,11 @@ extension TimerViewController {
     
     private func configureNavigation() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "閉じる", style: .done, target: self, action: #selector(closeButtonTapped))
+    }
+    
+    private func configureNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     private func bindViewModel() {
