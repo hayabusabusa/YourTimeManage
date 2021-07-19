@@ -52,7 +52,7 @@ public protocol UserDefaultsProviderProtocol: AnyObject {
     func removeObject(forKey key: UserDefaultsProvider.Key)
 }
 
-public final class UserDefaultsProvider {
+public final class UserDefaultsProvider: UserDefaultsProviderProtocol {
     
     // MARK: Singletone
         
@@ -69,6 +69,8 @@ public final class UserDefaultsProvider {
         case oldTarget = "yourTarget"
         ///　依存のアプリで使用していた目標時間を取得するためのキー
         case oldTargetTime = "yourTargetTime"
+        /// タイマーの状態を取得するためのキー
+        case timerStatus
     }
     
     // MARK: Initializer
