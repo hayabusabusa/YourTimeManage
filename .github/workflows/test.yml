@@ -15,4 +15,4 @@ jobs:
       
     - name: Run test
       run: |
-        xcodebuild test -scheme Domain -destination "platform=iOS"
+        xcodebuild test -scheme YourTimeManage -destination "platform=iOS"
