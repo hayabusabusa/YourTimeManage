@@ -15,5 +15,4 @@ jobs:
       
     - name: Run test
       run: |
-         swift test
-#        xcodebuild test -scheme YourTimeManage -destination "platform=iOS Simulator,name=iPhone 12"
+         xcodebuild test -workspace YourTimeManage.xcworkspace -scheme Domain -destination "platform=iOS Simulator,name=iPhone 12"
