@@ -15,4 +15,5 @@ jobs:
       
     - name: Run test
       run: |
-        xcodebuild test -scheme YourTimeManage -destination "platform=iOS"
+         swift test
+#        xcodebuild test -scheme YourTimeManage -destination "platform=iOS Simulator,name=iPhone 12"
