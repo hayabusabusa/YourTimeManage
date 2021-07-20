@@ -7,4 +7,10 @@
    <FileRef
       location = "group:">
    </FileRef>
+   <FileRef
+      location = "group:.github/workflows/pr.yml">
+   </FileRef>
+   <FileRef
+      location = "group:.github/workflows/archive.yml">
+   </FileRef>
 </Workspace>

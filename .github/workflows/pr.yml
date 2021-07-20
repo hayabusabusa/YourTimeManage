@@ -1,0 +1,19 @@
+name: PR
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize ]
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      
+    - name: Run test
+      run: |
+          xcodebuild test -workspace YourTimeManage.xcworkspace -scheme Domain -destination "platform=iOS Simulator,name=iPhone 12"
+          xcodebuild test -workspace YourTimeManage.xcworkspace -scheme Shared -destination "platform=iOS Simulator,name=iPhone 12"
