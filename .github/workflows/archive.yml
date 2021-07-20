@@ -1,0 +1,23 @@
+name: Archive
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  archive:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      
+    - name: Replace Google AdMob ids
+      run: |
+          plutil -replace "GADApplicationIdentifier" -string "Application" YourTimeManage/Info.plist
+          plutil -replace "GADUnitID" -string "ADUnitID" YourTimeManage/Info.plist
+          plutil -p YourTimeManage/Info.plist
+          
+    - name: Build main application target
+      run: |
+          xcodebuild build -workspace YourTimeManage.xcworkspace -scheme YourTimeManage -destination "platform=iOS Simulator,name=iPhone 12" | xcpretty
