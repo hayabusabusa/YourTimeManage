@@ -45,5 +45,8 @@ let package = Package(
             "Domain",
             .product(name: "EntwineTest", package: "Entwine")
         ]),
+        .testTarget(name: "SharedTests", dependencies: [
+            "Shared",
+        ]),
     ]
 )
