@@ -15,4 +15,4 @@ jobs:
       
     - name: Run test
       run: |
-        xcodebuild test -scheme Domain -destination "platform=iOS Simulator, name=iPhone 11 Pro Max"
+        xcodebuild test -scheme Domain -destination "platform=iOS"
