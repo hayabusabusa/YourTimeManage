@@ -17,7 +17,14 @@ jobs:
           plutil -replace "GADApplicationIdentifier" -string "Application" YourTimeManage/Info.plist
           plutil -replace "GADUnitID" -string "ADUnitID" YourTimeManage/Info.plist
           plutil -p YourTimeManage/Info.plist
-          
+
+    - name: Decode GoogleService-Info.plist
+      run: |
+          cd YourTimeManage
+          echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64 }}" > GoogleService-Info.plist.txt
+          base64 --decode GoogleService-Info.plist.txt > GoogleService-Info.plist
+          cd ../
+
     - name: Build main application target
       run: |
           xcodebuild build -workspace YourTimeManage.xcworkspace -scheme YourTimeManage -destination "platform=iOS Simulator,name=iPhone 12" | xcpretty
