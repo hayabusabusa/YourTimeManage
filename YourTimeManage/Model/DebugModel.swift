@@ -13,6 +13,7 @@ protocol DebugModelProtocol {
     var sectionsPublisher: AnyPublisher<[DebugSection], Never> { get }
     var isMigrationCompletedPublisher: AnyPublisher<Void, Never> { get }
     func getSections()
+    func crash()
     func v200Migration()
 }
 
@@ -40,6 +41,10 @@ final class DebugModel: DebugModelProtocol {
     
     func getSections() {
         sectionsSubject.send(DebugSection.allCases)
+    }
+    
+    func crash() {
+        fatalError("デバッグのためにクラッシュ.")
     }
     
     func v200Migration() {

@@ -44,7 +44,6 @@ final class DebugViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // 選択されたセルの解除を徐々に行う.
         guard let selectedIndexPath = collectionView.indexPathsForSelectedItems else {
             return
