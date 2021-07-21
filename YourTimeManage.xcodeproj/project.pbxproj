@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A521725326A48A2900EF95F0 /* AdBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521725226A48A2900EF95F0 /* AdBanner.swift */; };
 		A521725826A493D600EF95F0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A521725726A493D600EF95F0 /* Colors.xcassets */; };
+		A521725C26A88E5E00EF95F0 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521725B26A88E5E00EF95F0 /* Flow.swift */; };
 		A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B126917A2D004BBE9B /* AppDelegate.swift */; };
 		A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B326917A2D004BBE9B /* SceneDelegate.swift */; };
 		A55B34BB26917A2E004BBE9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55B34BA26917A2E004BBE9B /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		A521725226A48A2900EF95F0 /* AdBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBanner.swift; sourceTree = "<group>"; };
 		A521725726A493D600EF95F0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		A521725B26A88E5E00EF95F0 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		A55B34AE26917A2D004BBE9B /* YourTimeManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTimeManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55B34B126917A2D004BBE9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55B34B326917A2D004BBE9B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				A5AEC560269497F9004DF246 /* CollectionViewSectionType.swift */,
+				A521725B26A88E5E00EF95F0 /* Flow.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				A521725326A48A2900EF95F0 /* AdBanner.swift in Sources */,
 				A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */,
 				A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */,
+				A521725C26A88E5E00EF95F0 /* Flow.swift in Sources */,
 				A5AEC559269494EF004DF246 /* DebugModel.swift in Sources */,
 				A575BD8226989F0700860CDA /* TimerModel.swift in Sources */,
 				A5677364269AED3000A54875 /* TimerViewModel.swift in Sources */,

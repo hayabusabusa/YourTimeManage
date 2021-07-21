@@ -59,7 +59,7 @@ final class TimerViewModel: TimerViewModelInputs, TimerViewModelOutputs {
     }
     
     func stopButtonTapped() {
-        model.resumeTimer()
+        model.stopTimer()
     }
     
     func didEnterBackground() {

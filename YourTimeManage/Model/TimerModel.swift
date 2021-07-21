@@ -16,9 +16,11 @@ protocol TimerModelProtocol {
     /// タイマーを開始する.
     func startTimer()
     /// タイマーを一時停止する.
-    func resumeTimer()
+    func stopTimer()
     /// タイマーをリセットする.
     func resetTimer()
+    /// 保存していたタイマーの状態を反映させる.
+    func restoreTimer()
     /// タイマーの状態を保存する.
     func saveTimerStatus()
     /// 保存したタイマーの状態を読み込む.
@@ -28,6 +30,7 @@ protocol TimerModelProtocol {
 final class TimerModel: TimerModelProtocol {
     
     private let userDefaultsProvider: UserDefaultsProviderProtocol
+    private let timerStatus: TimerStatus?
     private let secondsSubject: CurrentValueSubject<Int, Never>
     private let isValidSubject: CurrentValueSubject<Bool, Never>
     private var cancelables = Set<AnyCancellable>()
@@ -35,8 +38,10 @@ final class TimerModel: TimerModelProtocol {
     let secondsPublisher: AnyPublisher<Int, Never>
     
     init(userDefaultsProvider: UserDefaultsProviderProtocol = UserDefaultsProvider.shared,
+         timerStatus: TimerStatus? = nil,
          interval: TimeInterval = 1.0) {
         self.userDefaultsProvider = userDefaultsProvider
+        self.timerStatus = timerStatus
         
         let secondsSubject = CurrentValueSubject<Int, Never>(0)
         self.secondsSubject = secondsSubject
@@ -60,12 +65,22 @@ final class TimerModel: TimerModelProtocol {
         isValidSubject.send(true)
     }
     
-    func resumeTimer() {
+    func stopTimer() {
         isValidSubject.send(false)
     }
     
     func resetTimer() {
         secondsSubject.send(0)
+    }
+    
+    func restoreTimer() {
+        guard let timerStatus = timerStatus else {
+            return
+        }
+        secondsSubject.send(timerStatus.seconds)
+        isValidSubject.send(timerStatus.isValid)
+        // 読み込みが完了したら前回のタイマーの状態を削除する.
+        userDefaultsProvider.removeObject(forKey: .timerStatus)
     }
     
     func saveTimerStatus() {
@@ -80,7 +95,6 @@ final class TimerModel: TimerModelProtocol {
         let interval = timerStatus.enterBackgroundDate.timeIntervalSinceNow
         secondsSubject.send(timerStatus.seconds + Int(interval))
         isValidSubject.send(timerStatus.isValid)
-        
         // 読み込みが完了したら前回のタイマーの状態を削除する.
         userDefaultsProvider.removeObject(forKey: .timerStatus)
     }

@@ -94,6 +94,11 @@ extension DebugViewController {
                 self?.present(ac, animated: true, completion: nil)
             }
             .store(in: &cancelables)
+        viewModel.outpus.flowContext
+            .sink { [unowned self] context in
+                context.move(from: self)
+            }
+            .store(in: &cancelables)
     }
 }
 
@@ -120,12 +125,5 @@ extension DebugViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.inputs.didSelectRow(in: sections[indexPath.section])
-        
-        if case .timer = sections[indexPath.section] {
-            let vc = TimerViewController()
-            let nvc = UINavigationController(rootViewController: vc)
-            nvc.modalPresentationStyle = .fullScreen
-            present(nvc, animated: true, completion: nil)
-        }
     }
 }
