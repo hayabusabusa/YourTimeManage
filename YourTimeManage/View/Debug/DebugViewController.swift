@@ -87,9 +87,9 @@ extension DebugViewController {
                 self?.collectionView.reloadData()
             }
             .store(in: &cancelables)
-        viewModel.outpus.isMigrationCompleted
-            .sink { [weak self] _ in
-                let ac = UIAlertController(title: "", message: "マイグレーションが完了", preferredStyle: .alert)
+        viewModel.outpus.message
+            .sink { [weak self] message in
+                let ac = UIAlertController(title: "", message: message, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self?.present(ac, animated: true, completion: nil)
             }
