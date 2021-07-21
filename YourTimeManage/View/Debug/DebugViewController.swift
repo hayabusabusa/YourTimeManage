@@ -29,7 +29,11 @@ final class DebugViewController: UIViewController {
     private var viewModel: DebugViewModelType!
     private var cancelables = Set<AnyCancellable>()
     
-    private var sections: [DebugSection] = []
+    private var sections: [DebugSection] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     // MARK: Lifecycle
     
@@ -82,10 +86,7 @@ extension DebugViewController {
             }
             .store(in: &cancelables)
         viewModel.outpus.sections
-            .sink { [weak self] sections in
-                self?.sections = sections
-                self?.collectionView.reloadData()
-            }
+            .assign(to: \.sections, on: self)
             .store(in: &cancelables)
         viewModel.outpus.message
             .sink { [weak self] message in
