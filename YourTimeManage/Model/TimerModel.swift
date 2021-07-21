@@ -19,8 +19,8 @@ protocol TimerModelProtocol {
     func stopTimer()
     /// タイマーをリセットする.
     func resetTimer()
-    /// 保存していたタイマーの状態を反映させる.
-    func restoreTimer()
+    /// 保存していたタイマーの状態があれば反映させる.
+    func restoreTimerIfNeeded()
     /// タイマーの状態を保存する.
     func saveTimerStatus()
     /// 保存したタイマーの状態を読み込む.
@@ -73,7 +73,7 @@ final class TimerModel: TimerModelProtocol {
         secondsSubject.send(0)
     }
     
-    func restoreTimer() {
+    func restoreTimerIfNeeded() {
         guard let timerStatus = timerStatus else {
             return
         }
@@ -92,8 +92,9 @@ final class TimerModel: TimerModelProtocol {
         guard let timerStatus = userDefaultsProvider.decodableObject(type: TimerStatus.self, forKey: .timerStatus) else {
             return
         }
+        // 今よりも前の時間なのでマイナスの値になる.
         let interval = timerStatus.enterBackgroundDate.timeIntervalSinceNow
-        secondsSubject.send(timerStatus.seconds + Int(interval))
+        secondsSubject.send(timerStatus.seconds - Int(interval))
         isValidSubject.send(timerStatus.isValid)
         // 読み込みが完了したら前回のタイマーの状態を削除する.
         userDefaultsProvider.removeObject(forKey: .timerStatus)

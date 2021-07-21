@@ -78,6 +78,7 @@ final class TimerViewController: UIViewController {
         configureNavigation()
         configureNotificationObserver()
         bindViewModel()
+        viewModel.inputs.viewDidLoad()
     }
     
     @objc
@@ -97,12 +98,12 @@ final class TimerViewController: UIViewController {
     
     @objc
     private func didEnterBackground() {
-        
+        viewModel.inputs.didEnterBackground()
     }
     
     @objc
     private func willEnterForeground() {
-        
+        viewModel.inputs.willEnterForeground()
     }
 }
 

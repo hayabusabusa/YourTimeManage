@@ -15,6 +15,8 @@ protocol TimerViewModelInputs {
     func startButtonTapped()
     /// ストップのボタンが押された時.
     func stopButtonTapped()
+    /// 画面が表示された時.
+    func viewDidLoad()
     /// この画面を開いたままアプリがバックグラウンドに遷移した時.
     func didEnterBackground()
     /// この画面を開いたままアプリがバックグランドから復帰した時.
@@ -60,6 +62,10 @@ final class TimerViewModel: TimerViewModelInputs, TimerViewModelOutputs {
     
     func stopButtonTapped() {
         model.stopTimer()
+    }
+    
+    func viewDidLoad() {
+        model.restoreTimerIfNeeded()
     }
     
     func didEnterBackground() {
