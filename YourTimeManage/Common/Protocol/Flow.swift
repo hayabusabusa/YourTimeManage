@@ -39,6 +39,10 @@ extension FlowContextable {
             viewController.navigationController?.pushViewController(destinationViewController, animated: true)
         case .pop:
             viewController.navigationController?.popViewController(animated: true)
+        case .alert(let title, let message, let actions, let style):
+            let ac = UIAlertController(title: title, message: message, preferredStyle: style)
+            actions.forEach { ac.addAction($0) }
+            viewController.present(ac, animated: true, completion: nil)
         }
     }
 }
@@ -53,6 +57,8 @@ enum FlowTransitionType {
     case push
     /// `UIViewController.navigationController?.popViewController(animated:)` で戻る.
     case pop
+    /// `UIAlertController` を `UIViewController.present(_:animated:completion:)` で表示する.
+    case alert(title: String, message: String, actions: [UIAlertAction], style: UIAlertController.Style)
 }
 
 /// 遷移先を定義した `Enum`.

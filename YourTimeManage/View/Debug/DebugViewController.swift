@@ -79,20 +79,20 @@ extension DebugViewController {
         viewModel = DebugViewModel()
         
         viewModel.outpus.error
-            .sink { [weak self] message in
+            .sink { [unowned self] message in
                 let ac = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self?.present(ac, animated: true, completion: nil)
+                self.present(ac, animated: true, completion: nil)
             }
             .store(in: &cancelables)
         viewModel.outpus.sections
             .assign(to: \.sections, on: self)
             .store(in: &cancelables)
         viewModel.outpus.message
-            .sink { [weak self] message in
+            .sink { [unowned self] message in
                 let ac = UIAlertController(title: "", message: message, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self?.present(ac, animated: true, completion: nil)
+                self.present(ac, animated: true, completion: nil)
             }
             .store(in: &cancelables)
         viewModel.outpus.flowContext
