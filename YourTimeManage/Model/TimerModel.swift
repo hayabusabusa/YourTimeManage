@@ -42,12 +42,9 @@ final class TimerModel: TimerModelProtocol {
          interval: TimeInterval = 1.0) {
         self.userDefaultsProvider = userDefaultsProvider
         self.timerStatus = timerStatus
-        
-        let secondsSubject = CurrentValueSubject<Int, Never>(0)
-        self.secondsSubject = secondsSubject
-        self.isValidSubject = .init(false)
-        
+        self.secondsSubject = CurrentValueSubject<Int, Never>(0)
         self.secondsPublisher = secondsSubject.eraseToAnyPublisher()
+        self.isValidSubject = CurrentValueSubject<Bool, Never>(false)
         
         isValidSubject
             .removeDuplicates()
@@ -56,7 +53,7 @@ final class TimerModel: TimerModelProtocol {
                     ? Timer.publish(every: interval, on: .main, in: .default).autoconnect().eraseToAnyPublisher()
                     : Empty<Date, Never>(completeImmediately: true).eraseToAnyPublisher()
             }
-            .map { _ in secondsSubject.value + 1 }
+            .map { [unowned self] _ in self.secondsSubject.value + 1 }
             .bind(to: secondsSubject)
             .store(in: &cancelables)
     }
