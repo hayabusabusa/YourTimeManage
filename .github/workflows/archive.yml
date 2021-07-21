@@ -14,8 +14,8 @@ jobs:
       
     - name: Replace Google AdMob ids
       run: |
-          plutil -replace "GADApplicationIdentifier" -string "Application" YourTimeManage/Info.plist
-          plutil -replace "GADUnitID" -string "ADUnitID" YourTimeManage/Info.plist
+          plutil -replace "GADApplicationIdentifier" -string "${{ secrets.GAD_APPLICATION_IDENTIFIER }}" YourTimeManage/Info.plist
+          plutil -replace "GADUnitID" -string "${{ secrets.GAD_UNIT_ID }}" YourTimeManage/Info.plist
           plutil -p YourTimeManage/Info.plist
 
     - name: Decode GoogleService-Info.plist
