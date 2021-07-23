@@ -40,4 +40,4 @@ jobs:
     - name: Archive and create main application target IPA
       run: |
           xcodebuild archive -workspace YourTimeManage.xcworkspace -scheme YourTimeManage -destination "platform=iOS Simulator,name=iPhone 12" | xcpretty
-          xcodebuild -exportArchive -exportOptionsPlist "YourTimeManage/ExportOptions.plist" | xcpretty
+          xcodebuild -exportArchive -archivePath "./" -exportOptionsPlist "YourTimeManage/ExportOptions.plist" | xcpretty
