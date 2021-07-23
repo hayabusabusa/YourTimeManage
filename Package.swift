@@ -41,6 +41,10 @@ let package = Package(
         ]),
         
         // MARK: Tests
+        .testTarget(name: "ApplicationTests", dependencies: [
+            "Application",
+            .product(name: "EntwineTest", package: "Entwine")
+        ]),
         .testTarget(name: "DomainTests", dependencies: [
             "Domain",
             .product(name: "EntwineTest", package: "Entwine")
