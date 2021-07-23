@@ -25,11 +25,11 @@ let package = Package(
             "Domain",
             "Shared",
             "UIComponent",
-            .product(name: "FirebaseAuth", package: "Firebase"),
             .product(name: "GoogleMobileAds", package: "GoogleMobileAds-SPM"),
         ]),
         .target(name: "Domain", dependencies: [
             "Shared",
+            .product(name: "FirebaseAuth", package: "Firebase"),
             .product(name: "FirebaseFirestore", package: "Firebase"),
             .product(name: "FirebaseFirestoreSwift-Beta", package: "Firebase"),
         ]),
