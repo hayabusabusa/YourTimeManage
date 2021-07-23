@@ -41,4 +41,4 @@ jobs:
       run: |
           mkdir ./build
           xcodebuild clean archive -workspace "YourTimeManage.xcworkspace" -scheme "YourTimeManage" -configuration Release -destination "platform=iOS Simulator,name=iPhone 12" -archivePath "./build/iOS.xcarchive" | xcpretty
-          xcodebuild -exportArchive -archivePath "./build/iOS.xcarchive" -exportOptionsPlist "YourTimeManage/ExportOptions.plist" | xcpretty
+          xcodebuild -exportArchive -archivePath "./build/iOS.xcarchive" -exportPath "./build/iOS.ipa" -exportOptionsPlist "YourTimeManage/ExportOptions.plist" | xcpretty
