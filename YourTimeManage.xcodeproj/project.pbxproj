@@ -312,6 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = YourTimeManage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -319,6 +320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.shunyayamada.YourTimeManage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -334,6 +336,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = YourTimeManage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -341,6 +344,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.shunyayamada.YourTimeManage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
