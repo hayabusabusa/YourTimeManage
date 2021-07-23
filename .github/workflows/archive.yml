@@ -24,7 +24,19 @@ jobs:
           echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST_BASE64 }}" > GoogleService-Info.plist.txt
           base64 --decode GoogleService-Info.plist.txt > GoogleService-Info.plist
           cd ../
+          
+    - name: Encode provisioning profile
+      run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "${{ secrets.PROVISIONING_PROFILE_BASE64 }}" > distribution.mobileprovision.txt
+          base64 --decode distribution.mobileprovision.txt > ~/Library/MobileDevice/Provisioning\ Profiles/YourTimeManage_Release.mobileprovision
+    
+    - name: Import release certificate
+      uses: Apple-Actions/import-codesign-certs@v1
+      with:
+          p12-file-base64: ${{ secrets.CERTIFICATE_BASE64 }}
+          p12-password: ${{ secrets.CERTIFICATE_PASSWORD }}
 
     - name: Build main application target
       run: |
-          xcodebuild build -workspace YourTimeManage.xcworkspace -scheme YourTimeManage -destination "platform=iOS Simulator,name=iPhone 12" | xcpretty
+          xcodebuild archive -workspace YourTimeManage.xcworkspace -scheme YourTimeManage -destination "platform=iOS Simulator,name=iPhone 12" | xcpretty
