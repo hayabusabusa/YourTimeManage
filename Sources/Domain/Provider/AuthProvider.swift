@@ -13,6 +13,13 @@ public protocol AuthProviderProtocol: AnyObject {
     /// 現在サインインしているユーザー.
     var currentUser: FirebaseAuth.User? { get }
     
+    /// 新規登録の処理を行う.
+    ///
+    /// - Parameters:
+    ///   - email: Eメールアドレス.
+    ///   - password: パスワード.
+    func signUp(with email: String, password: String) -> Future<AuthDataResult, Error>
+    
     /// サインインの処理を行う.
     ///
     /// - Parameters:
@@ -45,6 +52,18 @@ public final class AuthProvider: AuthProviderProtocol {
     
     public var currentUser: FirebaseAuth.User? {
         return auth.currentUser
+    }
+    
+    public func signUp(with email: String, password: String) -> Future<AuthDataResult, Error> {
+        return Future { [weak self] promise in
+            self?.auth.createUser(withEmail: email, password: password, completion: { (result, error) in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let result = result {
+                    promise(.success(result))
+                }
+            })
+        }
     }
     
     public func signIn(with email: String, password: String) -> Future<AuthDataResult, Error> {
