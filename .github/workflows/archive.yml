@@ -37,6 +37,7 @@ jobs:
           p12-file-base64: ${{ secrets.CERTIFICATE_BASE64 }}
           p12-password: ${{ secrets.CERTIFICATE_PASSWORD }}
 
-    - name: Build main application target
+    - name: Archive and create main application target IPA
       run: |
           xcodebuild archive -workspace YourTimeManage.xcworkspace -scheme YourTimeManage -destination "platform=iOS Simulator,name=iPhone 12" | xcpretty
+          xcodebuild -exportArchive -exportOptionsPlist "YourTimeManage/ExportOptions.plist" | xcpretty
