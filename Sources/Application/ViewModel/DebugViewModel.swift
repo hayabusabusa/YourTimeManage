@@ -55,7 +55,7 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
     func didSelectRow(in section: DebugSection) {
         switch section {
         case .migration:
-            model.v200Migration()
+            model.migration()
         case .crash:
             model.crash()
         case .timer:

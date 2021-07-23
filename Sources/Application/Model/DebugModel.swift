@@ -14,7 +14,7 @@ protocol DebugModelProtocol {
     var isMigrationCompletedPublisher: AnyPublisher<Void, Never> { get }
     func getSections()
     func crash()
-    func v200Migration()
+    func migration()
 }
 
 final class DebugModel: DebugModelProtocol {
@@ -47,9 +47,8 @@ final class DebugModel: DebugModelProtocol {
         fatalError("デバッグのためにクラッシュ.")
     }
     
-    func v200Migration() {
-        let v200Migrator = V200Migrator()
-        migrationProvider.execute(with: [v200Migrator]) { [weak self] result in
+    func migration() {
+        migrationProvider.execute { [weak self] result in
             switch result {
             case .success:
                 self?.isMigrationCompletedSubject.send(())

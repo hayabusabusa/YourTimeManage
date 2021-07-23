@@ -7,7 +7,13 @@
 
 import Foundation
 
-public protocol MigratorProtocol {
+/// 型消去用の `MigratorProtocol`.
+public protocol AnyMigratorProtocol {
+    func _isNeedMigration() -> Bool
+    func _migration(completion: @escaping (Result<Any, Error>) -> Void)
+}
+
+public protocol MigratorProtocol: AnyMigratorProtocol {
     associatedtype MigrationOutput
     /// 非同期処理のために並列のキューを持っておく
     var dispatchQueue: DispatchQueue { get }
@@ -17,6 +23,22 @@ public protocol MigratorProtocol {
     func migration(completion: @escaping (Result<MigrationOutput, Error>) -> Void)
 }
 
+public extension MigratorProtocol {
+    func _isNeedMigration() -> Bool {
+        return isNeedMigration()
+    }
+    
+    func _migration(completion: @escaping (Result<Any, Error>) -> Void) {
+        migration { (result) in
+            switch result {
+            case .success(let output):
+                completion(.success(output))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}
 
 public final class MigrationProvider {
     
@@ -24,22 +46,32 @@ public final class MigrationProvider {
     
     public static let shared: MigrationProvider = .init()
     
+    // MARK: Properties
+    
+    private var migrators: [AnyMigratorProtocol] = []
+    
     // MARK: Initializer
     
     private init() {}
+    
+    // MARK: Migration
+    
+    public func setMigrators<T: AnyMigratorProtocol>(_ migrators: [T]) {
+        self.migrators = migrators
+    }
     
     /// 特定のマイグレーション処理を行う
     /// - Parameters:
     ///   - version: 実行したいマイグレーションの番号
     ///   - completion: 完了時は `Result<Void, Error>` が返される
-    public func execute<T: MigratorProtocol>(with migrators: [T], completion: @escaping (Result<Void, Error>) -> Void) {
+    public func execute(completion: @escaping (Result<Void, Error>) -> Void) {
         let dispatchGroup = DispatchGroup()
         
         migrators.forEach { migrator in
-            guard migrator.isNeedMigration() else {
+            guard migrator._isNeedMigration() else {
                 return
             }
-            migrator.migration { result in
+            migrator._migration { result in
                 if case .failure(let error) = result {
                     completion(.failure(error))
                 }
