@@ -7,46 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A521725326A48A2900EF95F0 /* AdBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521725226A48A2900EF95F0 /* AdBanner.swift */; };
 		A521725826A493D600EF95F0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A521725726A493D600EF95F0 /* Colors.xcassets */; };
-		A521725C26A88E5E00EF95F0 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521725B26A88E5E00EF95F0 /* Flow.swift */; };
 		A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B126917A2D004BBE9B /* AppDelegate.swift */; };
 		A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34B326917A2D004BBE9B /* SceneDelegate.swift */; };
 		A55B34BB26917A2E004BBE9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55B34BA26917A2E004BBE9B /* Assets.xcassets */; };
 		A55B34BE26917A2E004BBE9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A55B34BC26917A2E004BBE9B /* LaunchScreen.storyboard */; };
 		A55B34CF26917D27004BBE9B /* Application in Frameworks */ = {isa = PBXBuildFile; productRef = A55B34CE26917D27004BBE9B /* Application */; };
-		A55B34DA2691890B004BBE9B /* V200Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55B34D92691890B004BBE9B /* V200Migrator.swift */; };
 		A55B34E22691A215004BBE9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A55B34E12691A215004BBE9B /* GoogleService-Info.plist */; };
-		A5677357269AADD300A54875 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5677356269AADD300A54875 /* TimerViewController.swift */; };
-		A5677364269AED3000A54875 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5677363269AED3000A54875 /* TimerViewModel.swift */; };
-		A575BD8226989F0700860CDA /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575BD8126989F0700860CDA /* TimerModel.swift */; };
-		A5AEC559269494EF004DF246 /* DebugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC558269494EF004DF246 /* DebugModel.swift */; };
-		A5AEC561269497F9004DF246 /* CollectionViewSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC560269497F9004DF246 /* CollectionViewSectionType.swift */; };
-		A5AEC56926949C4B004DF246 /* DebugSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC56826949C4B004DF246 /* DebugSection.swift */; };
-		A5AEC56E2694AFF1004DF246 /* DebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC56D2694AFF1004DF246 /* DebugViewModel.swift */; };
-		A5AEC5712694B1F8004DF246 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AEC5702694B1F8004DF246 /* DebugViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A521725226A48A2900EF95F0 /* AdBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBanner.swift; sourceTree = "<group>"; };
 		A521725726A493D600EF95F0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		A521725B26A88E5E00EF95F0 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		A55B34AE26917A2D004BBE9B /* YourTimeManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourTimeManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55B34B126917A2D004BBE9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55B34B326917A2D004BBE9B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A55B34BA26917A2E004BBE9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A55B34BD26917A2E004BBE9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A55B34BF26917A2E004BBE9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A55B34D92691890B004BBE9B /* V200Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V200Migrator.swift; sourceTree = "<group>"; };
 		A55B34E12691A215004BBE9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A5677356269AADD300A54875 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
-		A5677363269AED3000A54875 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
-		A575BD8126989F0700860CDA /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
-		A5AEC558269494EF004DF246 /* DebugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugModel.swift; sourceTree = "<group>"; };
-		A5AEC560269497F9004DF246 /* CollectionViewSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewSectionType.swift; sourceTree = "<group>"; };
-		A5AEC56826949C4B004DF246 /* DebugSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSection.swift; sourceTree = "<group>"; };
-		A5AEC56D2694AFF1004DF246 /* DebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewModel.swift; sourceTree = "<group>"; };
-		A5AEC5702694B1F8004DF246 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,10 +69,6 @@
 		A55B34B026917A2D004BBE9B /* YourTimeManage */ = {
 			isa = PBXGroup;
 			children = (
-				A5AEC55726949428004DF246 /* Model */,
-				A5AEC55D26949700004DF246 /* View */,
-				A5AEC55C269496E8004DF246 /* ViewModel */,
-				A55B34D2269180E3004BBE9B /* Common */,
 				A521725626A493AA00EF95F0 /* Resources */,
 				A55B34B126917A2D004BBE9B /* AppDelegate.swift */,
 				A55B34B326917A2D004BBE9B /* SceneDelegate.swift */,
@@ -109,77 +83,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A55B34D2269180E3004BBE9B /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A5AEC55F269497CB004DF246 /* Protocol */,
-				A55B34D3269180F9004BBE9B /* Migration */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		A55B34D3269180F9004BBE9B /* Migration */ = {
-			isa = PBXGroup;
-			children = (
-				A55B34D92691890B004BBE9B /* V200Migrator.swift */,
-			);
-			path = Migration;
-			sourceTree = "<group>";
-		};
-		A5677355269AADBA00A54875 /* Timer */ = {
-			isa = PBXGroup;
-			children = (
-				A521725226A48A2900EF95F0 /* AdBanner.swift */,
-				A5677356269AADD300A54875 /* TimerViewController.swift */,
-			);
-			path = Timer;
-			sourceTree = "<group>";
-		};
-		A5AEC55726949428004DF246 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A5AEC558269494EF004DF246 /* DebugModel.swift */,
-				A575BD8126989F0700860CDA /* TimerModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A5AEC55C269496E8004DF246 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A5AEC56D2694AFF1004DF246 /* DebugViewModel.swift */,
-				A5677363269AED3000A54875 /* TimerViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A5AEC55D26949700004DF246 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A5AEC55E2694972B004DF246 /* Debug */,
-				A5677355269AADBA00A54875 /* Timer */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A5AEC55E2694972B004DF246 /* Debug */ = {
-			isa = PBXGroup;
-			children = (
-				A5AEC5702694B1F8004DF246 /* DebugViewController.swift */,
-				A5AEC56826949C4B004DF246 /* DebugSection.swift */,
-			);
-			path = Debug;
-			sourceTree = "<group>";
-		};
-		A5AEC55F269497CB004DF246 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				A5AEC560269497F9004DF246 /* CollectionViewSectionType.swift */,
-				A521725B26A88E5E00EF95F0 /* Flow.swift */,
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,19 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5AEC5712694B1F8004DF246 /* DebugViewController.swift in Sources */,
-				A5AEC56926949C4B004DF246 /* DebugSection.swift in Sources */,
-				A5AEC561269497F9004DF246 /* CollectionViewSectionType.swift in Sources */,
-				A5AEC56E2694AFF1004DF246 /* DebugViewModel.swift in Sources */,
-				A521725326A48A2900EF95F0 /* AdBanner.swift in Sources */,
 				A55B34B226917A2D004BBE9B /* AppDelegate.swift in Sources */,
 				A55B34B426917A2D004BBE9B /* SceneDelegate.swift in Sources */,
-				A521725C26A88E5E00EF95F0 /* Flow.swift in Sources */,
-				A5AEC559269494EF004DF246 /* DebugModel.swift in Sources */,
-				A575BD8226989F0700860CDA /* TimerModel.swift in Sources */,
-				A5677364269AED3000A54875 /* TimerViewModel.swift in Sources */,
-				A55B34DA2691890B004BBE9B /* V200Migrator.swift in Sources */,
-				A5677357269AADD300A54875 /* TimerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

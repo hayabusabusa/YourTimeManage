@@ -10,7 +10,7 @@ import UIKit
 import UIComponent
 import Shared
 
-final class DebugViewController: UIViewController {
+public final class DebugViewController: UIViewController {
     
     // MARK: IBOutlet
     
@@ -26,7 +26,7 @@ final class DebugViewController: UIViewController {
     
     // MARK: Properties
     
-    private var viewModel: DebugViewModelType!
+    private let viewModel: DebugViewModelType
     private var cancelables = Set<AnyCancellable>()
     
     private var sections: [DebugSection] = [] {
@@ -37,7 +37,16 @@ final class DebugViewController: UIViewController {
     
     // MARK: Lifecycle
     
-    override func viewDidLoad() {
+    public init() {
+        self.viewModel = DebugViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         configureSubViews()
         configureNavigation()
@@ -46,7 +55,7 @@ final class DebugViewController: UIViewController {
         viewModel.inputs.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 選択されたセルの解除を徐々に行う.
         guard let selectedIndexPath = collectionView.indexPathsForSelectedItems else {
@@ -76,8 +85,6 @@ extension DebugViewController {
     }
     
     private func bindViewModel() {
-        viewModel = DebugViewModel()
-        
         viewModel.outpus.error
             .sink { [unowned self] message in
                 let ac = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
@@ -107,15 +114,15 @@ extension DebugViewController {
 
 extension DebugViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sections.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sections[section].numberOfItems
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return sections[indexPath.section].configureCell(collectionView, at: indexPath)
     }
 }
@@ -124,7 +131,7 @@ extension DebugViewController: UICollectionViewDataSource {
 
 extension DebugViewController: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.inputs.didSelectRow(in: sections[indexPath.section])
     }
 }
