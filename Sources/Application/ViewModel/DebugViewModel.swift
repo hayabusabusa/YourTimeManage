@@ -58,9 +58,11 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
             model.migration()
         case .crash:
             model.crash()
+        case .login:
+            let viewModel = LoginViewModel()
+            flowContextSubject.send(FlowContext(transitionType: .present(isFullScreen: false), destination: .login(with: viewModel)))
         case .timer:
-            let model = TimerModel()
-            let viewModel = TimerViewModel(model: model)
+            let viewModel = TimerViewModel()
             flowContextSubject.send(FlowContext(transitionType: .present(isFullScreen: true), destination: .timer(with: viewModel)))
         case .restoreTimer:
             // 面倒なのでここで読み込む.

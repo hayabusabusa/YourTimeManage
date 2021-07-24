@@ -13,7 +13,7 @@ import Shared
 /// カスタムで遷移アニメーションなどを使いたい場合は `FlowContextable` に準拠したものを作成する.
 struct FlowContext: FlowContextable {
     let transitionType: FlowTransitionType
-    let destination: FlowDestination
+    let destination: FlowDestination?
 }
 
 /// 遷移の情報をまとめる `Protocol`.
@@ -21,21 +21,26 @@ protocol FlowContextable {
     /// 遷移方法.
     var transitionType: FlowTransitionType { get }
     /// 遷移先.
-    var destination: FlowDestination { get }
+    var destination: FlowDestination? { get }
     /// 遷移の処理を実行する.
     func move(from viewController: UIViewController)
 }
 
 extension FlowContextable {
     func move(from viewController: UIViewController) {
-        let destinationViewController = destination.viewController
         switch transitionType {
         case .present(let isFullScreen):
+            guard let destinationViewController = destination?.viewController else {
+                return
+            }
             destinationViewController.modalPresentationStyle = isFullScreen ? .fullScreen : .automatic
             viewController.present(destinationViewController, animated: true, completion: nil)
         case .dismiss:
             viewController.dismiss(animated: true, completion: nil)
         case .push:
+            guard let destinationViewController = destination?.viewController else {
+                return
+            }
             viewController.navigationController?.pushViewController(destinationViewController, animated: true)
         case .pop:
             viewController.navigationController?.popViewController(animated: true)
@@ -65,12 +70,17 @@ enum FlowTransitionType {
 enum FlowDestination {
     /// タイマー画面.
     case timer(with: TimerViewModelType)
+    /// ログイン画面.
+    case login(with: LoginViewModelType)
     
     var viewController: UIViewController {
         switch self {
         case .timer(let viewModel):
             let nvc = UINavigationController(rootViewController: TimerViewController(viewModel: viewModel))
             return nvc
+        case .login(let viewModel):
+            let vc = LoginViewController(viewModel: viewModel)
+            return vc
         }
     }
 }

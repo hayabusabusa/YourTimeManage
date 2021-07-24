@@ -21,6 +21,8 @@ protocol LoginModelProtocol {
     func isSignedIn() -> Bool
     /// サインインを実行する.
     func signUp()
+    /// サインアウトを実行する.
+    func signOut()
 }
 
 final class LoginModel: LoginModelProtocol {
@@ -50,6 +52,9 @@ final class LoginModel: LoginModelProtocol {
     }
     
     func isSignedIn() -> Bool {
+        #if DEBUG
+        debugPrint("[DEBUG] LOGGED IN USER: \(authProvider.currentUser?.description ?? "Not logged in.")")
+        #endif
         return authProvider.currentUser != nil
     }
     
@@ -61,6 +66,25 @@ final class LoginModel: LoginModelProtocol {
                 let user = User(id: result.user.uid, createdAt: Date())
                 return self.firestoreProvider.setDocument(to: FirestoreProvider.Collection.users, data: user)
             }
+            .sink(receiveCompletion: { [unowned self] completion in
+                switch completion {
+                case .failure(let error):
+                    self.isLoadingSubject.send(false)
+                    self.errorSubject.send(error)
+                case .finished:
+                    self.isLoadingSubject.send(false)
+                    self.authCompletedSubject.send(())
+                }
+            }, receiveValue: { _ in
+                // Void
+            })
+            .store(in: &cancellables)
+    }
+    
+    func signOut() {
+        isLoadingSubject.send(true)
+        
+        authProvider.signOut()
             .sink(receiveCompletion: { [unowned self] completion in
                 switch completion {
                 case .failure(let error):

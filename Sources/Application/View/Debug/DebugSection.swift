@@ -12,6 +12,7 @@ import UIKit
 enum DebugSection: CaseIterable, CollectionViewSectionType {
     case migration
     case crash
+    case login
     case timer
     case restoreTimer
     
@@ -37,6 +38,10 @@ enum DebugSection: CaseIterable, CollectionViewSectionType {
         case .crash:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
             cell.configure(title: "❗️ クラッシュさせる")
+            return cell
+        case .login:
+            let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
+            cell.configure(title: "🔑 ログイン画面を表示")
             return cell
         case .timer:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)

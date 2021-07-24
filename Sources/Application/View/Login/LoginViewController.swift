@@ -5,6 +5,7 @@
 //  Created by Shunya Yamada on 2021/07/23.
 //
 
+import Combine
 import Shared
 import UIComponent
 import UIKit
@@ -16,6 +17,7 @@ final class LoginViewController: UIViewController {
     private lazy var loginButton: Button = {
         let button = Button(style: .small)
         button.setTitle("ログイン", for: .normal)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -44,11 +46,29 @@ final class LoginViewController: UIViewController {
     
     // MARK: Properties
     
+    private let viewModel: LoginViewModelType
+    private var cancellables = Set<AnyCancellable>()
+    
     // MARK: Lifecycle
+    
+    init(viewModel: LoginViewModelType = LoginViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubViews()
+        bindViewModel()
+    }
+    
+    @objc
+    private func loginButtonTapped() {
+        viewModel.inputs.loginButtonTapped()
     }
 }
 
@@ -64,5 +84,13 @@ extension LoginViewController {
             buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
             buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
         ])
+    }
+    
+    private func bindViewModel() {
+        viewModel.outputs.flowContext
+            .sink(receiveValue: { [unowned self] context in
+                    context.move(from: self)
+            })
+            .store(in: &cancellables)
     }
 }
