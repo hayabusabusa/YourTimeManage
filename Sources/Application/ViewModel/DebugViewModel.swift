@@ -73,6 +73,8 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
             } else {
                 messageSubject.send("保存されているタイマーの状態はありません")
             }
+        default:
+            return
         }
     }
 }

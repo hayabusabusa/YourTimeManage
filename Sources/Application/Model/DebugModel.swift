@@ -19,7 +19,9 @@ protocol DebugModelProtocol {
 
 final class DebugModel: DebugModelProtocol {
     
+    private let authProvider: AuthProviderProtocol
     private let migrationProvider: MigrationProvider
+    
     private let errorSubject: PassthroughSubject<Error, Never>
     private let sectionsSubject: CurrentValueSubject<[DebugSection], Never>
     private let isMigrationCompletedSubject: PassthroughSubject<Void, Never>
@@ -28,8 +30,11 @@ final class DebugModel: DebugModelProtocol {
     let sectionsPublisher: AnyPublisher<[DebugSection], Never>
     let isMigrationCompletedPublisher: AnyPublisher<Void, Never>
     
-    init(migrationProvider: MigrationProvider = MigrationProvider.shared) {
+    init(authProvider: AuthProviderProtocol = AuthProvider.shared,
+         migrationProvider: MigrationProvider = MigrationProvider.shared) {
+        self.authProvider = authProvider
         self.migrationProvider = migrationProvider
+        
         self.errorSubject = .init()
         self.sectionsSubject = .init([])
         self.isMigrationCompletedSubject = .init()
@@ -40,7 +45,15 @@ final class DebugModel: DebugModelProtocol {
     }
     
     func getSections() {
-        sectionsSubject.send(DebugSection.allCases)
+        let uid = authProvider.currentUser?.uid
+        sectionsSubject.send([
+            .loginStatus(uid: uid),
+            .login,
+            .migration,
+            .timer,
+            .restoreTimer,
+            .crash,
+        ])
     }
     
     func crash() {

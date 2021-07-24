@@ -23,6 +23,30 @@ public extension UIView {
         ])
     }
     
+    /// 対象の View に自身をサブビューとして追加してもらって Auto Layout で固定する.
+    /// - Parameters:
+    ///   - view: サブビューに追加してもらう View
+    ///   - top: 上の余白.
+    ///   - right: 右の余白.
+    ///   - bottom: 下の余白.
+    ///   - left: 左の余白.
+    func embed(in view: UIView, top: CGFloat? = nil, right: CGFloat? = nil, bottom: CGFloat? = nil, left: CGFloat? = nil) {
+        view.addSubview(view)
+        
+        if let top = top {
+            topAnchor.constraint(equalTo: view.topAnchor, constant: top).isActive = true
+        }
+        if let right = right {
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: right).isActive = true
+        }
+        if let bottom = bottom {
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottom).isActive = true
+        }
+        if let left = left {
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: left).isActive = true
+        }
+    }
+    
     /// 任意のサイズに AutoLayout で固定する.
     /// - Parameters:
     ///   - size: 固定したいサイズの値.

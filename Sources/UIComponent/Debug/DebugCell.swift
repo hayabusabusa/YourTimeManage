@@ -19,12 +19,28 @@ public class DebugCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var detailLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 11)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return label
+    }()
+    
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "chevron.right")
         imageView.tintColor = .systemGray2
         return imageView
+    }()
+    
+    private lazy var divider: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .separator
+        view.sized(height: 1)
+        return view
     }()
     
     // MARK: Initializer
@@ -35,10 +51,11 @@ public class DebugCell: UICollectionViewCell {
         selectedBackgroundView?.backgroundColor = .systemFill
         let stackView = UIStackView(axis: .horizontal,
                                     alignment: .fill,
-                                    spacing: 8,
-                                    distribution: .equalSpacing,
+                                    spacing: 12,
+                                    distribution: .fill,
                                     subviews: [
                                         titleLabel,
+                                        detailLabel,
                                         iconImageView
                                     ])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,8 +68,11 @@ public class DebugCell: UICollectionViewCell {
     
     // MARK: Configurations
     
-    public func configure(title: String) {
+    public func configure(title: String, detail: String? = nil) {
         titleLabel.text = title
+        detailLabel.text = detail
+        detailLabel.isHidden = detail == nil
+        iconImageView.isHidden = detail != nil
     }
 }
 
@@ -62,8 +82,8 @@ struct DebugCellPreview: PreviewProvider {
     
     static var previews: some View {
         Group {
-            DebugCell.Wrapped(title: "ライトモード Preview")
-            DebugCell.Wrapped(title: "ダークモード Preview")
+            DebugCell.Wrapped(title: "ライトモード Preview", detail: "詳細")
+            DebugCell.Wrapped(title: "ダークモード Preview", detail: "詳細")
                 .preferredColorScheme(.dark)
         }
         .previewLayout(.fixed(width: 320, height: 44))
@@ -76,10 +96,11 @@ private extension DebugCell {
         typealias UIViewType = DebugCell
         
         let title: String
+        let detail: String?
         
         func makeUIView(context: Context) -> DebugCell {
             let view = DebugCell(frame: .zero)
-            view.configure(title: title)
+            view.configure(title: title, detail: detail)
             return view
         }
         
