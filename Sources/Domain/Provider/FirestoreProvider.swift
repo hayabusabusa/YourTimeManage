@@ -35,7 +35,7 @@ public protocol FirestoreProviderProtocol: AnyObject {
     
     /// 単一のドキュメントを追加する.
     ///
-    /// `public/vx/{Collection}/{path}` にドキュメントを追加する.
+    /// `public/vx/{Collection}/{Random}` にドキュメントを追加する.
     /// - Parameters:
     ///   - collection: `{Collection}` に入るパス.
     ///   - data: ドキュメントとして追加するデータ.
@@ -43,7 +43,16 @@ public protocol FirestoreProviderProtocol: AnyObject {
     
     /// 単一のドキュメントを追加する.
     ///
-    /// `public/vx/{Collection}/{path}/{SubCollection}/{subPath}` にドキュメントを追加する.
+    ///`public/vx/{Collection}/{path}` にドキュメントを追加する.
+    /// - Parameters:
+    ///   - collection: `{Collection}` に入るパス.
+    ///   - path: `{path}` に入る `Document` のパス.
+    ///   - data: ドキュメントとして追加するデータ.
+    func setDocument<T: Encodable>(to collection: FirestoreProvider.Collection, path: String, data: T) -> Future<Void, Error>
+    
+    /// 単一のドキュメントを追加する.
+    ///
+    /// `public/vx/{Collection}/{path}/{SubCollection}/{Random}` にドキュメントを追加する.
     /// - Parameters:
     ///   - collection: `{Collection}` に入るパス.
     ///   - path: `{path}` に入る `Document` のパス.
@@ -148,6 +157,28 @@ public final class FirestoreProvider: FirestoreProviderProtocol {
                     .document(Version.v2.rawValue)
                     .collection(collection.rawValue)
                     .document()
+                    .setData(from: data) { error in
+                        if let error = error {
+                            promise(.failure(error))
+                        } else {
+                            promise(.success(()))
+                        }
+                    }
+            } catch {
+                promise(.failure(error))
+            }
+        }
+    }
+    
+    public func setDocument<T: Encodable>(to collection: Collection,
+                                          path: String,
+                                          data: T) -> Future<Void, Error> {
+        return Future { [weak self] promise in
+            do {
+                try self?.db.collection(Root.public.rawValue)
+                    .document(Version.v2.rawValue)
+                    .collection(collection.rawValue)
+                    .document(path)
                     .setData(from: data) { error in
                         if let error = error {
                             promise(.failure(error))
