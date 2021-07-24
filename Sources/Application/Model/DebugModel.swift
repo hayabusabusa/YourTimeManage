@@ -7,6 +7,7 @@
 
 import Combine
 import Domain
+import Shared
 
 protocol DebugModelProtocol {
     var errorPublisher: AnyPublisher<Error, Never> { get }
@@ -22,6 +23,7 @@ final class DebugModel: DebugModelProtocol {
     
     private let authProvider: AuthProviderProtocol
     private let migrationProvider: MigrationProvider
+    private let userDefaultsProvider: UserDefaultsProviderProtocol
     
     private var cancellables = Set<AnyCancellable>()
     private let errorSubject: PassthroughSubject<Error, Never>
@@ -33,9 +35,11 @@ final class DebugModel: DebugModelProtocol {
     let isMigrationCompletedPublisher: AnyPublisher<Void, Never>
     
     init(authProvider: AuthProviderProtocol = AuthProvider.shared,
-         migrationProvider: MigrationProvider = MigrationProvider.shared) {
+         migrationProvider: MigrationProvider = MigrationProvider.shared,
+         userDefaultsProvider: UserDefaultsProviderProtocol = UserDefaultsProvider.shared) {
         self.authProvider = authProvider
         self.migrationProvider = migrationProvider
+        self.userDefaultsProvider = userDefaultsProvider
         
         self.errorSubject = .init()
         self.sectionsSubject = .init([])
@@ -48,11 +52,14 @@ final class DebugModel: DebugModelProtocol {
     
     func getSections() {
         let uid = authProvider.currentUser?.uid
+        let storedTimerStatus = userDefaultsProvider.decodableObject(type: TimerStatus.self, forKey: .timerStatus)
+        
         sectionsSubject.send([
             .loginStatus(uid: uid),
             .login,
             .logout,
             .migration,
+            .timerStatus(stored: storedTimerStatus),
             .timer,
             .restoreTimer,
             .crash,

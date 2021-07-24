@@ -15,6 +15,7 @@ enum DebugSection: CollectionViewSectionType {
     case logout
     case migration
     case timer
+    case timerStatus(stored: TimerStatus?)
     case restoreTimer
     case crash
     
@@ -25,7 +26,7 @@ enum DebugSection: CollectionViewSectionType {
     func layoutSection() -> NSCollectionLayoutSection {
         switch self {
         // リストタイプのレイアウトを返す.
-        case .loginStatus, .login, .logout, .migration, .timer, .restoreTimer, .crash:
+        case .loginStatus, .login, .logout, .migration, .timer, .timerStatus, .restoreTimer, .crash:
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
@@ -56,6 +57,14 @@ enum DebugSection: CollectionViewSectionType {
         case .timer:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
             cell.configure(title: "⏱ タイマーを表示する")
+            return cell
+        case .timerStatus(let stored):
+            let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
+            if let stored = stored {
+                cell.configure(title: "⏱ 保存中のタイマー", detail: "\(stored.seconds)秒, \(stored.isValid ? "動作中" : "停止")")
+            } else {
+                cell.configure(title: "⏱ 保存中のタイマー", detail: "なし")
+            }
             return cell
         case .restoreTimer:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
