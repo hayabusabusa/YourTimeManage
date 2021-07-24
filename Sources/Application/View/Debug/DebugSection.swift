@@ -12,6 +12,7 @@ import UIKit
 enum DebugSection: CollectionViewSectionType {
     case loginStatus(uid: String?)
     case login
+    case logout
     case migration
     case timer
     case restoreTimer
@@ -24,7 +25,7 @@ enum DebugSection: CollectionViewSectionType {
     func layoutSection() -> NSCollectionLayoutSection {
         switch self {
         // リストタイプのレイアウトを返す.
-        case .loginStatus, .login, .migration, .timer, .restoreTimer, .crash:
+        case .loginStatus, .login, .logout, .migration, .timer, .restoreTimer, .crash:
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
@@ -43,6 +44,10 @@ enum DebugSection: CollectionViewSectionType {
         case .login:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
             cell.configure(title: "🔑 ログイン画面を表示")
+            return cell
+        case .logout:
+            let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)
+            cell.configure(title: "🔑 ログアウトする")
             return cell
         case .migration:
             let cell = collectionView.dequeueReusableCell(withCellType: DebugCell.self, for: indexPath)

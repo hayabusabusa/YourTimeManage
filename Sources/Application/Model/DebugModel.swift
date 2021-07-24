@@ -13,6 +13,7 @@ protocol DebugModelProtocol {
     var sectionsPublisher: AnyPublisher<[DebugSection], Never> { get }
     var isMigrationCompletedPublisher: AnyPublisher<Void, Never> { get }
     func getSections()
+    func sigOut()
     func crash()
     func migration()
 }
@@ -22,6 +23,7 @@ final class DebugModel: DebugModelProtocol {
     private let authProvider: AuthProviderProtocol
     private let migrationProvider: MigrationProvider
     
+    private var cancellables = Set<AnyCancellable>()
     private let errorSubject: PassthroughSubject<Error, Never>
     private let sectionsSubject: CurrentValueSubject<[DebugSection], Never>
     private let isMigrationCompletedSubject: PassthroughSubject<Void, Never>
@@ -49,11 +51,30 @@ final class DebugModel: DebugModelProtocol {
         sectionsSubject.send([
             .loginStatus(uid: uid),
             .login,
+            .logout,
             .migration,
             .timer,
             .restoreTimer,
             .crash,
         ])
+    }
+    
+    func sigOut() {
+        guard authProvider.currentUser != nil else {
+            return
+        }
+        authProvider.signOut()
+            .sink(receiveCompletion: { [unowned self] completion in
+                switch completion {
+                case .failure(let error):
+                    self.errorSubject.send(error)
+                case .finished:
+                    self.getSections()
+                }
+            }, receiveValue: { _ in
+                // Void
+            })
+            .store(in: &cancellables)
     }
     
     func crash() {

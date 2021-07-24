@@ -54,13 +54,13 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
     
     func didSelectRow(in section: DebugSection) {
         switch section {
-        case .migration:
-            model.migration()
-        case .crash:
-            model.crash()
         case .login:
             let viewModel = LoginViewModel()
             flowContextSubject.send(FlowContext(transitionType: .present(isFullScreen: false), destination: .login(with: viewModel)))
+        case .logout:
+            model.sigOut()
+        case .migration:
+            model.migration()
         case .timer:
             let viewModel = TimerViewModel()
             flowContextSubject.send(FlowContext(transitionType: .present(isFullScreen: true), destination: .timer(with: viewModel)))
@@ -73,6 +73,8 @@ final class DebugViewModel: DebugViewModelInputs, DebugViewModelOutputs {
             } else {
                 messageSubject.send("保存されているタイマーの状態はありません")
             }
+        case .crash:
+            model.crash()
         default:
             return
         }
