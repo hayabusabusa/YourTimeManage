@@ -21,17 +21,16 @@ public protocol FirestoreProviderProtocol: AnyObject {
     /// - Returns: `Future<T, Error>` を返す.
     func getDocument<T: Decodable>(from collection: FirestoreProvider.Collection, path: String, type: T.Type) -> Future<T, Error>
     
-    /// 単一のドキュメントを取得する.
+    /// ドキュメント一覧を取得する.
     ///
-    /// `public/vx/{Collection}/{path}/{SubCollection}/{subPath}` にドキュメントを取りに行く.
+    /// `public/vx/{Collection}/{path}/{SubCollection}` のドキュメントを取りに行く.
     /// - Parameters:
     ///   - collection: `{Collection}` に入るパス.
     ///   - path: `{path}` に入る `Document` のパス.
     ///   - subCollection: `{SubCollection}` に入るパス.
-    ///   - subPath: `{subPath}` に入る `Document` のパス.
     ///   - type: 取得する `Document` の型.
     /// - Returns: `Future<T, Error>` を返す.
-    func getDocument<T: Decodable>(from collection: FirestoreProvider.Collection, path: String, subCollection: FirestoreProvider.SubCollection, subPath: String, type: T.Type) -> Future<T, Error>
+    func getDocuments<T: Decodable>(from collection: FirestoreProvider.Collection, path: String, subCollection: FirestoreProvider.SubCollection, type: T.Type) -> Future<[T], Error>
     
     /// 単一のドキュメントを追加する.
     ///
@@ -122,24 +121,22 @@ public final class FirestoreProvider: FirestoreProviderProtocol {
         }
     }
     
-    public func getDocument<T: Decodable>(from collection: Collection,
-                                          path: String,
-                                          subCollection: SubCollection,
-                                          subPath: String,
-                                          type: T.Type) -> Future<T, Error> {
+    public func getDocuments<T: Decodable>(from collection: FirestoreProvider.Collection,
+                                           path: String,
+                                           subCollection: FirestoreProvider.SubCollection,
+                                           type: T.Type) -> Future<[T], Error> {
         return Future { [weak self] promise in
             self?.db.collection(Root.public.rawValue)
                 .document(Version.v2.rawValue)
                 .collection(collection.rawValue)
                 .document(path)
                 .collection(subCollection.rawValue)
-                .document(subPath)
-                .getDocument(completion: { (snapshot, error) in
+                .getDocuments(completion: { (snapshot, error) in
                     if let error = error {
                         promise(.failure(error))
-                    } else if let data = snapshot?.data() {
+                    } else if let documents = snapshot?.documents {
                         do {
-                            let decoded = try Firestore.Decoder().decode(T.self, from: data)
+                            let decoded = try documents.map { try Firestore.Decoder().decode(T.self, from: $0.data()) }
                             promise(.success(decoded))
                         } catch {
                             promise(.failure(error))
