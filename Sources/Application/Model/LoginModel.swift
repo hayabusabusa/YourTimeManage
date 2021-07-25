@@ -63,7 +63,8 @@ final class LoginModel: LoginModelProtocol {
         
         authProvider.signInAnonymously()
             .flatMap { [unowned self] result -> Future<Void, Error> in
-                let user = User(id: result.user.uid, createdAt: Date())
+                // 新規ユーザーを DB に登録する.
+                let user = User(id: result.user.uid, createdAt: Date(), goal: nil, goalSeconds: nil, lastStudiedAt: nil, todayStudyingSeconds: 0)
                 return self.firestoreProvider.setDocument(to: FirestoreProvider.Collection.users, path: result.user.uid, data: user)
             }
             .sink(receiveCompletion: { [unowned self] completion in

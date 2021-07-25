@@ -87,6 +87,11 @@ final class TimerViewController: UIViewController {
     }
     
     @objc
+    private func addButtonTapped() {
+        viewModel.inputs.addButtonTapped()
+    }
+    
+    @objc
     private func startButtonTapped() {
         viewModel.inputs.startButtonTapped()
     }
@@ -129,7 +134,8 @@ extension TimerViewController {
     }
     
     private func configureNavigation() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "閉じる", style: .done, target: self, action: #selector(closeButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(closeButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存する", style: .done, target: self, action: #selector(addButtonTapped))
     }
     
     private func configureNotificationObserver() {

@@ -11,6 +11,8 @@ import Foundation
 // MARK: - Protocols
 
 protocol TimerViewModelInputs {
+    /// 保存のボタンが押された時.
+    func addButtonTapped()
     /// スタートのボタンが押された時.
     func startButtonTapped()
     /// ストップのボタンが押された時.
@@ -55,6 +57,10 @@ final class TimerViewModel: TimerViewModelInputs, TimerViewModelOutputs {
     }
     
     // MARK: Inputs
+    
+    func addButtonTapped() {
+        
+    }
     
     func startButtonTapped() {
         model.startTimer()
