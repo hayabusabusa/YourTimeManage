@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(name: "Application", targets: ["Application"]),
         .library(name: "Domain", targets: ["Domain"]),
-        .library(name: "Shared", type: .dynamic, targets: ["Shared"]),
+        .library(name: "Shared", targets: ["Shared"]),
         .library(name: "UIComponent", targets: ["UIComponent"]),
     ],
     dependencies: [
