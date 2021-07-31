@@ -52,7 +52,10 @@ final class RootViewModel: RootViewModelInputs, RootViewModelOutputs {
     // MARK: Inputs
     
     func viewDidLoad() {
-        flowContextSubject.send(RootFlowContext(destination: .debug))
+        let destination = model.isSignedIn()
+            ? FlowDestination.debug
+            : FlowDestination.login(with: LoginViewModel())
+        flowContextSubject.send(RootFlowContext(destination: destination))
     }
 }
 
