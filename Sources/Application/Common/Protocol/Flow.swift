@@ -72,6 +72,8 @@ enum FlowDestination {
     case timer(with: TimerViewModelType)
     /// ログイン画面.
     case login(with: LoginViewModelType)
+    /// デバッグ画面.
+    case debug
     
     var viewController: UIViewController {
         switch self {
@@ -81,6 +83,8 @@ enum FlowDestination {
         case .login(let viewModel):
             let vc = LoginViewController(viewModel: viewModel)
             return vc
+        case .debug:
+            return DebugViewController()
         }
     }
 }
