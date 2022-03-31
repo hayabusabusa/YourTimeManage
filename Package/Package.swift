@@ -7,15 +7,28 @@ let package = Package(
     name: "Package",
     platforms: [.iOS(.v13)],
     products: [
-        .library(name: "Package", targets: ["Package"]),
+        .library(
+            name: "AppFeature",
+            targets: [
+                "AppFeature"
+            ]
+        )
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/danielgindi/Charts.git", from: "4.0.0")
+    ],
     targets: [
         .target(
-            name: "Package",
-            dependencies: []),
-        .testTarget(
-            name: "PackageTests",
-            dependencies: ["Package"]),
+            name: "AppFeature",
+            dependencies: [
+                "UIComponent",
+            ]
+        ),
+        .target(
+            name: "UIComponent",
+            dependencies: [
+                .product(name: "Charts", package: "Charts")
+            ]
+        ),
     ]
 )
