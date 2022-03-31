@@ -8,7 +8,7 @@
 import Charts
 import UIKit
 
-final class BarChartView: UIView {
+public final class BarChartView: UIView {
     
     private lazy var chartView: Charts.BarChartView = {
         let chartView = Charts.BarChartView()
@@ -16,12 +16,12 @@ final class BarChartView: UIView {
         return chartView
     }()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         configure()
     }
