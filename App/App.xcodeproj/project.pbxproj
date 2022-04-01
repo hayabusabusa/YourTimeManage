@@ -67,7 +67,7 @@
 		A573ECB927F20D4B002C83C8 = {
 			isa = PBXGroup;
 			children = (
-				A573ECF127F5F889002C83C8 /* Preview */,
+				A573ECDE27F5F879002C83C8 /* UIPreview */,
 				A573ECC427F20D4B002C83C8 /* App */,
 				A573ECC327F20D4B002C83C8 /* Products */,
 				A573ECF227F5F8E3002C83C8 /* Frameworks */,
@@ -108,14 +108,6 @@
 				A573ECED27F5F87C002C83C8 /* Info.plist */,
 			);
 			path = UIPreview;
-			sourceTree = "<group>";
-		};
-		A573ECF127F5F889002C83C8 /* Preview */ = {
-			isa = PBXGroup;
-			children = (
-				A573ECDE27F5F879002C83C8 /* UIPreview */,
-			);
-			path = Preview;
 			sourceTree = "<group>";
 		};
 		A573ECF227F5F8E3002C83C8 /* Frameworks */ = {
@@ -485,7 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Preview/UIPreview/Info.plist;
+				INFOPLIST_FILE = UIPreview/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -513,7 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Preview/UIPreview/Info.plist;
+				INFOPLIST_FILE = UIPreview/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
