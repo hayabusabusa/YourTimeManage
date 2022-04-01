@@ -20,6 +20,8 @@
 		A573ECF427F5F8E3002C83C8 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = A573ECF327F5F8E3002C83C8 /* AppFeature */; };
 		A573ECFC27F5F9EA002C83C8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573ECF527F5F958002C83C8 /* MenuViewController.swift */; };
 		A573ED0027F5FBDA002C83C8 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573ECFE27F5FBDA002C83C8 /* MenuCell.swift */; };
+		A573ED0427F71E11002C83C8 /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573ED0327F71E11002C83C8 /* BarChartViewController.swift */; };
+		A573ED0627F721DD002C83C8 /* MenuViewController+Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573ED0527F721DD002C83C8 /* MenuViewController+Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		A573ECED27F5F87C002C83C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A573ECF527F5F958002C83C8 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A573ECFE27F5FBDA002C83C8 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		A573ED0327F71E11002C83C8 /* BarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
+		A573ED0527F721DD002C83C8 /* MenuViewController+Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuViewController+Section.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 		A573ECF727F5F96F002C83C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A573ED0227F71DF0002C83C8 /* BarChart */,
 				A573ECFD27F5FB09002C83C8 /* Menu */,
 			);
 			path = View;
@@ -133,9 +138,18 @@
 			isa = PBXGroup;
 			children = (
 				A573ECF527F5F958002C83C8 /* MenuViewController.swift */,
+				A573ED0527F721DD002C83C8 /* MenuViewController+Section.swift */,
 				A573ECFE27F5FBDA002C83C8 /* MenuCell.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		A573ED0227F71DF0002C83C8 /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				A573ED0327F71E11002C83C8 /* BarChartViewController.swift */,
+			);
+			path = BarChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,10 +266,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A573ED0627F721DD002C83C8 /* MenuViewController+Section.swift in Sources */,
 				A573ECE027F5F879002C83C8 /* AppDelegate.swift in Sources */,
 				A573ECFC27F5F9EA002C83C8 /* MenuViewController.swift in Sources */,
 				A573ED0027F5FBDA002C83C8 /* MenuCell.swift in Sources */,
 				A573ECE227F5F879002C83C8 /* SceneDelegate.swift in Sources */,
+				A573ED0427F71E11002C83C8 /* BarChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

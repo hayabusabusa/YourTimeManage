@@ -85,32 +85,8 @@ extension MenuViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-    }
-}
-
-// MARK: - DataSource
-
-private extension MenuViewController {
-    
-    enum Section {
-        case all
-    }
-    
-    enum Item: CaseIterable {
-        case barChart
         
-        var title: String {
-            switch self {
-            case .barChart:
-                return "棒グラフ"
-            }
-        }
-        
-        var iconImage: UIImage {
-            switch self {
-            case .barChart:
-                return .init(systemName: "chart.bar.fill")!
-            }
-        }
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        navigationController?.pushViewController(item.destination, animated: true)
     }
 }
