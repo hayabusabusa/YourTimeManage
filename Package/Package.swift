@@ -37,7 +37,9 @@ let package = Package(
         ),
         .target(
             name: "Domain",
-            dependencies: []
+            dependencies: [
+                "Core"
+            ]
         ),
         .target(
             name: "UIComponent",
