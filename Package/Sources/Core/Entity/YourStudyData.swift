@@ -8,11 +8,10 @@
 import Foundation
 
 /// 旧アプリで使用していた勉強のデータ.
-/// - Note: `NSCoding` を利用してアーカイブを行うために、以前と同じターゲット、ソースを用意する必要がある.
-///          よって、**このクラスはマイグレーション以外で使用しない**.
+/// - Note: 以前保存していたデータを読み込むためだけに使用するため、**このクラスはマイグレーション以外で使用しない**.
 public final class YourStudyData: NSObject, NSCoding {
     /// 旧クラスと新クラスの型を紐づけるために `NSKeyedUnarchiver.setClass(_:forClassName:)` に指定するクラス名.
-    public static className = "YourTimeManage.YourStudyData"
+    public static let className = "YourTimeManage.YourStudyData"
     
     public let date: String?
     public let title: String?
