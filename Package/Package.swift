@@ -23,8 +23,9 @@ let package = Package(
         .target(
             name: "AppFeature",
             dependencies: [
-                "UIComponent",
                 "Core",
+                "Domain",
+                "UIComponent"
             ]
         ),
         
@@ -32,6 +33,10 @@ let package = Package(
         
         .target(
             name: "Core",
+            dependencies: []
+        ),
+        .target(
+            name: "Domain",
             dependencies: []
         ),
         .target(
