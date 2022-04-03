@@ -18,11 +18,20 @@ let package = Package(
         .package(url: "https://github.com/danielgindi/Charts.git", from: "4.0.0")
     ],
     targets: [
+        // MARK: Feature modules
+        
         .target(
             name: "AppFeature",
             dependencies: [
                 "UIComponent",
             ]
+        ),
+        
+        // MARK: Internal modules
+        
+        .target(
+            name: "Core",
+            dependencies: []
         ),
         .target(
             name: "UIComponent",
