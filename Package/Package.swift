@@ -24,6 +24,7 @@ let package = Package(
             name: "AppFeature",
             dependencies: [
                 "UIComponent",
+                "Core",
             ]
         ),
         
