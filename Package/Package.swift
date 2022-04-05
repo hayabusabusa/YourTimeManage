@@ -15,7 +15,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/danielgindi/Charts.git", from: "4.0.0")
+        .package(url: "https://github.com/danielgindi/Charts.git", from: "4.0.0"),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "8.14.0"),
     ],
     targets: [
         // MARK: Feature modules
@@ -38,7 +39,10 @@ let package = Package(
         .target(
             name: "Domain",
             dependencies: [
-                "Core"
+                "Core",
+                .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseFirestoreSwift-Beta", package: "firebase-ios-sdk"),
             ]
         ),
         .target(
