@@ -42,16 +42,18 @@ public struct UserDefaultsService {
 
 public extension UserDefaultsService {
     
-    static var live: Self {
+    static func live(
+        userDefaults: UserDefaults = .standard
+    ) -> Self {
         return .init(
             setValue: { value, key in
-                UserDefaults.standard.set(value, forKey: key.rawValue)
+                userDefaults.set(value, forKey: key.rawValue)
             },
             object: { key in
-                return UserDefaults.standard.object(forKey: key.rawValue)
+                userDefaults.object(forKey: key.rawValue)
             },
             removeObject: { key in
-                UserDefaults.standard.removeObject(forKey: key.rawValue)
+                userDefaults.removeObject(forKey: key.rawValue)
             }
         )
     }
