@@ -32,7 +32,9 @@ public enum V200MigrationError: Error {
 
 public extension V200Migrator {
 
-    static func live(userDefaultsService: UserDefaultsService) -> Self {
+    static func live(
+        userDefaultsService: UserDefaultsService = .live()
+    ) -> Self {
         return Self.init(
             isStoredOldData: {
                 return userDefaultsService.object(.oldList) != nil
