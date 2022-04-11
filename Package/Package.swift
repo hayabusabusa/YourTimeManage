@@ -26,7 +26,15 @@ let package = Package(
             dependencies: [
                 "Core",
                 "Domain",
-                "UIComponent"
+                "UIComponent",
+                "SignInFeature",
+            ]
+        ),
+        .target(
+            name: "SignInFeature",
+            dependencies: [
+                "Core",
+                "Domain",
             ]
         ),
         
