@@ -11,10 +11,10 @@ import FirebaseAuth
 public struct AuthService {
 
     /// サインイン済みかどうか.
-    var isSignedIn: () -> Future<Bool, Never>
+    public var isSignedIn: () -> Future<Bool, Never>
 
     /// 匿名認証でサインインする.
-    var signInAnonymously: () -> Future<FirebaseAuth.User, Error>
+    public var signInAnonymously: () -> Future<FirebaseAuth.User, Error>
 }
 
 public extension AuthService {
