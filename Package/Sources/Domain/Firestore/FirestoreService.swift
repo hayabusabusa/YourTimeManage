@@ -23,6 +23,9 @@ public struct FirestoreService {
     /// 任意のコレクションからドキュメント一覧を取得する.
     public var documents: (_ reference: CollectionReference) -> Future<QuerySnapshot, Error>
 
+    /// ドキュメント一覧を追加する.
+    public var addDocuments: (_ reference: CollectionReference, _ data: [String: Any]) -> Future<DocumentReference, Error>
+
     /// 任意のクエリでドキュメント一覧を取得する.
     public var query: (_ query: Query) -> Future<QuerySnapshot, Error>
 
@@ -54,6 +57,16 @@ public struct FirestoreService {
             .eraseToAnyPublisher()
     }
 
+    public func addDocuments<T: CollectionReferencable, U: Encodable>(for referencable: T, data: U) -> AnyPublisher<Void, Error> {
+        let reference = referencable.toReference(with: db())
+        let encoder = Firestore.Encoder()
+        return Just(data)
+            .tryMap { try encoder.encode($0) }
+            .flatMap { addDocuments(reference, $0) }
+            .map { _ in () }
+            .eraseToAnyPublisher()
+    }
+
     /// クエリからドキュメント一覧を取得する.
     public func documents<T: QueryReferencable, U: Decodable>(for referencable: T, type: U.Type) -> AnyPublisher<[U], Error> {
         let reference = referencable.toReference(with: db())
@@ -81,6 +94,9 @@ public extension FirestoreService {
             },
             documents: { reference in
                 return reference.getDocuments()
+            },
+            addDocuments: { reference, data in
+                return reference.addDocument(data: data)
             },
             query: { query in
                 return query.getDocuments()
