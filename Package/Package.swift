@@ -31,6 +31,13 @@ let package = Package(
             ]
         ),
         .target(
+            name: "GoalSettingFeature",
+            dependencies: [
+                "Core",
+                "Domain",
+            ]
+        ),
+        .target(
             name: "SignInFeature",
             dependencies: [
                 "Core",
