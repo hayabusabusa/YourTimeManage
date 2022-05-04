@@ -44,6 +44,13 @@ let package = Package(
                 "Domain",
             ]
         ),
+        .target(
+            name: "TimerFeature",
+            dependencies: [
+                "Core",
+                "Domain",
+            ]
+        ),
         
         // MARK: Internal modules
         
