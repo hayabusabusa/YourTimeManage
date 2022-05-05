@@ -27,7 +27,7 @@ public final class CircleButtonView: UIView {
     }()
 
     public private(set) lazy var button: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = .clear
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
