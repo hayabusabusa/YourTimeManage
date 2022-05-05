@@ -14,10 +14,13 @@ extension MenuViewController {
     }
     
     enum Item: CaseIterable {
+        case buttons
         case barChart
         
         var destination: UIViewController {
             switch self {
+            case .buttons:
+                return ButtonsViewController()
             case .barChart:
                 return BarChartViewController()
             }
@@ -25,6 +28,8 @@ extension MenuViewController {
         
         var title: String {
             switch self {
+            case .buttons:
+                return "ボタン一覧"
             case .barChart:
                 return "棒グラフ"
             }
@@ -32,6 +37,8 @@ extension MenuViewController {
         
         var iconImage: UIImage {
             switch self {
+            case .buttons:
+                return .init(systemName: "rectangle.fill")!
             case .barChart:
                 return .init(systemName: "chart.bar.fill")!
             }

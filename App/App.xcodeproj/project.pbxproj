@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A55463A22823F7FD00FFF6A6 /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55463A12823F7FD00FFF6A6 /* ButtonsViewController.swift */; };
 		A573ECC627F20D4B002C83C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573ECC527F20D4B002C83C8 /* AppDelegate.swift */; };
 		A573ECC827F20D4B002C83C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573ECC727F20D4B002C83C8 /* SceneDelegate.swift */; };
 		A573ECCA27F20D4B002C83C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573ECC927F20D4B002C83C8 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A55463A12823F7FD00FFF6A6 /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		A573ECC227F20D4B002C83C8 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A573ECC527F20D4B002C83C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A573ECC727F20D4B002C83C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A55463A02823F7E700FFF6A6 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A55463A12823F7FD00FFF6A6 /* ButtonsViewController.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		A573ECB927F20D4B002C83C8 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				A573ED0227F71DF0002C83C8 /* BarChart */,
+				A55463A02823F7E700FFF6A6 /* Buttons */,
 				A573ECFD27F5FB09002C83C8 /* Menu */,
 			);
 			path = View;
@@ -262,6 +273,7 @@
 				A573ECE027F5F879002C83C8 /* AppDelegate.swift in Sources */,
 				A573ECFC27F5F9EA002C83C8 /* MenuViewController.swift in Sources */,
 				A573ED0027F5FBDA002C83C8 /* MenuCell.swift in Sources */,
+				A55463A22823F7FD00FFF6A6 /* ButtonsViewController.swift in Sources */,
 				A573ECE227F5F879002C83C8 /* SceneDelegate.swift in Sources */,
 				A573ED0427F71E11002C83C8 /* BarChartViewController.swift in Sources */,
 			);
