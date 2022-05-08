@@ -37,7 +37,7 @@ extension SignInModel {
             isCompleted: isCompletedSubject.eraseToAnyPublisher(),
             error: errorSubject.eraseToAnyPublisher(),
             signIn: {
-                authService.isSignedIn()
+                Just(authService.isSignedIn())
                     .setFailureType(to: Error.self)
                     .flatMap { isSignedIn in
                         return isSignedIn
