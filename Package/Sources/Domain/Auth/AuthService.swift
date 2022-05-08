@@ -10,23 +10,20 @@ import FirebaseAuth
 
 public struct AuthService {
     /// サインイン済みかどうか.
-    public var isSignedIn: () -> Future<Bool, Never>
+    public var isSignedIn: () -> Bool
 
     /// 匿名認証でサインインする.
     public var signInAnonymously: () -> Future<FirebaseAuth.User, Error>
 
     /// 現在サインインしているユーザー情報.
-    public var currentUser: () -> Future<FirebaseAuth.User?, Never>
+    public var currentUser: () -> FirebaseAuth.User?
 }
 
 public extension AuthService {
 
     static let live = Self.init(
         isSignedIn: {
-            return Future { promise in
-                let isSignedIn = Auth.auth().currentUser != nil
-                promise(.success(isSignedIn))
-            }
+            return Auth.auth().currentUser != nil
         },
         signInAnonymously: {
             return Future { promise in
@@ -40,9 +37,7 @@ public extension AuthService {
             }
         },
         currentUser: {
-            return Future { promise in
-                promise(.success(Auth.auth().currentUser))
-            }
+            return Auth.auth().currentUser
         }
     )
 }
