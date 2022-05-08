@@ -12,7 +12,7 @@ public struct Study: Codable {
     /// 勉強した日付.
     public let date: Date
     /// 勉強のデータのタイトル.
-    public let title: String?
+    public let title: String
     /// 勉強した時間( 秒換算 ).
     public let seconds: Int
     /// 勉強のデータに追加したメモ.
@@ -20,7 +20,7 @@ public struct Study: Codable {
     
     public init(
         date: Date,
-        title: String?,
+        title: String,
         seconds: Int,
         memo: String?
     ) {
