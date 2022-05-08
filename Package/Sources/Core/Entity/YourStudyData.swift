@@ -12,7 +12,8 @@ import Foundation
 public final class YourStudyData: NSObject, NSCoding {
     /// 旧クラスと新クラスの型を紐づけるために `NSKeyedUnarchiver.setClass(_:forClassName:)` に指定するクラス名.
     public static let className = "YourTimeManage.YourStudyData"
-    
+
+    /// `yyyy-MM-dd` 形式の日付.
     public let date: String?
     public let title: String?
     public let hour: Int
