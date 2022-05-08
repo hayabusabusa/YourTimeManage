@@ -9,12 +9,14 @@ import Combine
 import FirebaseAuth
 
 public struct AuthService {
-
     /// サインイン済みかどうか.
     public var isSignedIn: () -> Future<Bool, Never>
 
     /// 匿名認証でサインインする.
     public var signInAnonymously: () -> Future<FirebaseAuth.User, Error>
+
+    /// 現在サインインしているユーザー情報.
+    public var currentUser: () -> Future<FirebaseAuth.User?, Never>
 }
 
 public extension AuthService {
@@ -35,6 +37,11 @@ public extension AuthService {
                         promise(.success(result.user))
                     }
                 }
+            }
+        },
+        currentUser: {
+            return Future { promise in
+                promise(.success(Auth.auth().currentUser))
             }
         }
     )
