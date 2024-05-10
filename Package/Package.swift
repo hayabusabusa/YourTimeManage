@@ -1,78 +1,32 @@
-// swift-tools-version:5.5
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "Package",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v16)],
     products: [
         .library(
-            name: "AppFeature",
-            targets: [
-                "AppFeature"
-            ]
-        )
+            name: "Package",
+            targets: ["Package"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/danielgindi/Charts.git", from: "4.0.0"),
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "8.14.0"),
+        .package(
+            url: "https://github.com/firebase/firebase-ios-sdk.git",
+            from: "10.19.0"),
+        .package(
+            url: "https://github.com/pointfreeco/swift-composable-architecture",
+            from: "1.6.0"),
+        .package(
+            url: "https://github.com/pointfreeco/swift-dependencies",
+            from: "1.1.5"),
     ],
     targets: [
-        // MARK: Feature modules
-        
         .target(
-            name: "AppFeature",
-            dependencies: [
-                "Core",
-                "Domain",
-                "UIComponent",
-                "SignInFeature",
-            ]
-        ),
-        .target(
-            name: "GoalSettingFeature",
-            dependencies: [
-                "Core",
-                "Domain",
-            ]
-        ),
-        .target(
-            name: "SignInFeature",
-            dependencies: [
-                "Core",
-                "Domain",
-            ]
-        ),
-        .target(
-            name: "TimerFeature",
-            dependencies: [
-                "Core",
-                "Domain",
-            ]
-        ),
-        
-        // MARK: Internal modules
-        
-        .target(
-            name: "Core",
-            dependencies: []
-        ),
-        .target(
-            name: "Domain",
-            dependencies: [
-                "Core",
-                .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
-                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
-                .product(name: "FirebaseFirestoreSwift-Beta", package: "firebase-ios-sdk"),
-                .product(name: "FirebaseFirestoreCombine-Community", package: "firebase-ios-sdk"),
-            ]
-        ),
-        .target(
-            name: "UIComponent",
-            dependencies: [
-                .product(name: "Charts", package: "Charts")
-            ]
-        ),
+            name: "Package"),
+        .testTarget(
+            name: "PackageTests",
+            dependencies: ["Package"]),
     ]
 )
