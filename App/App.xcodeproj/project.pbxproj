@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A5E4E8172BEE2B0300C17005 /* AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E8162BEE2B0300C17005 /* AppApp.swift */; };
-		A5E4E8192BEE2B0300C17005 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E8182BEE2B0300C17005 /* ContentView.swift */; };
+		A5E4E8172BEE2B0300C17005 /* YourTimeManageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E8162BEE2B0300C17005 /* YourTimeManageApp.swift */; };
 		A5E4E81B2BEE2B0500C17005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E81A2BEE2B0500C17005 /* Assets.xcassets */; };
 		A5E4E81F2BEE2B0500C17005 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E81E2BEE2B0500C17005 /* Preview Assets.xcassets */; };
+		A5E4E8272BEF417A00C17005 /* FirebaseClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = A5E4E8262BEF417A00C17005 /* FirebaseClientLive */; };
+		A5E4E8292BEF458800C17005 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = A5E4E8282BEF458800C17005 /* AppFeature */; };
+		A5E4E82B2BEF45BA00C17005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E82A2BEF45BA00C17005 /* AppDelegate.swift */; };
+		A5E4E82D2BEF474700C17005 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E82C2BEF474700C17005 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A5E4E8132BEE2B0300C17005 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5E4E8162BEE2B0300C17005 /* AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppApp.swift; sourceTree = "<group>"; };
-		A5E4E8182BEE2B0300C17005 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A5E4E8162BEE2B0300C17005 /* YourTimeManageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourTimeManageApp.swift; sourceTree = "<group>"; };
 		A5E4E81A2BEE2B0500C17005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5E4E81C2BEE2B0500C17005 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 		A5E4E81E2BEE2B0500C17005 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A5E4E82A2BEF45BA00C17005 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A5E4E82C2BEF474700C17005 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +31,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E4E8272BEF417A00C17005 /* FirebaseClientLive in Frameworks */,
+				A5E4E8292BEF458800C17005 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +44,7 @@
 			children = (
 				A5E4E8152BEE2B0300C17005 /* App */,
 				A5E4E8142BEE2B0300C17005 /* Products */,
+				A5E4E8252BEF417A00C17005 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,8 +59,9 @@
 		A5E4E8152BEE2B0300C17005 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				A5E4E8162BEE2B0300C17005 /* AppApp.swift */,
-				A5E4E8182BEE2B0300C17005 /* ContentView.swift */,
+				A5E4E82A2BEF45BA00C17005 /* AppDelegate.swift */,
+				A5E4E8162BEE2B0300C17005 /* YourTimeManageApp.swift */,
+				A5E4E82C2BEF474700C17005 /* GoogleService-Info.plist */,
 				A5E4E81A2BEE2B0500C17005 /* Assets.xcassets */,
 				A5E4E81C2BEE2B0500C17005 /* App.entitlements */,
 				A5E4E81D2BEE2B0500C17005 /* Preview Content */,
@@ -67,6 +75,13 @@
 				A5E4E81E2BEE2B0500C17005 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A5E4E8252BEF417A00C17005 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +100,10 @@
 			dependencies = (
 			);
 			name = App;
+			packageProductDependencies = (
+				A5E4E8262BEF417A00C17005 /* FirebaseClientLive */,
+				A5E4E8282BEF458800C17005 /* AppFeature */,
+			);
 			productName = App;
 			productReference = A5E4E8132BEE2B0300C17005 /* App.app */;
 			productType = "com.apple.product-type.application";
@@ -129,6 +148,7 @@
 			files = (
 				A5E4E81F2BEE2B0500C17005 /* Preview Assets.xcassets in Resources */,
 				A5E4E81B2BEE2B0500C17005 /* Assets.xcassets in Resources */,
+				A5E4E82D2BEF474700C17005 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5E4E8192BEE2B0300C17005 /* ContentView.swift in Sources */,
-				A5E4E8172BEE2B0300C17005 /* AppApp.swift in Sources */,
+				A5E4E82B2BEF45BA00C17005 /* AppDelegate.swift in Sources */,
+				A5E4E8172BEE2B0300C17005 /* YourTimeManageApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +381,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A5E4E8262BEF417A00C17005 /* FirebaseClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseClientLive;
+		};
+		A5E4E8282BEF458800C17005 /* AppFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppFeature;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A5E4E80B2BEE2B0300C17005 /* Project object */;
 }

@@ -8,25 +8,47 @@ let package = Package(
     platforms: [.iOS(.v16)],
     products: [
         .library(
-            name: "Package",
-            targets: ["Package"]),
+            name: "AppFeature",
+            targets: ["AppFeature"]),
+        .library(
+            name: "FirebaseClient",
+            targets: ["FirebaseClient"]),
+        .library(
+            name: "FirebaseClientLive",
+            targets: ["FirebaseClientLive"]),
     ],
     dependencies: [
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk.git",
-            from: "10.19.0"),
+            from: "10.25.0"),
         .package(
             url: "https://github.com/pointfreeco/swift-composable-architecture",
-            from: "1.6.0"),
+            from: "1.10.3"),
         .package(
             url: "https://github.com/pointfreeco/swift-dependencies",
-            from: "1.1.5"),
+            from: "1.3.0"),
     ],
     targets: [
         .target(
-            name: "Package"),
+            name: "AppFeature",
+            dependencies: [
+                "FirebaseClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]),
+        .target(
+            name: "FirebaseClient",
+            dependencies: [
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]),
+        .target(
+            name: "FirebaseClientLive",
+            dependencies: [
+                "FirebaseClient",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+                .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+            ]),
         .testTarget(
             name: "PackageTests",
-            dependencies: ["Package"]),
+            dependencies: []),
     ]
 )
