@@ -11,11 +11,22 @@ let package = Package(
             name: "AppFeature",
             targets: ["AppFeature"]),
         .library(
+            name: "AuthClient",
+            targets: ["AuthClient"]),
+        .library(
+            name: "AuthClientLive",
+            targets: ["AuthClientLive"]),
+        .library(
             name: "FirebaseClient",
             targets: ["FirebaseClient"]),
         .library(
             name: "FirebaseClientLive",
             targets: ["FirebaseClientLive"]),
+        .library(
+            name: "SharedModels",
+            targets: [
+                "SharedModels"
+            ]),
     ],
     dependencies: [
         .package(
@@ -35,6 +46,21 @@ let package = Package(
                 "FirebaseClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]),
+
+        // MARK: - Client
+        .target(
+            name: "AuthClient",
+            dependencies: [
+                "SharedModels",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]),
+        .target(
+            name: "AuthClientLive",
+            dependencies: [
+                "AuthClient",
+                "SharedModels",
+                .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
+            ]),
         .target(
             name: "FirebaseClient",
             dependencies: [
@@ -47,6 +73,10 @@ let package = Package(
                 .product(name: "Dependencies", package: "swift-dependencies"),
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
             ]),
+        .target(
+            name: "SharedModels"),
+
+        // MARK: - Tests
         .testTarget(
             name: "PackageTests",
             dependencies: []),
