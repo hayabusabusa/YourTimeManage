@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "Package",
-    platforms: [.iOS(.v16)],
+    platforms: [.iOS(.v17)],
     products: [
         .library(
             name: "AppFeature",
@@ -27,6 +27,11 @@ let package = Package(
             targets: [
                 "SharedModels"
             ]),
+        .library(
+            name: "TimerFeature",
+            targets: [
+                "TimerFeature"
+            ])
     ],
     dependencies: [
         .package(
@@ -40,11 +45,23 @@ let package = Package(
             from: "1.3.0"),
     ],
     targets: [
+        // MARK: - Feature
         .target(
             name: "AppFeature",
             dependencies: [
                 "FirebaseClient",
+                "TimerFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]),
+        .target(
+            name: "TimerFeature",
+            dependencies: [
+                "SharedModels",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ],
+            resources: [
+                .process("Resources")
             ]),
 
         // MARK: - Client
