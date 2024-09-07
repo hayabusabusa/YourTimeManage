@@ -29,6 +29,8 @@ public struct TimerFeature {
     }
 
     public enum Action {
+        /// `ScenePhase` の値が変わった時の `Action`.
+        case didChangeScenePhase(ScenePhase)
         /// 画面を開いた時の `Action`.
         case onAppear
         /// 画面を閉じた時の `Action`.
@@ -51,16 +53,19 @@ public struct TimerFeature {
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case .onAppear:
-                state.isTimerActive = true
-                return .run { [isTimerActive = state.isTimerActive, clock = self.clock] send in
-                    guard isTimerActive else { return }
-                    for await _ in clock.timer(interval: .seconds(1)) {
-                        await send(.timerTicked)
-                    }
+            case .didChangeScenePhase(let scenePhase):
+                if case .active = scenePhase {
+                    // フォアグラウンド復帰時にタイマー起動中だったら復元させる
+                    restoreTimerIfNeeded()
+                } else if case .background = scenePhase {
+                    // バックグラウンド以降時にタイマー起動中ならタイマーの状態を保存する
+                    storeTimerIfNeeded(isTimerActive: state.isTimerActive)
                 }
-                .cancellable(id: CancelID.timer, cancelInFlight: true)
 
+                return .none
+            case .onAppear:
+
+                return .none
             case .onDisappear:
                 return .cancel(id: CancelID.timer)
 
@@ -87,9 +92,23 @@ public struct TimerFeature {
     public init() {}
 }
 
+private extension TimerFeature {
+    func storeTimerIfNeeded(isTimerActive: Bool) {
+        guard !isTimerActive else { return }
+        // TODO: UserDefaults に保存する
+    }
+
+    func restoreTimerIfNeeded() {
+        // TODO: UserDefaults から読み込む
+    }
+}
+
 // MARK: - View
 
 public struct TimerView: View {
+    private let formatter = DateComponentsFormatter()
+    @Environment(\.scenePhase) private var scenePhase
+
     let store: StoreOf<TimerFeature>
 
     public var body: some View {
@@ -104,12 +123,52 @@ public struct TimerView: View {
 //                            color: Color(.red)
 //                        )
                     }
-                Text("お勉強頑張りましょう")
+                Text("サブテキスト")
                     .font(.system(size: 12, weight: .medium))
-                    .foregroundStyle(Color.white)
+                    .foregroundStyle(Color.gray)
+
+                Spacer()
+                    .frame(height: 40)
+
+                HStack {
+                    Button {
+
+                    } label: {
+                        Text("ラップ")
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+
+                    Button {
+                        if viewStore.isTimerActive {
+                            viewStore.send(.stopButtonTapped)
+                        } else {
+                            viewStore.send(.startButtonTapped)
+                        }
+                    } label: {
+                        Image(systemName: viewStore.isTimerActive ? "pause.fill" : "play.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 24, height: 24)
+                            .padding(4)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.circle)
+
+                    Button {
+
+                    } label: {
+                        Text("記録する")
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                }
             }
             .onAppear {
                 viewStore.send(.onAppear)
+            }
+            .onChange(of: scenePhase) { _, newValue in
+                viewStore.send(.didChangeScenePhase(newValue))
             }
             .onDisappear {
                 viewStore.send(.onDisappear)
@@ -124,7 +183,6 @@ public struct TimerView: View {
 
 private extension TimerView {
     func formate(_ secondsElapsed: Int) -> String {
-        let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [.hour, .minute, .second]
         formatter.zeroFormattingBehavior = .pad
