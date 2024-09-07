@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A518E0B72C8CB6B200F9DEA1 /* FirestoreClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = A518E0B62C8CB6B200F9DEA1 /* FirestoreClientLive */; };
 		A51BFEAD2C02467B00ACE7C8 /* AuthClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = A51BFEAC2C02467B00ACE7C8 /* AuthClientLive */; };
 		A5E4E8172BEE2B0300C17005 /* YourTimeManageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E8162BEE2B0300C17005 /* YourTimeManageApp.swift */; };
 		A5E4E81B2BEE2B0500C17005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E81A2BEE2B0500C17005 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E4E8272BEF417A00C17005 /* FirebaseClientLive in Frameworks */,
+				A518E0B72C8CB6B200F9DEA1 /* FirestoreClientLive in Frameworks */,
 				A5E4E8292BEF458800C17005 /* AppFeature in Frameworks */,
 				A51BFEAD2C02467B00ACE7C8 /* AuthClientLive in Frameworks */,
 			);
@@ -106,6 +108,7 @@
 				A5E4E8262BEF417A00C17005 /* FirebaseClientLive */,
 				A5E4E8282BEF458800C17005 /* AppFeature */,
 				A51BFEAC2C02467B00ACE7C8 /* AuthClientLive */,
+				A518E0B62C8CB6B200F9DEA1 /* FirestoreClientLive */,
 			);
 			productName = App;
 			productReference = A5E4E8132BEE2B0300C17005 /* App.app */;
@@ -386,6 +389,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A518E0B62C8CB6B200F9DEA1 /* FirestoreClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirestoreClientLive;
+		};
 		A51BFEAC2C02467B00ACE7C8 /* AuthClientLive */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AuthClientLive;

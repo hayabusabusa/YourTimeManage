@@ -23,6 +23,12 @@ let package = Package(
             name: "FirebaseClientLive",
             targets: ["FirebaseClientLive"]),
         .library(
+            name: "FirestoreClient",
+            targets: ["FirestoreClient"]),
+        .library(
+            name: "FirestoreClientLive",
+            targets: ["FirestoreClientLive"]),
+        .library(
             name: "SharedModels",
             targets: [
                 "SharedModels"
@@ -89,6 +95,20 @@ let package = Package(
                 "FirebaseClient",
                 .product(name: "Dependencies", package: "swift-dependencies"),
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+            ]),
+        .target(
+            name: "FirestoreClient",
+            dependencies: [
+                "SharedModels",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]),
+        .target(
+            name: "FirestoreClientLive",
+            dependencies: [
+                "FirestoreClient",
+                "SharedModels",
+                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"),
             ]),
         .target(
             name: "SharedModels"),
