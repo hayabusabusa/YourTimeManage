@@ -7,19 +7,46 @@
 
 import Dependencies
 import Foundation
+import SharedModels
 
 /// Firestore の操作を行うクライアント.
-public struct FirestoreClient {}
+public struct FirestoreClient {
+    /// `/users/{userID}/studies` にデータを追加する.
+    var addStudy: @Sendable (AddStudyRequest) async throws -> Void
+
+    public init(addStudy: @escaping @Sendable (AddStudyRequest) async throws -> Void) {
+        self.addStudy = addStudy
+    }
+}
+
+public extension FirestoreClient {
+    struct AddStudyRequest: Equatable {
+        public let userID: String
+        public let study: Study
+
+        public init(
+            userID: String,
+            study: Study
+        ) {
+            self.userID = userID
+            self.study = study
+        }
+    }
+}
 
 // MARK: - Dependencies
 
 extension FirestoreClient: TestDependencyKey {
     public static var previewValue: FirestoreClient {
-        .init()
+        .init(
+            addStudy: { _ in }
+        )
     }
 
     public static var testValue: FirestoreClient {
-        .init()
+        .init(
+            addStudy: { _ in unimplemented("\(Self.self)\(#function)") }
+        )
     }
 }
 
