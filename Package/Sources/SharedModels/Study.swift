@@ -25,7 +25,7 @@ public struct Study: Identifiable, Equatable, Sendable, Codable {
     public let tags: [String]
 
     public init(
-        id: String,
+        id: String?,
         title: String,
         seconds: Int,
         createdDate: Date,
