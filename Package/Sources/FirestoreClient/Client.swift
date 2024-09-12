@@ -12,7 +12,7 @@ import SharedModels
 /// Firestore の操作を行うクライアント.
 public struct FirestoreClient {
     /// `/users/{userID}/studies` にデータを追加する.
-    var addStudy: @Sendable (AddStudyRequest) async throws -> Void
+    public var addStudy: @Sendable (AddStudyRequest) async throws -> Void
 
     public init(addStudy: @escaping @Sendable (AddStudyRequest) async throws -> Void) {
         self.addStudy = addStudy
