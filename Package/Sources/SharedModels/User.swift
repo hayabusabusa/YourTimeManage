@@ -8,7 +8,7 @@
 import Foundation
 
 /// ログイン済みのユーザーを表すモデル.
-public struct User: Identifiable {
+public struct User: Identifiable, Equatable, Sendable, Codable {
     /// Firebase Auth でサインインした際の `uid`.
     public var id: String
 
