@@ -5,8 +5,11 @@
 //  Created by Shunya Yamada on 2024/07/13.
 //
 
+import AuthClient
 import ComposableArchitecture
 import Dependencies
+import FirestoreClient
+import SharedModels
 import SwiftUI
 
 // MARK: - Reducer
@@ -35,6 +38,8 @@ public struct TimerFeature {
         case onAppear
         /// 画面を閉じた時の `Action`.
         case onDisappear
+        /// 保存ボタンタップ時の `Action`.
+        case saveButtonTapped
         /// タイマー開始のボタンタップ時の `Action`.
         case startButtonTapped
         /// タイマー停止のボタンタップ時の `Action`.
@@ -48,7 +53,10 @@ public struct TimerFeature {
         case timer
     }
 
+    @Dependency(\.authClient) var authClient
     @Dependency(\.continuousClock) var clock
+    @Dependency(\.date) var dateGenerator
+    @Dependency(\.firestoreClient) var firestoreClient
 
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -64,10 +72,40 @@ public struct TimerFeature {
 
                 return .none
             case .onAppear:
+                return .run { send in
+                    // TODO: ここでは認証処理を行わないので後で消す.
+                    guard !authClient.isSignIn() else {
+                        return
+                    }
+                    _ = try? await authClient.signInAsAnonymousUser()
+                }
 
-                return .none
             case .onDisappear:
                 return .cancel(id: CancelID.timer)
+
+            case .saveButtonTapped:
+                return .run { [secondsElapsed = state.secondsElapsed] send in
+                    // TODO: ここでは保存処理を行わないので後で消す.
+                    guard let userID = authClient.uid() else {
+                        return
+                    }
+
+                    let now = self.dateGenerator.now
+                    let study = Study(
+                        id: nil,
+                        title: now.description,
+                        seconds: secondsElapsed,
+                        createdDate: now,
+                        updatedDate: nil,
+                        note: nil,
+                        tags: []
+                    )
+                    let request = FirestoreClient.AddStudyRequest(
+                        userID: userID,
+                        study: study
+                    )
+                    try? await firestoreClient.addStudy(request)
+                }
 
             case .startButtonTapped:
                 state.isTimerActive = true
@@ -114,30 +152,22 @@ public struct TimerView: View {
     public var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack {
-                Text(formate(viewStore.secondsElapsed))
-                    .font(Font(UIFont.monospacedDigitSystemFont(ofSize: 40, weight: .bold)))
-                    .background {
-                        // NOTE: アニメーションのオンオフをコントロールできるか分からないので一旦コメントアウト
-//                        WaveAnimationView(
-//                            size: 220,
-//                            color: Color(.red)
-//                        )
-                    }
-                Text("サブテキスト")
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundStyle(Color.gray)
+                VStack {
+                    Text(formate(viewStore.secondsElapsed))
+                        .font(Font(UIFont.monospacedDigitSystemFont(ofSize: 40, weight: .bold)))
+                        .background {
+                            // NOTE: アニメーションのオンオフをコントロールできるか分からないので一旦コメントアウト
+    //                        WaveAnimationView(
+    //                            size: 220,
+    //                            color: Color(.red)
+    //                        )
+                        }
+                    Text("サブテキスト")
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundStyle(Color.gray)
 
-                Spacer()
-                    .frame(height: 40)
-
-                HStack {
-                    Button {
-
-                    } label: {
-                        Text("ラップ")
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
+                    Spacer()
+                        .frame(height: 40)
 
                     Button {
                         if viewStore.isTimerActive {
@@ -150,20 +180,27 @@ public struct TimerView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 24, height: 24)
-                            .padding(4)
+                            .padding()
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.circle)
-
-                    Button {
-
-                    } label: {
-                        Text("記録する")
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.capsule)
                 }
+
+                Spacer()
+
+                Button {
+//                    viewStore.send(.saveButtonTapped)
+                } label: {
+                    Text("記録する")
+                        .bold()
+                        .frame(maxWidth: .infinity)
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.capsule)
+                .controlSize(.large)
             }
+            .padding()
             .onAppear {
                 viewStore.send(.onAppear)
             }
