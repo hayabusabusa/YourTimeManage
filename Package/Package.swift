@@ -13,25 +13,39 @@ let package = Package(
     products: [
         .library(
             name: "AppFeature",
-            targets: ["AppFeature"]),
+            targets: [
+                "AppFeature"
+            ]),
         .library(
             name: "AuthClient",
-            targets: ["AuthClient"]),
+            targets: [
+                "AuthClient"
+            ]),
         .library(
             name: "AuthClientLive",
-            targets: ["AuthClientLive"]),
+            targets: [
+                "AuthClientLive"
+            ]),
         .library(
             name: "FirebaseClient",
-            targets: ["FirebaseClient"]),
+            targets: [
+                "FirebaseClient"
+            ]),
         .library(
             name: "FirebaseClientLive",
-            targets: ["FirebaseClientLive"]),
+            targets: [
+                "FirebaseClientLive"
+            ]),
         .library(
             name: "FirestoreClient",
-            targets: ["FirestoreClient"]),
+            targets: [
+                "FirestoreClient"
+            ]),
         .library(
             name: "FirestoreClientLive",
-            targets: ["FirestoreClientLive"]),
+            targets: [
+                "FirestoreClientLive"
+            ]),
         .library(
             name: "SharedModels",
             targets: [
@@ -41,7 +55,17 @@ let package = Package(
             name: "TimerFeature",
             targets: [
                 "TimerFeature"
-            ])
+            ]),
+        .library(
+            name: "UserDefaultsClient",
+            targets: [
+                "UserDefaultsClient"
+            ]),
+        .library(
+            name: "UserDefaultsClientLive",
+            targets: [
+                "UserDefaultsClientLive"
+            ]),
     ],
     dependencies: [
         .package(
@@ -69,6 +93,7 @@ let package = Package(
             dependencies: [
                 "FirestoreClient",
                 "SharedModels",
+                "UserDefaultsClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ],
@@ -125,6 +150,19 @@ let package = Package(
             swiftSettings: swiftSettings),
         .target(
             name: "SharedModels",
+            swiftSettings: swiftSettings),
+        .target(
+            name: "UserDefaultsClient",
+            dependencies: [
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ],
+            swiftSettings: swiftSettings),
+        .target(
+            name: "UserDefaultsClientLive",
+            dependencies: [
+                "UserDefaultsClient",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ],
             swiftSettings: swiftSettings),
 
         // MARK: - Tests
