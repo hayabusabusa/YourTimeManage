@@ -3,6 +3,10 @@
 
 import PackageDescription
 
+private let swiftSettings = [
+    SwiftSetting.enableUpcomingFeature("StrictConcurrency")
+]
+
 let package = Package(
     name: "Package",
     platforms: [.iOS(.v17)],
@@ -58,17 +62,20 @@ let package = Package(
                 "FirebaseClient",
                 "TimerFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-            ]),
+            ],
+            swiftSettings: swiftSettings),
         .target(
             name: "TimerFeature",
             dependencies: [
+                "FirestoreClient",
                 "SharedModels",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ],
             resources: [
                 .process("Resources")
-            ]),
+            ],
+            swiftSettings: swiftSettings),
 
         // MARK: - Client
         .target(
@@ -76,32 +83,37 @@ let package = Package(
             dependencies: [
                 "SharedModels",
                 .product(name: "Dependencies", package: "swift-dependencies"),
-            ]),
+            ],
+            swiftSettings: swiftSettings),
         .target(
             name: "AuthClientLive",
             dependencies: [
                 "AuthClient",
                 "SharedModels",
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
-            ]),
+            ],
+            swiftSettings: swiftSettings),
         .target(
             name: "FirebaseClient",
             dependencies: [
                 .product(name: "Dependencies", package: "swift-dependencies"),
-            ]),
+            ],
+            swiftSettings: swiftSettings),
         .target(
             name: "FirebaseClientLive",
             dependencies: [
                 "FirebaseClient",
                 .product(name: "Dependencies", package: "swift-dependencies"),
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
-            ]),
+            ],
+            swiftSettings: swiftSettings),
         .target(
             name: "FirestoreClient",
             dependencies: [
                 "SharedModels",
                 .product(name: "Dependencies", package: "swift-dependencies"),
-            ]),
+            ],
+            swiftSettings: swiftSettings),
         .target(
             name: "FirestoreClientLive",
             dependencies: [
@@ -109,9 +121,11 @@ let package = Package(
                 "SharedModels",
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"),
-            ]),
+            ],
+            swiftSettings: swiftSettings),
         .target(
-            name: "SharedModels"),
+            name: "SharedModels",
+            swiftSettings: swiftSettings),
 
         // MARK: - Tests
         .testTarget(
