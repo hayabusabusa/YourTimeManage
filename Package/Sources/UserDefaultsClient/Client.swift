@@ -14,20 +14,32 @@ public struct UserDefaultsClient {
     public var bool: @Sendable (String) -> Bool
     /// `UserDefaults` に保存している `Int` の値を読み込む.
     public var integer: @Sendable (String) -> Int?
+    /// `UserDefaults` に保存している `Data` の値を読み込む.
+    public var data: @Sendable (String) -> Data?
+    /// `UserDefaults` に保存している `Date` の値を読み込む.
+    public var date: @Sendable (String) -> Date?
     /// `UserDefaults` にデータを保存する.
     public var setValue: @Sendable (SetValueArguments) -> Void
+    /// `UserDefaults` に `Encodable` 準拠のデータを保存する.
+    public var setEncodableValue: @Sendable (SetEncodableValueArguments) -> Void
     /// `UserDefaults` に保存されているデータを削除する.
     public var removeValue: @Sendable (String) -> Void
 
     public init(
         bool: @Sendable @escaping (String) -> Bool,
         integer: @Sendable @escaping (String) -> Int?,
+        data: @Sendable @escaping (String) -> Data?,
+        date: @Sendable @escaping (String) -> Date?,
         setValue: @Sendable @escaping (SetValueArguments) -> Void,
+        setEncodableValue: @Sendable @escaping (SetEncodableValueArguments) -> Void,
         removeValue: @Sendable @escaping (String) -> Void
     ) {
         self.bool = bool
         self.integer = integer
+        self.data = data
+        self.date = date
         self.setValue = setValue
+        self.setEncodableValue = setEncodableValue
         self.removeValue = removeValue
     }
 }
@@ -48,6 +60,22 @@ public extension UserDefaultsClient {
             self.value = value
         }
     }
+
+    /// `UserDefaultsClient.setEncodableValue` を実行する時の引数.
+    struct SetEncodableValueArguments {
+        /// 保存の際に利用するキー.
+        public let key: String
+        /// 保存する値.
+        public let value: any Encodable
+
+        public init(
+            key: String,
+            value: any Encodable
+        ) {
+            self.key = key
+            self.value = value
+        }
+    }
 }
 
 // MARK: - Dependencies
@@ -58,7 +86,13 @@ extension UserDefaultsClient: TestDependencyKey {
             false
         } integer: { _ in
             nil
+        } data: { _ in
+            nil
+        } date: { _ in
+            nil
         } setValue: { _ in
+            // 何もしない
+        } setEncodableValue: { _ in
             // 何もしない
         } removeValue: { _ in
             // 何もしない
@@ -70,7 +104,13 @@ extension UserDefaultsClient: TestDependencyKey {
             unimplemented("\(Self.self)\(#function)")
         } integer: { _ in
             unimplemented("\(Self.self)\(#function)")
+        } data: { _ in
+            unimplemented("\(Self.self)\(#function)")
+        } date: { _ in
+            unimplemented("\(Self.self)\(#function)")
         } setValue: { _ in
+            unimplemented("\(Self.self)\(#function)")
+        } setEncodableValue: { _ in
             unimplemented("\(Self.self)\(#function)")
         } removeValue: { _ in
             unimplemented("\(Self.self)\(#function)")

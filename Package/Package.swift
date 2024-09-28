@@ -60,12 +60,7 @@ let package = Package(
             name: "UserDefaultsClient",
             targets: [
                 "UserDefaultsClient"
-            ]),
-        .library(
-            name: "UserDefaultsClientLive",
-            targets: [
-                "UserDefaultsClientLive"
-            ]),
+            ])
     ],
     dependencies: [
         .package(
@@ -154,13 +149,6 @@ let package = Package(
         .target(
             name: "UserDefaultsClient",
             dependencies: [
-                .product(name: "Dependencies", package: "swift-dependencies"),
-            ],
-            swiftSettings: swiftSettings),
-        .target(
-            name: "UserDefaultsClientLive",
-            dependencies: [
-                "UserDefaultsClient",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ],
             swiftSettings: swiftSettings),

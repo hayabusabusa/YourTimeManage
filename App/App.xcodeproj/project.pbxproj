@@ -16,7 +16,6 @@
 		A5E4E8292BEF458800C17005 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = A5E4E8282BEF458800C17005 /* AppFeature */; };
 		A5E4E82B2BEF45BA00C17005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E82A2BEF45BA00C17005 /* AppDelegate.swift */; };
 		A5E4E82D2BEF474700C17005 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E82C2BEF474700C17005 /* GoogleService-Info.plist */; };
-		A5EE66242CA00241000FBA66 /* UserDefaultsClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = A5EE66232CA00241000FBA66 /* UserDefaultsClientLive */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 				A5E4E8272BEF417A00C17005 /* FirebaseClientLive in Frameworks */,
 				A518E0B72C8CB6B200F9DEA1 /* FirestoreClientLive in Frameworks */,
 				A5E4E8292BEF458800C17005 /* AppFeature in Frameworks */,
-				A5EE66242CA00241000FBA66 /* UserDefaultsClientLive in Frameworks */,
 				A51BFEAD2C02467B00ACE7C8 /* AuthClientLive in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,7 +109,6 @@
 				A5E4E8282BEF458800C17005 /* AppFeature */,
 				A51BFEAC2C02467B00ACE7C8 /* AuthClientLive */,
 				A518E0B62C8CB6B200F9DEA1 /* FirestoreClientLive */,
-				A5EE66232CA00241000FBA66 /* UserDefaultsClientLive */,
 			);
 			productName = App;
 			productReference = A5E4E8132BEE2B0300C17005 /* App.app */;
@@ -407,10 +404,6 @@
 		A5E4E8282BEF458800C17005 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
-		};
-		A5EE66232CA00241000FBA66 /* UserDefaultsClientLive */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UserDefaultsClientLive;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
