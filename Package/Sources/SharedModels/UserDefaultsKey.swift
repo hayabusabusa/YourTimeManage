@@ -13,4 +13,6 @@ public enum UserDefaultsKey: String {
     case isTimerActive
     /// タイマーの経過秒数.
     case secondsElapsed
+    /// タイマー用のバックグラウンドに移行したタイミングの `Date`.
+    case didEnterBackgroundDateForTimer
 }
