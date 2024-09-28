@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import SwiftUI
+import TimerFeature
 
 // MARK: - Reducer
 
@@ -47,7 +48,9 @@ public struct AppView: View {
     let store: StoreOf<AppFeature>
 
     public var body: some View {
-        Text("App")
+        TimerView(store: Store(initialState: TimerFeature.State()) {
+            TimerFeature()
+        })
     }
 
     public init(store: StoreOf<AppFeature>) {

@@ -76,6 +76,66 @@ public extension UserDefaultsClient {
             self.value = value
         }
     }
+
+    /// タイマーが起動中かどうかを返す.
+    var isTimerActive: Bool {
+        bool(.isTimerActive)
+    }
+
+    /// タイマーが起動中かどうかを保存する.
+    func setIsTimerActive(_ value: Bool) {
+        setValue(
+            .init(
+                key: .isTimerActive,
+                value: value
+            )
+        )
+    }
+
+    /// タイマーが起動中かどうかのデータを削除する.
+    func removeIsTimerActive() {
+        removeValue(.isTimerActive)
+    }
+
+    /// タイマーの経過秒数を返す.
+    var secondsElapsed: Int? {
+        integer(.secondsElapsed)
+    }
+
+    /// タイマーの経過秒数を保存する.
+    func setSecondsElapsed(_ value: Int) {
+        setValue(
+            .init(
+                key: .secondsElapsed,
+                value: value
+            )
+        )
+    }
+
+    /// タイマーの経過秒数のデータを削除する.
+    func removeSecondsElapsed() {
+        removeValue(.secondsElapsed)
+    }
+
+    /// タイマー用のバックグラウンドに移行したタイミングの `Date` を返す.
+    var didEnterBackgroundDateForTimer: Date? {
+        date(.didEnterBackgroundDateForTimer)
+    }
+
+    /// タイマー用のバックグラウンドに移行したタイミングの `Date` を保存する.
+    func setDidEnterBackgroundDateForTimer(_ value: Date) {
+        setEncodableValue(
+            .init(
+                key: .didEnterBackgroundDateForTimer,
+                value: value
+            )
+        )
+    }
+
+    /// タイマー用のバックグラウンドに移行したタイミングの `Date` を削除する..
+    func removeDidEnterBackgroundDateForTimer() {
+        removeValue(.didEnterBackgroundDateForTimer)
+    }
 }
 
 // MARK: - Dependencies
@@ -123,4 +183,15 @@ extension DependencyValues {
         get { self[UserDefaultsClient.self] }
         set { self[UserDefaultsClient.self] = newValue }
     }
+}
+
+// MARK: - Keys
+
+private extension String {
+    /// タイマーが起動中かどうかのフラグを保存するキーの値.
+    static let isTimerActive = "isTimerActive"
+    /// タイマーの経過秒数を保存するキーの値.
+    static let secondsElapsed = "secondsElapsed"
+    /// タイマー用のバックグラウンドに移行したタイミングの `Date` を保存するキーの値.
+    static let didEnterBackgroundDateForTimer = "didEnterBackgroundDateForTimer"
 }

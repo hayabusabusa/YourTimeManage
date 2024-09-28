@@ -150,34 +150,19 @@ private extension TimerFeature {
         isTimerActive: Bool,
         secondsElapsed: Int
     ) {
-        userDefaultsClient.setValue(
-            .init(
-                key: UserDefaultsKey.isTimerActive.rawValue,
-                value: isTimerActive
-            )
-        )
-        userDefaultsClient.setValue(
-            .init(
-                key: UserDefaultsKey.secondsElapsed.rawValue,
-                value: secondsElapsed
-            )
-        )
-        userDefaultsClient.setEncodableValue(
-            .init(
-                key: UserDefaultsKey.didEnterBackgroundDateForTimer.rawValue,
-                value: dateGenerator.now
-            )
-        )
+        userDefaultsClient.setIsTimerActive(isTimerActive)
+        userDefaultsClient.setSecondsElapsed(secondsElapsed)
+        userDefaultsClient.setDidEnterBackgroundDateForTimer(dateGenerator.now)
     }
     
     /// タイマーの状態が保存されていたら返す.
     /// - Returns: 保存されていたタイマーの状態 `StoredTimerState`.
     func restoreTimerStateIfNeeded() -> RestoredTimerState? {
-        guard let secondsElapsed = userDefaultsClient.integer(UserDefaultsKey.secondsElapsed.rawValue),
-              let didEnterBackgroundDate = userDefaultsClient.date(UserDefaultsKey.didEnterBackgroundDateForTimer.rawValue) else {
+        guard let secondsElapsed = userDefaultsClient.secondsElapsed,
+              let didEnterBackgroundDate = userDefaultsClient.didEnterBackgroundDateForTimer else {
             return nil
         }
-        let isTimerActive = userDefaultsClient.bool(UserDefaultsKey.isTimerActive.rawValue)
+        let isTimerActive = userDefaultsClient.isTimerActive
         // タイマーが有効になったままであればバックグラウンド移行中の経過時間を加算する.
         let addedSecondsElapsed = isTimerActive
             ? addSecondsElapsed(secondsElapsed, since: didEnterBackgroundDate)
@@ -207,9 +192,9 @@ private extension TimerFeature {
     
     /// 保存していたタイマーの状態を削除する.
     func removeStoredTimerState() {
-        userDefaultsClient.removeValue(UserDefaultsKey.isTimerActive.rawValue)
-        userDefaultsClient.removeValue(UserDefaultsKey.secondsElapsed.rawValue)
-        userDefaultsClient.removeValue(UserDefaultsKey.didEnterBackgroundDateForTimer.rawValue)
+        userDefaultsClient.removeIsTimerActive()
+        userDefaultsClient.removeSecondsElapsed()
+        userDefaultsClient.removeDidEnterBackgroundDateForTimer()
     }
 }
 
