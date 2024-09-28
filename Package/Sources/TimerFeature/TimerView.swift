@@ -73,7 +73,7 @@ public struct TimerFeature {
                     removeStoredTimerState()
                 } else if case .background = scenePhase {
                     // バックグラウンド以降時にタイマー起動中ならタイマーの状態を保存する
-                    storeTimerStateIfNeeded(
+                    storeTimerState(
                         isTimerActive: state.isTimerActive,
                         secondsElapsed: state.secondsElapsed
                     )
@@ -146,7 +146,7 @@ private extension TimerFeature {
     /// - Parameters:
     ///   - isTimerActive: タイマーが有効かどうか.
     ///   - secondsElapsed: 経過秒数.
-    func storeTimerStateIfNeeded(
+    func storeTimerState(
         isTimerActive: Bool,
         secondsElapsed: Int
     ) {
@@ -165,7 +165,10 @@ private extension TimerFeature {
         let isTimerActive = userDefaultsClient.isTimerActive
         // タイマーが有効になったままであればバックグラウンド移行中の経過時間を加算する.
         let addedSecondsElapsed = isTimerActive
-            ? addSecondsElapsed(secondsElapsed, since: didEnterBackgroundDate)
+            ? addSecondsElapsed(
+                secondsElapsed,
+                since: didEnterBackgroundDate
+            )
             : secondsElapsed
         return RestoredTimerState(
             isTimerActive: isTimerActive,
