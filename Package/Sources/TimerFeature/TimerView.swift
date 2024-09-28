@@ -11,6 +11,7 @@ import Dependencies
 import FirestoreClient
 import SharedModels
 import SwiftUI
+import UserDefaultsClient
 
 // MARK: - Reducer
 
@@ -57,17 +58,27 @@ public struct TimerFeature {
     @Dependency(\.continuousClock) var clock
     @Dependency(\.date) var dateGenerator
     @Dependency(\.firestoreClient) var firestoreClient
+    @Dependency(\.userDefaultsClient) var userDefaultsClient
 
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case .didChangeScenePhase(let scenePhase):
-                if case .active = scenePhase {
+                if case .active = scenePhase,
+                   let restoredState = restoreTimerStateIfNeeded() {
                     // フォアグラウンド復帰時にタイマー起動中だったら復元させる
-                    restoreTimerIfNeeded()
+                    state.isTimerActive = restoredState.isTimerActive
+                    state.secondsElapsed = restoredState.secondsElapsed
+                    // 復元後に削除.
+                    removeStoredTimerState()
                 } else if case .background = scenePhase {
                     // バックグラウンド以降時にタイマー起動中ならタイマーの状態を保存する
-                    storeTimerIfNeeded(isTimerActive: state.isTimerActive)
+                    storeTimerStateIfNeeded(
+                        isTimerActive: state.isTimerActive,
+                        secondsElapsed: state.secondsElapsed
+                    )
+                    // 状態保存後にタイマーを一時停止.
+                    state.isTimerActive = false
                 }
 
                 return .none
@@ -131,13 +142,74 @@ public struct TimerFeature {
 }
 
 private extension TimerFeature {
-    func storeTimerIfNeeded(isTimerActive: Bool) {
-        guard !isTimerActive else { return }
-        // TODO: UserDefaults に保存する
+    /// タイマーの状態を保存する.
+    /// - Parameters:
+    ///   - isTimerActive: タイマーが有効かどうか.
+    ///   - secondsElapsed: 経過秒数.
+    func storeTimerStateIfNeeded(
+        isTimerActive: Bool,
+        secondsElapsed: Int
+    ) {
+        userDefaultsClient.setValue(
+            .init(
+                key: UserDefaultsKey.isTimerActive.rawValue,
+                value: isTimerActive
+            )
+        )
+        userDefaultsClient.setValue(
+            .init(
+                key: UserDefaultsKey.secondsElapsed.rawValue,
+                value: secondsElapsed
+            )
+        )
+        userDefaultsClient.setEncodableValue(
+            .init(
+                key: UserDefaultsKey.didEnterBackgroundDateForTimer.rawValue,
+                value: dateGenerator.now
+            )
+        )
+    }
+    
+    /// タイマーの状態が保存されていたら返す.
+    /// - Returns: 保存されていたタイマーの状態 `StoredTimerState`.
+    func restoreTimerStateIfNeeded() -> RestoredTimerState? {
+        guard let secondsElapsed = userDefaultsClient.integer(UserDefaultsKey.secondsElapsed.rawValue),
+              let didEnterBackgroundDate = userDefaultsClient.date(UserDefaultsKey.didEnterBackgroundDateForTimer.rawValue) else {
+            return nil
+        }
+        let isTimerActive = userDefaultsClient.bool(UserDefaultsKey.isTimerActive.rawValue)
+        // タイマーが有効になったままであればバックグラウンド移行中の経過時間を加算する.
+        let addedSecondsElapsed = isTimerActive
+            ? addSecondsElapsed(secondsElapsed, since: didEnterBackgroundDate)
+            : secondsElapsed
+        return RestoredTimerState(
+            isTimerActive: isTimerActive,
+            secondsElapsed: addedSecondsElapsed
+        )
     }
 
-    func restoreTimerIfNeeded() {
-        // TODO: UserDefaults から読み込む
+    /// 指定した日付からの経過時間を加算する.
+    /// - Parameters:
+    ///   - secondsElapsed: 加算元の経過秒数.
+    ///   - date: 日付.
+    /// - Returns: 加算後の秒数.
+    func addSecondsElapsed(
+        _ secondsElapsed: Int,
+        since date: Date
+    ) -> Int {
+        let timeInterval = dateGenerator.now.timeIntervalSince(date)
+        // バックグラウンド移行してから時間が経過していた場合のみ加算する.
+        guard timeInterval > 0 else {
+            return secondsElapsed
+        }
+        return secondsElapsed + Int(timeInterval)
+    }
+    
+    /// 保存していたタイマーの状態を削除する.
+    func removeStoredTimerState() {
+        userDefaultsClient.removeValue(UserDefaultsKey.isTimerActive.rawValue)
+        userDefaultsClient.removeValue(UserDefaultsKey.secondsElapsed.rawValue)
+        userDefaultsClient.removeValue(UserDefaultsKey.didEnterBackgroundDateForTimer.rawValue)
     }
 }
 
