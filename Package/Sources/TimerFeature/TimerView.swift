@@ -216,11 +216,11 @@ public struct TimerView: View {
                     Text(formate(viewStore.secondsElapsed))
                         .font(Font(UIFont.monospacedDigitSystemFont(ofSize: 40, weight: .bold)))
                         .background {
-                            // NOTE: アニメーションのオンオフをコントロールできるか分からないので一旦コメントアウト
-    //                        WaveAnimationView(
-    //                            size: 220,
-    //                            color: Color(.red)
-    //                        )
+                            // NOTE: アニメーションのオンオフを切り替えることができるが、毎秒更新されてしまうため Reducer を分ける必要がある.
+//                            WaveAnimationView(
+//                                size: 220,
+//                                color: Color(.red)
+//                            )
                         }
                     Text("サブテキスト")
                         .font(.system(size: 12, weight: .medium))
