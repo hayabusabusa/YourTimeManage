@@ -245,8 +245,7 @@ public struct TimerView: View {
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.circle)
                 }
-
-                Spacer()
+                .frame(maxHeight: .infinity)
 
                 Button {
 //                    viewStore.send(.saveButtonTapped)
@@ -260,7 +259,7 @@ public struct TimerView: View {
                 .buttonBorderShape(.capsule)
                 .controlSize(.large)
             }
-            .padding()
+            .padding(12)
             .onAppear {
                 viewStore.send(.onAppear)
             }
