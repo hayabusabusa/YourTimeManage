@@ -47,6 +47,11 @@ let package = Package(
                 "FirestoreClientLive"
             ]),
         .library(
+            name: "HomeFeature",
+            targets: [
+                "HomeFeature"
+            ]),
+        .library(
             name: "SharedModels",
             targets: [
                 "SharedModels"
@@ -81,6 +86,14 @@ let package = Package(
                 "FirebaseClient",
                 "TimerFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ],
+            swiftSettings: swiftSettings),
+        .target(
+            name: "HomeFeature",
+            dependencies: [
+                "SharedModels",
+//                "UserDefaultsClient",
+//                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ],
             swiftSettings: swiftSettings),
         .target(
