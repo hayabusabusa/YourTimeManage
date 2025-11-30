@@ -8,9 +8,13 @@
 import SwiftUI
 
 public struct AppView: View {
+    @State private(set) var viewModel: AppViewModel
+
     public var body: some View {
         Text("Hello, World!")
     }
 
-    public init() {}
+    public init(viewModel: AppViewModel) {
+        self.viewModel = viewModel
+    }
 }

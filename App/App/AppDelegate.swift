@@ -5,19 +5,17 @@
 //  Created by Shunya Yamada on 2024/02/04.
 //
 
-//import AppFeature
+import AppFeature
 import UIKit
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
-//    let store = Store(initialState: AppFeature.State()) {
-//        AppFeature()
-//    }
+    let viewModel = AppViewModel()
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
-//        store.send(.appDelegate(.didFinishLaunching))
+        viewModel.didFinishLaunchingWithOptions()
         return true
     }
 }

@@ -69,7 +69,11 @@ let package = Package(
             ],
         ),
         .target(
-            name: "AppFeature"
+            name: "AppFeature",
+            dependencies: [
+                "FirebaseClient",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]
         ),
         .target(
             name: "FirebaseClient",

@@ -14,7 +14,7 @@ struct YourTimeManageApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AppView()
+            AppView(viewModel: appDelegate.viewModel)
         }
     }
 }
