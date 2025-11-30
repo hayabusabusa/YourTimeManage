@@ -5,6 +5,7 @@
 //  Created by Shunya Yamada on 2024/05/10.
 //
 
+import AppFeature
 import SwiftUI
 
 @main
@@ -13,7 +14,7 @@ struct YourTimeManageApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Text("")
+            AppView()
         }
     }
 }
