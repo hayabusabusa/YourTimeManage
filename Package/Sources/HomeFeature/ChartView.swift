@@ -38,11 +38,22 @@ enum Category: String, CaseIterable {
         }
     }
 
+    var text: String {
+        switch self {
+        case .japanese:
+            "国語"
+        case .mathematics:
+            "数学"
+        case .english:
+            "英語"
+        }
+    }
+
     static var colors: KeyValuePairs<String, Color> {
         [
-           Category.japanese.rawValue: Category.japanese.color,
-           Category.mathematics.rawValue: Category.mathematics.color,
-           Category.english.rawValue: Category.english.color
+            Category.japanese.rawValue: Category.japanese.color.opacity(0.6),
+            Category.mathematics.rawValue: Category.mathematics.color.opacity(0.65),
+            Category.english.rawValue: Category.english.color.opacity(0.65)
        ]
     }
 }
@@ -173,22 +184,23 @@ struct PieChartView: View {
                     "value",
                     element.value
                 ),
-                innerRadius: .ratio(0.6),
+                innerRadius: .ratio(0.68),
+                outerRadius: .automatic,
                 angularInset: 2
             )
             .cornerRadius(4)
             .annotation(position: .overlay) {
                 // 0.1 以下は表示しない方がいい
                 ZStack {
-                    RoundedRectangle(cornerRadius: 6)
-                        .foregroundStyle(Color.black)
-                        .frame(width: 32, height: 32)
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundStyle(element.category.color)
+                        .frame(width: 44, height: 44)
                         .overlay {
-                            RoundedRectangle(cornerRadius: 6)
+                            RoundedRectangle(cornerRadius: 8)
                                 .stroke(lineWidth: 2.0)
-                                .foregroundStyle(Color.white)
+                                .foregroundStyle(.gray.opacity(0.2))
                         }
-                    Text(element.category.rawValue.prefix(1).uppercased())
+                    Text(element.category.text.prefix(1).uppercased())
                         .bold()
                         .foregroundStyle(Color.white)
                 }
@@ -200,8 +212,35 @@ struct PieChartView: View {
                 )
             )
         }
+        .frame(height: 260)
         .scaledToFit()
+        .chartLegend(.hidden)
         .chartForegroundStyleScale(Category.colors)
+    }
+}
+
+// MARK: - TitleView
+
+struct TitleView: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("今日の合計")
+                .foregroundStyle(.gray)
+
+            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                Text("5")
+                    .bold()
+                    .font(.system(size: 36))
+                Text("時間")
+                    .foregroundStyle(.gray)
+                Text("30")
+                    .bold()
+                    .font(.system(size: 36))
+                Text("分")
+                    .foregroundStyle(.gray)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
@@ -238,18 +277,15 @@ struct HeatMapItemView: View {
 }
 
 struct HeatMapView: View {
-    @State private var data = [HeatMapData]()
-    private static var _data: [HeatMapData] {
-        [
-            HeatMapData(),
-            HeatMapData(),
-            HeatMapData(),
-            HeatMapData(),
-            HeatMapData(),
-            HeatMapData(),
-            HeatMapData(),
-        ]
-    }
+    @State private var data = [
+        HeatMapData(),
+        HeatMapData(),
+        HeatMapData(),
+        HeatMapData(),
+        HeatMapData(),
+        HeatMapData(),
+        HeatMapData(),
+    ]
 
     var body: some View {
         HStack {
@@ -257,10 +293,172 @@ struct HeatMapView: View {
                 HeatMapItemView()
             }
         }
-        .task {
-            try? await Task.sleep(for: .seconds(1))
-            withAnimation {
-                data = Self._data
+    }
+}
+
+// MARK: - Summary
+
+struct SummaryView: View {
+    var body: some View {
+        HStack {
+            Button {
+                // Action
+            } label: {
+                Text("今日")
+                    .frame(maxWidth: .infinity)
+                    .padding(24)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(
+                                Color(.systemGray2)
+                                    .opacity(0.2)
+                            )
+                    )
+            }
+            
+            Button {
+                // Action
+            } label: {
+                Text("B")
+                    .frame(maxWidth: .infinity)
+                    .padding(24)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(
+                                Color(.systemGray2)
+                                    .opacity(0.2)
+                            )
+                    )
+            }
+        }
+    }
+}
+
+// MARK: - Hint
+
+struct HintView: View {
+    var body: some View {
+        Button {
+            // Action
+        } label: {
+            HStack {
+                Text("🙌")
+                    .font(.system(size: 30))
+
+                VStack(alignment: .leading) {
+                    Text("今日の記録はまだありません")
+                        .bold()
+                        .lineLimit(1)
+                    Text("今から始めてみませんか？")
+                        .lineLimit(1)
+                }
+                .foregroundStyle(Color(.label))
+                .frame(
+                    maxWidth: .infinity,
+                    alignment: .leading
+                )
+
+                Image(systemName: "chevron.right")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(Color(.systemGray2))
+                    .frame(
+                        width: 16,
+                        height: 16
+                    )
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.blue.opacity(0.1))
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(
+                        Color(.systemGray2)
+                            .opacity(0.2)
+                    )
+            }
+        }
+    }
+}
+
+// MARK: - Item Title View
+
+struct ItemTitleView: View {
+    var body: some View {
+        HStack {
+            Text("履歴一覧")
+                .font(.system(size: 24))
+                .bold()
+                .foregroundStyle(Color(.label))
+        }
+        .frame(
+            maxWidth: .infinity,
+            alignment: .leading
+        )
+    }
+}
+
+// MARK: - Item
+
+/// 履歴一覧の `View`.
+///
+/// - note: これを取るためには複数の日付から直近の 3 件を取る必要があるので
+/// `CollectionGroup` でクエリを発行する必要がある.
+///
+/// - seealso: [公式ドキュメント](https://firebase.google.com/docs/firestore/query-data/queries?hl=ja#collection-group-query)
+struct ItemView: View {
+    var body: some View {
+        Button {
+            
+        } label: {
+            HStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .frame(
+                            width: 56,
+                            height: 56
+                        )
+                        .foregroundStyle(Color.blue.opacity(0.1))
+                    Image(systemName: "function")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(
+                            width: 24,
+                            height: 24
+                        )
+                        .foregroundStyle(Color.blue)
+                }
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("タイトル")
+                        .bold()
+                        .lineLimit(1)
+                        .foregroundStyle(Color(.label))
+                    Text("メモがあれば表示してなければ非表示にしておく")
+                        .font(.system(size: 14))
+                        .lineLimit(1)
+                        .foregroundStyle(Color.gray)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                HStack(alignment: .firstTextBaseline, spacing: 2) {
+                    Text("1")
+                        .bold()
+
+                    Text("時間")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Color.gray)
+
+                    Text("23")
+                        .bold()
+
+                    Text("分")
+                        .font(.system(size: 12))
+                        .foregroundStyle(Color.gray)
+                }
+                .foregroundStyle(Color(.label))
             }
         }
     }
@@ -268,23 +466,50 @@ struct HeatMapView: View {
 
 // MARK: - View
 
-struct HomeView: View {
-    var body: some View {
-        ScrollView(.vertical) {
-            LazyVStack(spacing: 16) {
-                HeatMapView()
+public struct HomeView: View {
+    public var body: some View {
+        ZStack {
+            VStack(spacing: 0) {
+                // NOTE: Header
+                VStack(spacing: 0) {
+                    HeatMapView()
+                        .padding()
+                    
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundStyle(Color(.systemGray2).opacity(0.2))
+                }
+                
+                // NOTE: Scroll
+                ScrollView(.vertical) {
+                    VStack(spacing: 24) {
+                        TitleView()
+                        
+                        PieChartView()
+                        
+//                        SummaryView()
 
-                PieChartView()
-                    .frame(height: 200)
+                        HintView()
 
-//                ChartView()
-//                    .frame(height: 200)
+                        ItemTitleView()
+
+                        LazyVStack {
+                            ForEach(0..<3) { _ in
+                                ItemView()
+                            }
+                        }
+                    }
+                    .padding(.vertical, 24)
+                    .padding(.horizontal)
+                }
             }
-            .padding()
+            
+            // NOTE: FAB
         }
-        .navigationTitle("ホーム")
         .navigationBarTitleDisplayMode(.inline)
     }
+
+    public init() {}
 }
 
 #Preview {

@@ -85,6 +85,7 @@ let package = Package(
             dependencies: [
                 "FirebaseClient",
                 "TimerFeature",
+                "HomeFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ],
             swiftSettings: swiftSettings),
