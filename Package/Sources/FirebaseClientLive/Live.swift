@@ -6,14 +6,16 @@
 //
 
 @_exported import FirebaseClient
+import Dependencies
 import FirebaseCore
 import Foundation
-import Dependencies
+import GoogleMobileAds
 
 extension FirebaseClient: DependencyKey {
     public static var liveValue: FirebaseClient {
         .init {
             FirebaseApp.configure()
+            MobileAds.shared.start()
         }
     }
 }

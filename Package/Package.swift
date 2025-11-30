@@ -36,6 +36,10 @@ let package = Package(
             targets: ["FirestoreClientLive"]
         ),
         .library(
+            name: "GoogleAdsView",
+            targets: ["GoogleAdsView"]
+        ),
+        .library(
             name: "SharedModels",
             targets: ["SharedModels"]
         ),
@@ -44,6 +48,10 @@ let package = Package(
         .package(
             url: "https://github.com/firebase/firebase-ios-sdk.git",
             from: "12.6.0"
+        ),
+        .package(
+            url: "https://github.com/googleads/swift-package-manager-google-mobile-ads.git",
+            from: "12.14.0"
         ),
         .package(
             url: "https://github.com/pointfreeco/swift-dependencies",
@@ -88,6 +96,7 @@ let package = Package(
                 "FirebaseClient",
                 .product(name: "Dependencies", package: "swift-dependencies"),
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+                .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
             ],
         ),
         .target(
@@ -106,6 +115,12 @@ let package = Package(
                 .product(name: "Dependencies", package: "swift-dependencies"),
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
             ],
+        ),
+        .target(
+            name: "GoogleAdsView",
+            dependencies: [
+                .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
+            ]
         ),
         .target(
             name: "SharedModels"
