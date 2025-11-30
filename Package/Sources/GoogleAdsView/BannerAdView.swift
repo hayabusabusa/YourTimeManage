@@ -13,22 +13,17 @@ public struct BannerAdView: UIViewControllerRepresentable {
     public typealias UIViewControllerType = BannerAdViewController
     /// 広告 ID.
     private let adUnitID = GoogleAdsView.adUnitID
-    /// 画面下部固定表示かどうかのフラグ.
-    var isAnchored = true
     /// 広告読み込みエラー受け取り時のコールバック.
     var didFailToReceiveAdWithError: ((any Error) -> Void)?
 
     public init(
-        isAnchored: Bool = true,
         didFailToReceiveAdWithError: ((any Error) -> Void)? = nil
     ) {
-        self.isAnchored = isAnchored
         self.didFailToReceiveAdWithError = didFailToReceiveAdWithError
     }
 
     public func makeUIViewController(context: Context) -> BannerAdViewController {
         let viewController = BannerAdViewController()
-        viewController.isAnchored = isAnchored
         viewController.bannerView.delegate = context.coordinator
         viewController.bannerView.adUnitID = adUnitID
         return viewController
@@ -61,8 +56,6 @@ public extension BannerAdView {
 }
 
 public final class BannerAdViewController: UIViewController {
-    /// 画面下部固定表示かどうかのフラグ.
-    var isAnchored = true
     /// バナー広告の View.
     private(set) var bannerView = BannerView()
 
@@ -90,16 +83,20 @@ public final class BannerAdViewController: UIViewController {
 
 private extension BannerAdViewController {
     func configureSubviews() {
-        view.addSubview(bannerView)
         bannerView.isAutoloadEnabled = true
         bannerView.rootViewController = self
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(bannerView)
+        NSLayoutConstraint.activate([
+            bannerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bannerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
     }
 
     func updateBannerViewSizeIfNeeded() {
         let width = view.frame.inset(by: view.safeAreaInsets).size.width
-        let adSize = isAnchored
-            ? currentOrientationAnchoredAdaptiveBanner(width: width)
-            : currentOrientationInlineAdaptiveBanner(width: width)
+        let adSize = currentOrientationAnchoredAdaptiveBanner(width: width)
 
         guard adSize.size != bannerView.adSize.size else {
             return
