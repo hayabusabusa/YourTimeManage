@@ -47,6 +47,10 @@ let package = Package(
             name: "TimerFeature",
             targets: ["TimerFeature"]
         ),
+        .library(
+            name: "UserDefaultsClient",
+            targets: ["UserDefaultsClient"]
+        ),
     ],
     dependencies: [
         .package(
@@ -134,6 +138,13 @@ let package = Package(
             dependencies: [
                 "SharedModels",
                 .product(name: "Dependencies", package: "swift-dependencies"),
+            ],
+        ),
+        .target(
+            name: "UserDefaultsClient",
+            dependencies: [
+                .product(name: "Dependencies", package: "swift-dependencies"),
+                .product(name: "DependenciesMacros", package: "swift-dependencies"),
             ],
         ),
         .testTarget(
