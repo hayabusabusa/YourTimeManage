@@ -43,6 +43,10 @@ let package = Package(
             name: "SharedModels",
             targets: ["SharedModels"]
         ),
+        .library(
+            name: "TimerFeature",
+            targets: ["TimerFeature"]
+        ),
     ],
     dependencies: [
         .package(
@@ -124,6 +128,13 @@ let package = Package(
         ),
         .target(
             name: "SharedModels"
+        ),
+        .target(
+            name: "TimerFeature",
+            dependencies: [
+                "SharedModels",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ],
         ),
         .testTarget(
             name: "PackageTests",
