@@ -8,6 +8,8 @@
 import Dependencies
 import Foundation
 import Observation
+import SharedModels
+import UserDefaultsClient
 
 @MainActor
 @Observable
@@ -20,6 +22,10 @@ public final class TimerViewModel {
     @ObservationIgnored
     @Dependency(\.date)
     private var dateGenerator
+    /// `UserDefaults` 操作用のクライアント.
+    @ObservationIgnored
+    @Dependency(\.userDefaultsClient)
+    private var userDefaultsClient
     /// タイマーによる定期処理のタスクをキャンセルするために保持する.
     @ObservationIgnored
     private var task: Task<Void, Never>?
@@ -36,14 +42,29 @@ public final class TimerViewModel {
         isTimerActive.toggle()
         
         if isTimerActive {
-            startTimer()
+            startTimerTask()
         } else {
-            stopTimer()
+            cancelTimerTask()
         }
     }
     
     /// 記録ボタンタップ時に実行するメソッド.
-    func saveButtonTapped() {}
+    func saveButtonTapped() {
+        guard secondsElapsed > 0 else {
+            return
+        }
+        do {
+            try saveLegacyData(
+                date: dateGenerator.now,
+                secondsElapsed: secondsElapsed
+            )
+            isTimerActive = false
+            secondsElapsed = 0
+            cancelTimerTask()
+        } catch {
+            print(error)
+        }
+    }
 
     /// `ScenePhase` 変更時のメソッド.
     /// - Parameter isActive: `ScenePhase` の状態がアクティブかどうか.
@@ -54,7 +75,7 @@ public final class TimerViewModel {
 
 private extension TimerViewModel {
     /// タイマーの処理を開始する.
-    func startTimer() {
+    func startTimerTask() {
         task = Task {
             for await _ in clock.timer(interval: .seconds(1)) {
                 secondsElapsed += 1
@@ -63,8 +84,40 @@ private extension TimerViewModel {
     }
     
     /// タイマーの処理を停止する.
-    func stopTimer() {
+    func cancelTimerTask() {
         task?.cancel()
         task = nil
+    }
+    
+    /// 以前のアプリで利用していたデータを保存する.
+    /// - Parameters:
+    ///   - date: 日付.
+    ///   - secondsElapsed: 秒数.
+    @available(*, deprecated, message: "TODO: 確認用なのであとで削除する.")
+    func saveLegacyData(
+        date: Date,
+        secondsElapsed: Int
+    ) throws {
+        let dateString = date.formatted(date: .numeric, time: .omitted)
+        let title = date.formatted(date: .numeric, time: .standard)
+        let data = YourStudyData(
+            date: dateString,
+            title: title,
+            hour: secondsElapsed / 3600,
+            minute: secondsElapsed,
+            memo: nil
+        )
+
+        NSKeyedUnarchiver.setClass(YourStudyData.self, forClassName: YourStudyData.className)
+        let saving: [YourStudyData]
+        if let stored = userDefaultsClient.data(key: "yourList"),
+           var unarchived = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(stored) as? [YourStudyData] {
+            unarchived.append(data)
+            saving = unarchived
+        } else {
+            saving = [data]
+        }
+        let archived = try NSKeyedArchiver.archivedData(withRootObject: saving, requiringSecureCoding: false)
+        userDefaultsClient.setValue(value: archived, key: "yourList")
     }
 }

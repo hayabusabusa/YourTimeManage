@@ -137,6 +137,7 @@ let package = Package(
             name: "TimerFeature",
             dependencies: [
                 "SharedModels",
+                "UserDefaultsClient",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ],
         ),

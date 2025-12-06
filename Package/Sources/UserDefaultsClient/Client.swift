@@ -85,9 +85,9 @@ extension DependencyValues {
 
 private extension String {
     /// 以前のアプリで使用していた保存したデータ一覧を取得するためのキー.
-    static let oldList = "yourList"
+    static let legacyList = "yourList"
     /// 依存のアプリで使用していた目標を取得するためのキー.
-    static let oldTarget = "yourTarget"
+    static let legacyTarget = "yourTarget"
     ///　依存のアプリで使用していた目標時間を取得するためのキー.
-    static let oldTargetTime = "yourTargetTime"
+    static let legacyTargetTime = "yourTargetTime"
 }

@@ -30,6 +30,20 @@ public final class YourStudyData: NSObject, NSCoding {
     public let minute: Int
     public let memo: String?
 
+    public init(
+        date: String?,
+        title: String?,
+        hour: Int,
+        minute: Int,
+        memo: String?
+    ) {
+        self.date = date
+        self.title = title
+        self.hour = hour
+        self.minute = minute
+        self.memo = memo
+    }
+
     public required init?(coder: NSCoder) {
         date = coder.decodeObject(forKey: "studyDate") as? String
         title = coder.decodeObject(forKey: "studyTitle") as? String

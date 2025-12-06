@@ -50,11 +50,11 @@ public struct TimerView: View {
                             width: 20,
                             height: 20
                         )
-                        .padding(20)
+                        .padding(24)
                         .foregroundStyle(.blue)
                         .background(
                             Circle()
-                                .stroke(.blue, lineWidth: 1)
+                                .foregroundStyle(.blue.opacity(0.16))
                         )
                 }
             }
