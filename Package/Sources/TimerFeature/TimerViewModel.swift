@@ -107,17 +107,6 @@ private extension TimerViewModel {
             minute: secondsElapsed,
             memo: nil
         )
-
-        NSKeyedUnarchiver.setClass(YourStudyData.self, forClassName: YourStudyData.className)
-        let saving: [YourStudyData]
-        if let stored = userDefaultsClient.data(key: "yourList"),
-           var unarchived = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(stored) as? [YourStudyData] {
-            unarchived.append(data)
-            saving = unarchived
-        } else {
-            saving = [data]
-        }
-        let archived = try NSKeyedArchiver.archivedData(withRootObject: saving, requiringSecureCoding: false)
-        userDefaultsClient.setValue(value: archived, key: "yourList")
+        userDefaultsClient.setLegacyData([data])
     }
 }

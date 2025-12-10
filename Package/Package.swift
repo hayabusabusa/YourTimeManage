@@ -144,6 +144,7 @@ let package = Package(
         .target(
             name: "UserDefaultsClient",
             dependencies: [
+                "SharedModels",
                 .product(name: "Dependencies", package: "swift-dependencies"),
                 .product(name: "DependenciesMacros", package: "swift-dependencies"),
             ],

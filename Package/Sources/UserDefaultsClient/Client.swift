@@ -8,6 +8,7 @@
 import Dependencies
 import DependenciesMacros
 import Foundation
+import SharedModels
 
 /// `UserDefaults` を利用した処理を行うクライアント.
 @DependencyClient
@@ -50,6 +51,34 @@ public extension UserDefaultsClient {
         setValue(
             value: data,
             key: key
+        )
+    }
+
+    /// 旧アプリで利用していたデータを読み込む.
+    var legacyData: [YourStudyData] {
+        NSKeyedUnarchiver.setClass(
+            YourStudyData.self,
+            forClassName: YourStudyData.className
+        )
+        guard let stored = data(key: .legacyList),
+              let unarchived = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(stored) as? [YourStudyData] else {
+            return []
+        }
+        return unarchived
+    }
+    
+    /// 旧アプリで利用していたデータを保存する.
+    /// - Parameter data: 保存するデータ一覧.
+    func setLegacyData(_ data: [YourStudyData]) {
+        var stored = legacyData
+        stored.append(contentsOf: data)
+
+        guard let archived = try? NSKeyedArchiver.archivedData(withRootObject: stored, requiringSecureCoding: false) else {
+            return
+        }
+        setValue(
+            value: archived,
+            key: .legacyList
         )
     }
 }
