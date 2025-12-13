@@ -81,6 +81,25 @@ public extension UserDefaultsClient {
             key: .legacyList
         )
     }
+    
+    /// 保存していたタイマーの状態を取得する.
+    var timerState: TimerState? {
+        decodable(forKey: .timerState)
+    }
+    
+    /// タイマーの状態を保存する.
+    /// - Parameter timerState: タイマーの状態.
+    func setTimerState(_ timerState: TimerState) {
+        setEncodable(
+            timerState,
+            forKey: .timerState
+        )
+    }
+
+    /// 保存していたタイマーの状態を削除する.
+    func removeTimerState() {
+        removeValue(.timerState)
+    }
 }
 
 // MARK: - Dependencies
@@ -119,4 +138,6 @@ private extension String {
     static let legacyTarget = "yourTarget"
     ///　依存のアプリで使用していた目標時間を取得するためのキー.
     static let legacyTargetTime = "yourTargetTime"
+    /// タイマーの状態を取得するキー.
+    static let timerState = "timerState"
 }
