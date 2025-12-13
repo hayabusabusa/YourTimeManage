@@ -48,6 +48,10 @@ let package = Package(
             targets: ["GoogleAdsView"]
         ),
         .library(
+            name: "HomeFeature",
+            targets: ["HomeFeature"]
+        ),
+        .library(
             name: "SharedModels",
             targets: ["SharedModels"]
         ),
@@ -153,6 +157,15 @@ let package = Package(
             dependencies: [
                 .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
             ]
+        ),
+        .target(
+            name: "HomeFeature",
+            dependencies: [
+                "FirestoreClient",
+                "SharedModels",
+                "UserDefaultsClient",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ],
         ),
         .target(
             name: "SharedModels"
