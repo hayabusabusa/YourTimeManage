@@ -6,7 +6,6 @@
 //
 
 import Dependencies
-import FirestoreClient
 import Foundation
 import Observation
 import SharedModels
@@ -23,10 +22,6 @@ public final class TimerViewModel {
     @ObservationIgnored
     @Dependency(\.date)
     private var dateGenerator
-    /// Firestore 操作用のクライアント.
-    @ObservationIgnored
-    @Dependency(\.firestoreClient)
-    private var firestoreClient
     /// `UserDefaults` 操作用のクライアント.
     @ObservationIgnored
     @Dependency(\.userDefaultsClient)
