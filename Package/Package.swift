@@ -40,6 +40,10 @@ let package = Package(
             targets: ["FirestoreClientLive"]
         ),
         .library(
+            name: "FirestoreClientMock",
+            targets: ["FirestoreClientMock"]
+        ),
+        .library(
             name: "GoogleAdsView",
             targets: ["GoogleAdsView"]
         ),
@@ -134,6 +138,14 @@ let package = Package(
                 "SharedModels",
                 .product(name: "Dependencies", package: "swift-dependencies"),
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
+            ],
+        ),
+        .target(
+            name: "FirestoreClientMock",
+            dependencies: [
+                "FirestoreClient",
+                "SharedModels",
+                .product(name: "Dependencies", package: "swift-dependencies"),
             ],
         ),
         .target(

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A32E10B12EEC3C1A0033A6D5 /* FirestoreClientMock in Frameworks */ = {isa = PBXBuildFile; productRef = A32E10B02EEC3C1A0033A6D5 /* FirestoreClientMock */; };
+		A32E10B32EEC3C920033A6D5 /* FirebaseClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = A32E10B22EEC3C920033A6D5 /* FirebaseClientLive */; };
 		A38BF82E2EDC1B160031B4B8 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = A38BF82D2EDC1B160031B4B8 /* AppFeature */; };
 		A38BF8302EDC1B160031B4B8 /* AuthClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = A38BF82F2EDC1B160031B4B8 /* AuthClientLive */; };
-		A38BF8322EDC1B160031B4B8 /* FirebaseClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = A38BF8312EDC1B160031B4B8 /* FirebaseClientLive */; };
-		A38BF8342EDC1B160031B4B8 /* FirestoreClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = A38BF8332EDC1B160031B4B8 /* FirestoreClientLive */; };
 		A5E4E8172BEE2B0300C17005 /* YourTimeManageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E8162BEE2B0300C17005 /* YourTimeManageApp.swift */; };
 		A5E4E81B2BEE2B0500C17005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E81A2BEE2B0500C17005 /* Assets.xcassets */; };
 		A5E4E81F2BEE2B0500C17005 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E81E2BEE2B0500C17005 /* Preview Assets.xcassets */; };
@@ -35,9 +35,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A38BF82E2EDC1B160031B4B8 /* AppFeature in Frameworks */,
-				A38BF8342EDC1B160031B4B8 /* FirestoreClientLive in Frameworks */,
+				A32E10B12EEC3C1A0033A6D5 /* FirestoreClientMock in Frameworks */,
+				A32E10B32EEC3C920033A6D5 /* FirebaseClientLive in Frameworks */,
 				A38BF8302EDC1B160031B4B8 /* AuthClientLive in Frameworks */,
-				A38BF8322EDC1B160031B4B8 /* FirebaseClientLive in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,8 +109,8 @@
 			packageProductDependencies = (
 				A38BF82D2EDC1B160031B4B8 /* AppFeature */,
 				A38BF82F2EDC1B160031B4B8 /* AuthClientLive */,
-				A38BF8312EDC1B160031B4B8 /* FirebaseClientLive */,
-				A38BF8332EDC1B160031B4B8 /* FirestoreClientLive */,
+				A32E10B02EEC3C1A0033A6D5 /* FirestoreClientMock */,
+				A32E10B22EEC3C920033A6D5 /* FirebaseClientLive */,
 			);
 			productName = App;
 			productReference = A5E4E8132BEE2B0300C17005 /* App.app */;
@@ -304,6 +304,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7NJH5NAV4T;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
@@ -328,6 +329,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.shunyayamada.YourTimeManage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "YourTimeManage Development";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -405,6 +407,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A32E10B02EEC3C1A0033A6D5 /* FirestoreClientMock */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirestoreClientMock;
+		};
+		A32E10B22EEC3C920033A6D5 /* FirebaseClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseClientLive;
+		};
 		A38BF82D2EDC1B160031B4B8 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
@@ -412,14 +422,6 @@
 		A38BF82F2EDC1B160031B4B8 /* AuthClientLive */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AuthClientLive;
-		};
-		A38BF8312EDC1B160031B4B8 /* FirebaseClientLive */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FirebaseClientLive;
-		};
-		A38BF8332EDC1B160031B4B8 /* FirestoreClientLive */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FirestoreClientLive;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
