@@ -6,6 +6,7 @@
 //
 
 import Dependencies
+import FirestoreClient
 import Foundation
 import Observation
 import SharedModels
@@ -22,6 +23,10 @@ public final class TimerViewModel {
     @ObservationIgnored
     @Dependency(\.date)
     private var dateGenerator
+    /// Firestore の操作を行うクライアント.
+    @ObservationIgnored
+    @Dependency(\.firestoreClient)
+    private var firestoreClient
     /// `UserDefaults` 操作用のクライアント.
     @ObservationIgnored
     @Dependency(\.userDefaultsClient)
@@ -53,20 +58,13 @@ public final class TimerViewModel {
         guard secondsElapsed > 0 else {
             return
         }
-        do {
-            try saveLegacyData(
-                date: dateGenerator.now,
-                secondsElapsed: secondsElapsed
-            )
-            // タイマーの状態をリセット.
-            isTimerActive = false
-            secondsElapsed = 0
-            cancelTimerTask()
-            // 保存していたタイマーの状態も削除.
-            userDefaultsClient.removeTimerState()
-        } catch {
-            print(error)
-        }
+        addSession()
+        // タイマーの状態をリセット.
+        isTimerActive = false
+        secondsElapsed = 0
+        cancelTimerTask()
+        // 保存していたタイマーの状態も削除.
+        userDefaultsClient.removeTimerState()
     }
 
     /// `ScenePhase` 変更時のメソッド.
@@ -116,25 +114,33 @@ private extension TimerViewModel {
         task?.cancel()
         task = nil
     }
-    
-    /// 以前のアプリで利用していたデータを保存する.
-    /// - Parameters:
-    ///   - date: 日付.
-    ///   - secondsElapsed: 秒数.
+
     @available(*, deprecated, message: "TODO: 確認用なのであとで削除する.")
-    func saveLegacyData(
-        date: Date,
-        secondsElapsed: Int
-    ) throws {
-        let dateString = date.formatted(date: .numeric, time: .omitted)
-        let title = date.formatted(date: .numeric, time: .standard)
-        let data = YourStudyData(
-            date: dateString,
-            title: title,
-            hour: secondsElapsed / 3600,
-            minute: secondsElapsed,
-            memo: nil
-        )
-        userDefaultsClient.setLegacyData([data])
+    func addSession() {
+        Task {
+            do {
+                guard let category = try await firestoreClient.getCategories(uid: "").randomElement() else {
+                    return
+                }
+                let now = dateGenerator.now
+                let startDate = now.addingTimeInterval(-Double(secondsElapsed))
+                let session = Session(
+                    id: UUID().uuidString,
+                    elapsedSecond: secondsElapsed,
+                    startDate: startDate,
+                    endDate: now,
+                    createdDate: now,
+                    category: category,
+                    note: nil,
+                    material: nil
+                )
+                try await firestoreClient.addSession(
+                    session: session,
+                    date: now
+                )
+            } catch {
+                print(error)
+            }
+        }
     }
 }

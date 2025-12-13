@@ -161,6 +161,7 @@ let package = Package(
             name: "TimerFeature",
             dependencies: [
                 "AddSessionFeature",
+                "FirestoreClient",
                 "SharedModels",
                 "UserDefaultsClient",
                 .product(name: "Dependencies", package: "swift-dependencies"),
