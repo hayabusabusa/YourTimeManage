@@ -8,6 +8,10 @@ let package = Package(
     platforms: [.iOS(.v26)],
     products: [
         .library(
+            name: "AddSessionFeature",
+            targets: ["AddSessionFeature"]
+        ),
+        .library(
             name: "AuthClient",
             targets: ["AuthClient"]
         ),
@@ -67,6 +71,14 @@ let package = Package(
         ),
     ],
     targets: [
+        .target(
+            name: "AddSessionFeature",
+            dependencies: [
+                "FirestoreClient",
+                "SharedModels",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ],
+        ),
         .target(
             name: "AuthClient",
             dependencies: [
@@ -136,6 +148,7 @@ let package = Package(
         .target(
             name: "TimerFeature",
             dependencies: [
+                "AddSessionFeature",
                 "SharedModels",
                 "UserDefaultsClient",
                 .product(name: "Dependencies", package: "swift-dependencies"),
