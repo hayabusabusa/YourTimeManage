@@ -74,6 +74,10 @@ public struct TimerView: View {
         }
         .padding(16)
         .onChange(of: scenePhase) { _, newValue in
+            // `inactive` は無視する.
+            guard newValue != .inactive else {
+                return
+            }
             viewModel.didChangeScenePhase(isActive: newValue == .active)
         }
     }
