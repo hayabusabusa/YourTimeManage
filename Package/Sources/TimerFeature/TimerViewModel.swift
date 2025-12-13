@@ -6,6 +6,7 @@
 //
 
 import Dependencies
+import FirestoreClient
 import Foundation
 import Observation
 import SharedModels
@@ -22,6 +23,10 @@ public final class TimerViewModel {
     @ObservationIgnored
     @Dependency(\.date)
     private var dateGenerator
+    /// Firestore 操作用のクライアント.
+    @ObservationIgnored
+    @Dependency(\.firestoreClient)
+    private var firestoreClient
     /// `UserDefaults` 操作用のクライアント.
     @ObservationIgnored
     @Dependency(\.userDefaultsClient)
@@ -58,9 +63,12 @@ public final class TimerViewModel {
                 date: dateGenerator.now,
                 secondsElapsed: secondsElapsed
             )
+            // タイマーの状態をリセット.
             isTimerActive = false
             secondsElapsed = 0
             cancelTimerTask()
+            // 保存していたタイマーの状態も削除.
+            userDefaultsClient.removeTimerState()
         } catch {
             print(error)
         }
@@ -68,7 +76,32 @@ public final class TimerViewModel {
 
     /// `ScenePhase` 変更時のメソッド.
     /// - Parameter isActive: `ScenePhase` の状態がアクティブかどうか.
-    func didChangeScenePhase(isActive: Bool) {}
+    func didChangeScenePhase(isActive: Bool) {
+        let now = dateGenerator.now
+        if isActive,
+           let timerState = userDefaultsClient.timerState {
+            // タイマーが起動中だった場合はバックグラウンドに入った日時から現在日時までの経過秒数を加算して復元する.
+            let interval = timerState.isActive
+                ? Int(now.timeIntervalSince(timerState.didEnterBackgroundDate))
+                : 0
+            secondsElapsed = timerState.secondsElapsed + interval
+            isTimerActive = timerState.isActive
+            // タイマーが開始中だった場合はタイマーのタスクを再開する.
+            if timerState.isActive {
+                startTimerTask()
+            }
+        } else {
+            let timerState = TimerState(
+                isActive: isTimerActive,
+                secondsElapsed: secondsElapsed,
+                didEnterBackgroundDate: now
+            )
+            userDefaultsClient.setTimerState(timerState)
+            // バックグラウンド移行時にタイマーの処理を中断する.
+            cancelTimerTask()
+            isTimerActive = false
+        }
+    }
 }
 
 // MARK: - Private
