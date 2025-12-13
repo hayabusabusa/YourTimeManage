@@ -58,13 +58,19 @@ public final class TimerViewModel {
         guard secondsElapsed > 0 else {
             return
         }
-        addSession()
-        // タイマーの状態をリセット.
-        isTimerActive = false
-        secondsElapsed = 0
-        cancelTimerTask()
-        // 保存していたタイマーの状態も削除.
-        userDefaultsClient.removeTimerState()
+        Task {
+            do {
+                try await addSession()
+                // タイマーの状態をリセット.
+                isTimerActive = false
+                secondsElapsed = 0
+                cancelTimerTask()
+                // 保存していたタイマーの状態も削除.
+                userDefaultsClient.removeTimerState()
+            } catch {
+                print(error)
+            }
+        }
     }
 
     /// `ScenePhase` 変更時のメソッド.
@@ -116,31 +122,25 @@ private extension TimerViewModel {
     }
 
     @available(*, deprecated, message: "TODO: 確認用なのであとで削除する.")
-    func addSession() {
-        Task {
-            do {
-                guard let category = try await firestoreClient.getCategories(uid: "").randomElement() else {
-                    return
-                }
-                let now = dateGenerator.now
-                let startDate = now.addingTimeInterval(-Double(secondsElapsed))
-                let session = Session(
-                    id: UUID().uuidString,
-                    elapsedSecond: secondsElapsed,
-                    startDate: startDate,
-                    endDate: now,
-                    createdDate: now,
-                    category: category,
-                    note: nil,
-                    material: nil
-                )
-                try await firestoreClient.addSession(
-                    session: session,
-                    date: now
-                )
-            } catch {
-                print(error)
-            }
+    func addSession() async throws {
+        guard let category = try await firestoreClient.getCategories(uid: "").randomElement() else {
+            return
         }
+        let now = dateGenerator.now
+        let startDate = now.addingTimeInterval(-Double(secondsElapsed))
+        let session = Session(
+            id: UUID().uuidString,
+            elapsedSecond: secondsElapsed,
+            startDate: startDate,
+            endDate: now,
+            createdDate: now,
+            category: category,
+            note: nil,
+            material: nil
+        )
+        try await firestoreClient.addSession(
+            session: session,
+            date: now
+        )
     }
 }
