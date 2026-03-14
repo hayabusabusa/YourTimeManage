@@ -8,7 +8,7 @@
 import Foundation
 
 /// セッションに設定するカテゴリー.
-public struct Category: Sendable, Equatable, Identifiable, Codable {
+public struct Category: Sendable, Hashable, Identifiable, Codable {
     /// Firestore のドキュメント ID.
     public var id: String?
     /// タイトル

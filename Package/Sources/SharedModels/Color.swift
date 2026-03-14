@@ -38,5 +38,8 @@ public extension Color {
         case purple
         case pink
         case brown
+        case black
+        case white
+        case gray
     }
 }
