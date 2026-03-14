@@ -14,7 +14,6 @@
 		A5E4E8172BEE2B0300C17005 /* YourTimeManageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E8162BEE2B0300C17005 /* YourTimeManageApp.swift */; };
 		A5E4E81B2BEE2B0500C17005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E81A2BEE2B0500C17005 /* Assets.xcassets */; };
 		A5E4E81F2BEE2B0500C17005 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E81E2BEE2B0500C17005 /* Preview Assets.xcassets */; };
-		A5E4E82B2BEF45BA00C17005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E4E82A2BEF45BA00C17005 /* AppDelegate.swift */; };
 		A5E4E82D2BEF474700C17005 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5E4E82C2BEF474700C17005 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +24,6 @@
 		A5E4E81A2BEE2B0500C17005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5E4E81C2BEE2B0500C17005 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 		A5E4E81E2BEE2B0500C17005 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A5E4E82A2BEF45BA00C17005 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5E4E82C2BEF474700C17005 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				A38BF8352EDC52B30031B4B8 /* Info.plist */,
-				A5E4E82A2BEF45BA00C17005 /* AppDelegate.swift */,
 				A5E4E8162BEE2B0300C17005 /* YourTimeManageApp.swift */,
 				A5E4E82C2BEF474700C17005 /* GoogleService-Info.plist */,
 				A5E4E81A2BEE2B0500C17005 /* Assets.xcassets */,
@@ -167,7 +164,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5E4E82B2BEF45BA00C17005 /* AppDelegate.swift in Sources */,
 				A5E4E8172BEE2B0300C17005 /* YourTimeManageApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

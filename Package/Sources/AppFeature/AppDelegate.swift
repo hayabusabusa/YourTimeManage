@@ -5,13 +5,14 @@
 //  Created by Shunya Yamada on 2024/02/04.
 //
 
-import AppFeature
 import UIKit
 
-final class AppDelegate: NSObject, UIApplicationDelegate {
-    let viewModel = AppViewModel()
+public final class AppDelegate: NSObject, UIApplicationDelegate {
+    public let viewModel = AppViewModel()
 
-    func application(
+    public override init() {}
+
+    public func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {

@@ -21,7 +21,7 @@ public final class AppViewModel {
     public init() {}
 
     /// `AppDelegate.application(_:didFinishLaunchingWithOptions:)` が実行された時のメソッド.
-    public func didFinishLaunchingWithOptions() {
+    func didFinishLaunchingWithOptions() {
         firebaseClient.configure()
     }
 }
